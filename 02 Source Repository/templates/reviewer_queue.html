@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Review Queue - AssureX Engine{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 1.5rem;">
+    <h1 style="font-size: 1.5rem; font-weight: 700;">Manual Review Queue</h1>
+    <p style="color: var(--text-sub); font-size: 0.875rem;">Claims requiring human reviewer evaluation and adjudication.</p>
+</div>
+<form class="filter-bar" method="GET" action="/reviewer/queue">
+    <div class="form-group"><label class="form-label">Claim ID</label><input class="form-input" name="claim_id" value="{{ filters.claim_id if filters else '' }}"></div>
+    <div class="form-group"><label class="form-label">Product ID</label><input class="form-input" name="product_id" value="{{ filters.product_id if filters else '' }}"></div>
+    <button class="btn btn-secondary" type="submit">Filter</button>
+</form>
+
+<div class="panel">
+    <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-clipboard-list"></use></svg> Pending Adjudication Queue ({{ pagination.total if pagination else review_claims|length }})</div>
+        <div class="view-switch">
+            <span class="view-switch-btn active" role="button" tabindex="0" data-view-target="reviewer-table-view" data-view-group="reviewer">Table View</span>
+            <span class="view-switch-btn" role="button" tabindex="0" data-view-target="reviewer-cards-view" data-view-group="reviewer">Triage Cards</span>
+        </div>
+    </div>
+    <div class="panel-body" style="padding: 0;">
+        {% if review_claims %}
+        <div id="reviewer-table-view" data-view-pane="reviewer">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Claim ID</th>
+                        <th>Product ID</th>
+                        <th>Python ML Class</th>
+                        <th>Vision Model Class</th>
+                        <th>Consistency</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in review_claims %}
+                    <tr>
+                        <td><a href="/claims/view/{{ c.claim_id }}" class="link">{{ c.claim_id }}</a></td>
+                        <td>{{ c.product_id }}</td>
+                        <td>{{ c.python_predicted_class }} ({{ "%.2f"|format(c.python_top_confidence or 0) }})</td>
+                        <td>{{ c.vision_predicted_class }} ({{ "%.2f"|format(c.vision_top_confidence or 0) }})</td>
+                        <td><span class="status-badge status-review">{{ c.consistency_status }}</span></td>
+                        <td><a href="/claims/view/{{ c.claim_id }}" class="btn btn-primary" style="padding: 0.25rem 0.6rem; font-size: 0.775rem;">Review Dossier</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="reviewer-cards-view" data-view-pane="reviewer" hidden class="triage-grid">
+            {% for c in review_claims %}
+            <div class="triage-card">
+                <div class="triage-card-header">
+                    <div>
+                        <a href="/claims/view/{{ c.claim_id }}" class="triage-card-id">{{ c.claim_id }}</a>
+                        <div style="font-size:11px; color:var(--text-muted); margin-top:2px;">Product: {{ c.product_id }}</div>
+                    </div>
+                    <span class="status-badge status-review">{{ c.consistency_status }}</span>
+                </div>
+                <div class="triage-card-body">
+                    <div class="triage-model-row">
+                        <div>
+                            <span style="font-size:11px; color:var(--text-muted); display:block;">Tabular Model</span>
+                            <strong style="color:var(--primary);">{{ c.python_predicted_class }}</strong>
+                        </div>
+                        <span style="font-size:11px; font-weight:600;">{{ "%.0f"|format((c.python_top_confidence or 0)*100) }}%</span>
+                    </div>
+                    <div class="triage-model-row">
+                        <div>
+                            <span style="font-size:11px; color:var(--text-muted); display:block;">Vision Model</span>
+                            <strong style="color:#7c3aed;">{{ c.vision_predicted_class }}</strong>
+                        </div>
+                        <span style="font-size:11px; font-weight:600;">{{ "%.0f"|format((c.vision_top_confidence or 0)*100) }}%</span>
+                    </div>
+                    {% if c.confidence_difference %}
+                    <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content:space-between; margin-top:2px;">
+                        <span>Confidence Disparity:</span>
+                        <span style="font-weight:600; color:var(--warning);">{{ "%.3f"|format(c.confidence_difference) }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="triage-card-footer">
+                    <span style="font-size:11px; color:var(--text-muted);">Action required</span>
+                    <a href="/claims/view/{{ c.claim_id }}" class="btn btn-primary" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;">Review Dossier →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="padding: 2.5rem; text-align: center; color: var(--text-sub);">
+            Queue is clear. No claims require manual review.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% include "components/pagination.html" %}
+{% endblock %}

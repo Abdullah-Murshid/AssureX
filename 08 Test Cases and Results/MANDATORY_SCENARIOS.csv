@@ -1,0 +1,12 @@
+﻿ID,Scenario,Setup,Expected,Actual,Evidence path,Tester,Date
+S01,Valid claim,"Complete matching evidence, covered fault, aligned confident Valid outputs",Likely Valid only with no review trigger,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S02,Invalid claim,Aligned confident Invalid outputs without an unresolved review trigger,Likely Invalid; distinguish classifier label from rule-review routing,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S03,Manual review,Ambiguous or unavailable model result,Manual Review Required,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S04,Expired warranty,Remaining coverage below negative grace boundary,Rule failure retained; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S05,Missing document,Remove one category-mandatory attachment,Name missing document; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S06,Duplicate claim,Reuse receipt hash or serial/invoice combination,Duplicate reason retained; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S07,Contradictory timeline,Fault before purchase or claim before fault,Contradiction named; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S08,Serial mismatch,Different document and entered serials,Warning/contradiction; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S09,Unauthorized repair,Attach stored unauthorized repair history,Policy failure retained; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S10,Boundary date,"At expiry, at grace end and one day beyond grace",Exact configured boundary behavior; adverse cases reviewed,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]
+S11,Model disagreement,Genuine differing top classes; fixture only for isolated logic tests,Display both outputs/gap; manual review,[[SCENARIO_ACTUAL_RESULTS]],[[SCENARIO_SCREENSHOTS]],[[TEAM_TESTER]],[[TEAM_TEST_DATE]]

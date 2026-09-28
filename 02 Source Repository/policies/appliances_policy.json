@@ -1,0 +1,66 @@
+{
+  "product_category": "appliances",
+  "category_name": "Home Appliances",
+  "coverage_duration_months": 36,
+  "extended_coverage_months": 24,
+  "grace_period_days": 30,
+  "reporting_deadline_days": 45,
+  "covered_faults": [
+    "compressor_failure",
+    "motor_burnout",
+    "cooling_leakage",
+    "control_board_malfunction",
+    "drum_rotation_fault",
+    "thermostat_failure",
+    "heating_element_defect"
+  ],
+  "exclusions": [
+    "voltage_fluctuation_damage",
+    "improper_installation",
+    "pest_infestation_damage",
+    "commercial_use_overload",
+    "cosmetic_dents_scratches",
+    "unauthorized_parts_replacement"
+  ],
+  "authorized_service_center_required": true,
+  "mandatory_documents": [
+    "purchase_receipt",
+    "warranty_card",
+    "product_image",
+    "installation_certificate"
+  ],
+  "hard_fail_rules": [
+    {
+      "rule_id": "AP_FAIL_01",
+      "rule_type": "warranty_expiry",
+      "name": "Warranty Expiry Hard Fail",
+      "description": "Claim date is past standard and extended warranty duration.",
+      "condition": "claim_age_days > (warranty_duration_days + grace_period_days)"
+    },
+    {
+      "rule_id": "AP_FAIL_02",
+      "rule_type": "commercial_usage",
+      "name": "Commercial Usage Exclusion",
+      "description": "Appliance used in commercial setting violating home warranty.",
+      "condition": "usage_type == 'commercial'"
+    }
+  ],
+  "warning_rules": [
+    {
+      "rule_id": "AP_WARN_01",
+      "rule_type": "repair_frequency",
+      "name": "High Repair Frequency",
+      "description": "Appliance has undergone 2 or more repairs within 6 months.",
+      "condition": "recent_repair_count >= 2"
+    }
+  ],
+  "manual_review_rules": [
+    {
+      "rule_id": "AP_REV_01",
+      "rule_type": "missing_documents",
+      "name": "Missing Installation Certificate",
+      "description": "Proof of professional installation missing.",
+      "condition": "'installation_certificate' in missing_documents"
+    }
+  ]
+}

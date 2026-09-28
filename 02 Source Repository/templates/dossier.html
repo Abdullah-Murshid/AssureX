@@ -1,0 +1,344 @@
+{% extends "base.html" %}
+
+{% block title %}Claim Dossier {{ claim.claim_id }} - AssureX Engine{% endblock %}
+
+{% block content %}
+
+
+<div class="page-header">
+    <div>
+        <div style="color: var(--text-sub); font-size: 0.8rem; font-weight: 600;">CLAIM DOSSIER</div>
+        <h1 style="font-size: 1.5rem; font-weight: 700;">{{ claim.claim_id }}</h1>
+        {% if product %}
+        <p style="color:var(--text-sub); display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <span>{{ product.product_name }} · {{ product.product_id }} · model {{ claim.model_version or 'n/a' }}</span>
+            {% set ext_num = claim.extended_warranty_contract_number or (product.extended_warranty_contract_number if product else '') %}
+            {% set ext_prov = claim.extended_warranty_provider or (product.extended_warranty_provider if product else '') %}
+            {% if ext_num or ext_prov %}
+            <span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.775rem; padding: 2px 8px; display: inline-flex; align-items: center; gap: 4px;">
+                <svg class="icon" aria-hidden="true" style="width: 12px; height: 12px;"><use href="/static/icons.svg#fa-shield-halved"></use></svg>
+                Extended Warranty: {{ ext_prov or 'Active' }} (Contract #{{ ext_num or 'Recorded' }})
+            </span>
+            {% endif %}
+        </p>
+        {% endif %}
+    </div>
+    
+    <div>
+        {% if claim.status == 'Draft' %}
+            <span class="status-badge" style="background: rgba(148, 163, 184, 0.2); color: #94a3b8; font-size: 0.9rem; padding: 0.4rem 0.8rem;">Draft</span>
+        {% elif claim.status == 'Closed' %}
+            <span class="status-badge" style="background: rgba(100, 116, 139, 0.2); color: #cbd5e1; font-size: 0.9rem; padding: 0.4rem 0.8rem;">Closed</span>
+        {% elif claim.status == 'Request More Info' %}
+            <span class="status-badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 0.9rem; padding: 0.4rem 0.8rem;">Request More Info</span>
+        {% elif claim.final_decision == 'Likely Valid' %}
+            <span class="status-badge status-valid" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Likely Valid</span>
+        {% elif claim.final_decision == 'Likely Invalid' %}
+            <span class="status-badge status-invalid" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Likely Invalid</span>
+        {% else %}
+            <span class="status-badge status-review" style="font-size: 0.9rem; padding: 0.4rem 0.8rem;">Manual Review Required</span>
+        {% endif %}
+        <a class="btn btn-secondary" href="/claims/{{ claim.claim_id }}/report/pdf" style="margin-left:0.5rem;" title="Download Official Vector PDF Report">
+            <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-file-export"></use></svg> Download PDF
+        </a>
+        <a class="btn btn-secondary" href="/claims/{{ claim.claim_id }}/report/print" target="_blank" style="margin-left:0.25rem;" title="Printable / Browser PDF Export">
+            <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-file"></use></svg> Print Report
+        </a>
+    </div>
+</div>
+
+{% if claim.status == 'Draft' %}
+<div class="panel full-width" style="border-left: 4px solid var(--primary); background: rgba(59, 130, 246, 0.06); margin-bottom: 1.25rem;">
+    <div class="panel-body" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <div style="font-weight: 700; font-size: 1rem; color: var(--text-main); margin-bottom: 0.25rem;">
+                <svg class="icon" aria-hidden="true" style="color: var(--primary);"><use href="/static/icons.svg#fa-file-lines"></use></svg> Draft Claim Pending Submission
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-sub);">
+                This claim is currently saved as a draft. You can continue editing or submit it when ready.
+            </div>
+        </div>
+        <div>
+            <a href="/claims/new?draft_id={{ claim.claim_id }}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 6px;">
+                <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-pen-to-square"></use></svg> Resume / Edit Draft
+            </a>
+        </div>
+    </div>
+</div>
+{% elif claim.status == 'Request More Info' %}
+<div class="panel full-width" style="border-left: 4px solid var(--warning); background: rgba(245, 158, 11, 0.08); margin-bottom: 1.25rem;">
+    <div class="panel-body">
+        <div style="font-weight: 700; font-size: 1rem; color: var(--warning); margin-bottom: 0.25rem;">
+            <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg> Additional Information Requested by Reviewer
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-main);">
+            <strong>Reviewer Note:</strong> {{ claim.reviewer_comments or 'Please review your claim details and provide the requested additional information.' }}
+        </div>
+    </div>
+</div>
+{% elif claim.status == 'Closed' %}
+<div class="panel full-width" style="border-left: 4px solid #64748b; background: rgba(100, 116, 139, 0.08); margin-bottom: 1.25rem;">
+    <div class="panel-body">
+        <div style="font-weight: 700; font-size: 1rem; color: var(--text-main); margin-bottom: 0.25rem;">
+            <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-circle-check"></use></svg> Claim Closed
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-sub);">
+            This claim case has been closed by the warranty review desk. {{ claim.reviewer_comments or '' }}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="stepper">
+    {% for st in status_steps %}
+        <span class="{% if claim.status == st %}current{% endif %}">{{ st }}</span>
+    {% endfor %}
+</div>
+
+<!-- AI-Generated Narrative Claim Summary Panel (Module xxxii) -->
+<div class="panel full-width" style="margin-bottom: 1.25rem; border-left: 4px solid var(--primary); background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);">
+    <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+        <div class="panel-title" style="display: flex; align-items: center; gap: 8px;">
+            <svg class="icon" aria-hidden="true" style="color: var(--primary);"><use href="/static/icons.svg#fa-wand-magic-sparkles"></use></svg>
+            AI Narrative Claim Summary
+            <span class="status-badge" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; font-size: 0.725rem; font-weight: 600; padding: 2px 6px;">Module XXXII</span>
+        </div>
+        <span style="font-size: 0.775rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 4px;">
+            <svg class="icon" aria-hidden="true" style="width: 12px; height: 12px;"><use href="/static/icons.svg#fa-robot"></use></svg> Automated Synthesis
+        </span>
+    </div>
+    <div class="panel-body">
+        <p style="font-size: 0.95rem; line-height: 1.65; color: var(--text-main); margin: 0;">
+            {{ narrative_summary }}
+        </p>
+    </div>
+</div>
+
+<div class="dossier-grid">
+
+    <!-- Model Comparison Panel -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-microchip"></use></svg> Dual-Model Evaluation</div>
+            <span style="font-size: 0.8rem; color: var(--text-sub);">Gap: {{ "%.4f"|format(claim.confidence_difference or 0) }}</span>
+        </div>
+        <div class="panel-body">
+            {% if claim.status == 'Draft' %}
+            <div style="padding: 2.5rem 1rem; text-align: center; color: var(--text-muted); background: var(--bg-main); border-radius: 8px; border: 1px dashed var(--border);">
+                <svg class="icon" aria-hidden="true" style="width: 32px; height: 32px; color: var(--text-muted); margin-bottom: 0.5rem;"><use href="/static/icons.svg#fa-microchip"></use></svg>
+                <div style="font-weight: 600; color: var(--text-main);">Dual-Model Evaluation Pending</div>
+                <div style="font-size: 0.825rem; color: var(--text-sub); margin-top: 4px;">Inference models and confidence scores will compute once this draft claim is submitted.</div>
+            </div>
+            {% else %}
+            <div style="margin-bottom: 1rem; padding: 0.75rem 1rem; background: var(--bg-main); border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <span style="color: var(--text-sub); font-size: 0.825rem; font-weight: 500;">Consistency Check:</span>
+                {% if claim.consistency_status in ['Strong Match', 'Acceptable Match', 'Consistent'] %}
+                <span class="status-badge status-valid" style="display:inline-flex; align-items:center; gap:5px;"><svg class="icon" aria-hidden="true" style="width:12px;height:12px;"><use href="/static/icons.svg#fa-circle-check"></use></svg> Models In Agreement ({{ claim.consistency_status }})</span>
+                {% elif claim.consistency_status == 'Model Disagreement' %}
+                <span class="status-badge status-invalid" style="display:inline-flex; align-items:center; gap:5px;"><svg class="icon" aria-hidden="true" style="width:12px;height:12px;"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg> Model Disagreement (Gap: {{ "%.4f"|format(claim.confidence_difference or 0) }})</span>
+                {% else %}
+                <span class="status-badge status-review" style="display:inline-flex; align-items:center; gap:5px;"><svg class="icon" aria-hidden="true" style="width:12px;height:12px;"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg> {{ claim.consistency_status }}</span>
+                {% endif %}
+            </div>
+
+            <div class="model-comparison-grid">
+                <!-- Python Model -->
+                <div>
+                    <div style="font-size: 0.8rem; color: var(--text-sub); font-weight: 600;">Tabular ML Model</div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin: 0.2rem 0;">
+                        {{ claim.python_predicted_class }}
+                    </div>
+                    <div style="font-size: 0.775rem; color: var(--text-muted); margin-bottom: 0.5rem;">Conf: {{ "%.1f"|format((claim.python_top_confidence or 0)*100) }}%</div>
+
+                    <div class="confidence-meter">
+                        <div class="confidence-label"><span>Valid</span><span>{{ "%.0f"|format(dossier.get('comparison', {}).get('python_probabilities', {}).get('Valid Claim', 0)*100) }}%</span></div>
+                        <div class="confidence-bar-bg"><div class="confidence-bar-fill" style="width: {{ dossier.get('comparison', {}).get('python_probabilities', {}).get('Valid Claim', 0)*100 }}%; background-color: #10b981;"></div></div>
+
+                        <div class="confidence-label"><span>Invalid</span><span>{{ "%.0f"|format(dossier.get('comparison', {}).get('python_probabilities', {}).get('Invalid Claim', 0)*100) }}%</span></div>
+                        <div class="confidence-bar-bg"><div class="confidence-bar-fill" style="width: {{ dossier.get('comparison', {}).get('python_probabilities', {}).get('Invalid Claim', 0)*100 }}%; background-color: #ef4444;"></div></div>
+
+                        <div class="confidence-label"><span>Review</span><span>{{ "%.0f"|format(dossier.get('comparison', {}).get('python_probabilities', {}).get('Manual Review', 0)*100) }}%</span></div>
+                        <div class="confidence-bar-bg"><div class="confidence-bar-fill" style="width: {{ dossier.get('comparison', {}).get('python_probabilities', {}).get('Manual Review', 0)*100 }}%; background-color: #f59e0b;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Vision Model -->
+                <div>
+                    <div style="font-size: 0.8rem; color: var(--text-sub); font-weight: 600;">Vision Summary Model</div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: #7c3aed; margin: 0.2rem 0;">
+                        {{ claim.vision_predicted_class }}
+                    </div>
+                    <div style="font-size: 0.775rem; color: var(--text-muted); margin-bottom: 0.5rem;">Conf: {{ "%.1f"|format((claim.vision_top_confidence or 0)*100) }}%</div>
+
+                    <div class="confidence-meter">
+                        <div class="confidence-label"><span>Valid</span><span>{{ "%.0f"|format(dossier.get('comparison', {}).get('vision_probabilities', {}).get('Valid Claim', 0)*100) }}%</span></div>
+                        <div class="confidence-bar-bg"><div class="confidence-bar-fill" style="width: {{ dossier.get('comparison', {}).get('vision_probabilities', {}).get('Valid Claim', 0)*100 }}%; background-color: #10b981;"></div></div>
+
+                        <div class="confidence-label"><span>Invalid</span><span>{{ "%.0f"|format(dossier.get('comparison', {}).get('vision_probabilities', {}).get('Invalid Claim', 0)*100) }}%</span></div>
+                        <div class="confidence-bar-bg"><div class="confidence-bar-fill" style="width: {{ dossier.get('comparison', {}).get('vision_probabilities', {}).get('Invalid Claim', 0)*100 }}%; background-color: #ef4444;"></div></div>
+
+                        <div class="confidence-label"><span>Review</span><span>{{ "%.0f"|format(dossier.get('comparison', {}).get('vision_probabilities', {}).get('Manual Review', 0)*100) }}%</span></div>
+                        <div class="confidence-bar-bg"><div class="confidence-bar-fill" style="width: {{ dossier.get('comparison', {}).get('vision_probabilities', {}).get('Manual Review', 0)*100 }}%; background-color: #f59e0b;"></div></div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Summary Card Image Panel -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-image"></use></svg> Claim Summary Card</div>
+        </div>
+        <div class="panel-body">
+            {% if claim.status == 'Draft' %}
+            <div style="padding: 2.5rem 1rem; text-align: center; color: var(--text-muted); background: var(--bg-main); border-radius: 8px; border: 1px dashed var(--border);">
+                <svg class="icon" aria-hidden="true" style="width: 32px; height: 32px; color: var(--text-muted); margin-bottom: 0.5rem;"><use href="/static/icons.svg#fa-image"></use></svg>
+                <div style="font-weight: 600; color: var(--text-main);">Summary Card Not Generated</div>
+                <div style="font-size: 0.825rem; color: var(--text-sub); margin-top: 4px;">Card synthesis will be generated automatically upon submission.</div>
+            </div>
+            {% else %}
+            <div style="position:relative; display:inline-block; width:100%;">
+                <img src="{{ card_url }}?v=v2026_{{ claim.claim_id }}" alt="Summary Card" class="summary-card-img" title="Click to view full image in lightbox">
+            </div>
+            <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                <svg class="icon" aria-hidden="true" style="width:13px;height:13px;"><use href="/static/icons.svg#fa-image"></use></svg>
+                <span>Click image to inspect in full-resolution lightbox modal</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Rule Verification Panel -->
+    <div class="panel full-width">
+        <div class="panel-header">
+            <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-list-check"></use></svg> Warranty Policy & Decision Analysis</div>
+        </div>
+        <div class="panel-body">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div>
+                    <h4 style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.5rem;">Rule Execution Results</h4>
+                    <ul class="rule-list">
+                        {% for p in dossier.get('rule_evaluation', {}).get('passed_rules', []) %}
+                            <li class="rule-item" style="color: var(--success);"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-check"></use></svg> {{ p }}</li>
+                        {% endfor %}
+
+                        {% for f in dossier.get('rule_evaluation', {}).get('failed_rules', []) %}
+                            <li class="rule-item" style="color: var(--danger);"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-xmark"></use></svg> {{ f }}</li>
+                        {% endfor %}
+
+                        {% for w in dossier.get('rule_evaluation', {}).get('warnings', []) %}
+                            <li class="rule-item" style="color: var(--warning);"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg> {{ w }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.5rem;">Decision Rationale</h4>
+                    <div style="background-color: var(--bg-main); padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 0.35rem;">Supporting Factors:</div>
+                        <ul>
+                            {% for sup in dossier.get('explanation', {}).get('supporting_factors', []) %}
+                                <li style="margin-left: 1rem;">{{ sup }}</li>
+                            {% else %}
+                                <li style="margin-left: 1rem; color: var(--text-muted);">None.</li>
+                            {% endfor %}
+                        </ul>
+
+                        <div style="font-weight: 600; color: var(--danger); margin-top: 0.75rem; margin-bottom: 0.35rem;">Opposing Factors:</div>
+                        <ul>
+                            {% for opp in dossier.get('explanation', {}).get('opposing_factors', []) %}
+                                <li style="margin-left: 1rem; color: var(--danger);">{{ opp }}</li>
+                            {% else %}
+                                <li style="margin-left: 1rem; color: var(--text-muted);">None.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviewer Override Panel -->
+    {% if user.role in ['reviewer', 'admin'] %}
+    <div class="panel full-width">
+        <div class="panel-header">
+            <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-user-check"></use></svg> Reviewer Action & Override</div>
+        </div>
+        <div class="panel-body">
+            {% if claim.override_flag %}
+            <div style="padding: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-light); border-radius: 6px; margin-bottom: 1rem;">
+                <div style="font-weight: 600;">Overridden by {{ claim.reviewed_by }}</div>
+                <div style="font-size: 0.85rem; color: var(--text-sub);">Note: "{{ claim.reviewer_comments }}"</div>
+            </div>
+            {% endif %}
+
+            <form action="/reviewer/override/{{ claim.claim_id }}" method="POST" style="display: flex; gap: 0.75rem; align-items: flex-end; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <label style="font-size: 0.8rem; color: var(--text-sub); display: block; margin-bottom: 0.35rem;">Reviewer Comments / Instructions</label>
+                    <input type="text" name="comments" class="form-input" placeholder="Enter adjudication comments or info requested..." required style="width: 100%; background: var(--bg-main); border: 1px solid var(--border-light); padding: 0.5rem; color: var(--text-main); border-radius: 4px;">
+                </div>
+                
+                <button type="submit" name="override_action" value="Approved" class="btn btn-success" style="display: inline-flex; align-items: center; gap: 5px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-circle-check"></use></svg> Approve
+                </button>
+                <button type="submit" name="override_action" value="Rejected" class="btn btn-danger" style="display: inline-flex; align-items: center; gap: 5px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-circle-xmark"></use></svg> Reject
+                </button>
+                <button type="submit" name="override_action" value="Request More Info" class="btn" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.35); font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg> Request More Info
+                </button>
+                <button type="submit" name="override_action" value="Closed" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 5px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-lock"></use></svg> Close Claim
+                </button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="panel full-width">
+        <div class="panel-header">
+            <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-clipboard-check"></use></svg> Adjudication Status & Notes</div>
+        </div>
+        <div class="panel-body">
+            {% if claim.override_flag or claim.reviewer_comments or claim.status in ['Closed', 'Request More Info', 'Draft'] %}
+            <div style="padding: 1rem; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: flex-start; gap: 12px;">
+                <div style="font-size: 1.25rem;">
+                    {% if claim.status in ['Approved', 'Likely Valid'] %}
+                    <span style="color: var(--success); font-weight: bold;">✓</span>
+                    {% elif claim.status in ['Rejected', 'Likely Invalid'] %}
+                    <span style="color: var(--danger); font-weight: bold;">✕</span>
+                    {% elif claim.status == 'Closed' %}
+                    <span style="color: var(--text-muted); font-weight: bold;">🔒</span>
+                    {% elif claim.status == 'Request More Info' %}
+                    <span style="color: var(--warning); font-weight: bold;">⚠</span>
+                    {% else %}
+                    <span style="color: var(--warning); font-weight: bold;">ℹ</span>
+                    {% endif %}
+                </div>
+                <div>
+                    <div style="font-weight: 600; color: var(--text-main); margin-bottom: 4px;">
+                        Claim Decision: <span class="status-badge {% if claim.status in ['Approved', 'Likely Valid'] %}status-valid{% elif claim.status in ['Rejected', 'Likely Invalid'] %}status-invalid{% elif claim.status == 'Closed' %}status-muted{% elif claim.status == 'Draft' %}status-muted{% else %}status-review{% endif %}">{{ claim.status }}</span>
+                    </div>
+                    {% if claim.reviewer_comments %}
+                    <div style="font-size: 0.875rem; color: var(--text-sub); margin-top: 4px;">
+                        <strong>Reviewer Note:</strong> {{ claim.reviewer_comments }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div style="padding: 1rem; background-color: var(--bg-main); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; gap: 12px;">
+                <svg class="icon" aria-hidden="true" style="width: 20px; height: 20px; color: var(--primary);"><use href="/static/icons.svg#fa-clock"></use></svg>
+                <div>
+                    <div style="font-weight: 600; color: var(--text-main);">Adjudication In Progress</div>
+                    <div style="font-size: 0.85rem; color: var(--text-sub);">Your claim is currently under review by the warranty assessment team. You will be notified once a determination is finalized.</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

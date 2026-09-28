@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Products - AssureX{% endblock %}
+{% block content %}
+<div class="page-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+    <div>
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Product hub</h1>
+        <p style="color: var(--text-sub);">Registered assets independent of claims.</p>
+    </div>
+    {% if user.role in ['customer', 'service_center', 'admin'] %}
+    <a class="btn btn-primary" href="/products/new"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-plus"></use></svg> Register product</a>
+    {% endif %}
+</div>
+
+<form class="filter-bar" method="GET" action="/products">
+    <div class="form-group">
+        <label class="form-label">Serial</label>
+        <input class="form-input" name="serial" value="{{ filters.serial }}">
+    </div>
+    <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select" name="category">
+            <option value="">Any</option>
+            {% for cat in ['electronics', 'appliances', 'automotive'] %}
+            <option value="{{ cat }}" {% if filters.category == cat %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Warranty status</label>
+        <select class="form-select" name="warranty_status">
+            <option value="">Any</option>
+            {% for st in ['Active', 'Extended Warranty Active', 'Expiring Soon', 'Grace Period Active', 'Expired'] %}
+            <option value="{{ st }}" {% if filters.warranty_status == st %}selected{% endif %}>{{ st }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn-secondary" type="submit">Filter</button>
+</form>
+
+{% if product_cards %}
+<div class="product-grid">
+    {% for card in product_cards %}
+    {% set p = card.product %}
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-title">{{ p.product_name }}</div>
+            <span class="status-badge {% if card.warranty_status in ['Active', 'Extended Warranty Active'] %}status-valid{% elif card.warranty_status == 'Expiring Soon' %}status-review{% else %}status-invalid{% endif %}">{{ card.warranty_status }}</span>
+        </div>
+        <div class="panel-body">
+            <div style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.75rem;">
+                <div><strong>{{ p.product_id }}</strong> · {{ p.brand }} {{ p.model_number }}</div>
+                <div>SN {{ p.serial_number }} · {{ p.category }}</div>
+                <div>Expires {{ card.warranty_expiry_date }} · {{ card.remaining_warranty_days }} days remaining</div>
+                {% if p.has_extended_warranty or p.extended_warranty_provider %}
+                <div style="margin-top: 4px;">
+                    <span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.725rem; padding: 1px 6px; display: inline-flex; align-items: center; gap: 4px;">
+                        <svg class="icon" aria-hidden="true" style="width: 10px; height: 10px;"><use href="/static/icons.svg#fa-shield-halved"></use></svg>
+                        Extended: {{ p.extended_warranty_provider or 'Active' }} (Contract #{{ p.extended_warranty_contract_number or 'N/A' }})
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+            <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="/claims/new?product_id={{ p.product_id }}">File new claim for this product</a>
+                <a class="btn btn-secondary" href="/warranties/{{ p.product_id }}">Warranty</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% include "components/pagination.html" %}
+{% else %}
+<div class="panel"><div class="panel-body" style="text-align:center; color: var(--text-sub);">No products registered yet.</div></div>
+{% endif %}
+{% endblock %}

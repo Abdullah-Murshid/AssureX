@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Warranties - AssureX{% endblock %}
+{% block content %}
+<h1 style="font-size: 1.5rem; font-weight: 700;">Warranty center</h1>
+<p style="color: var(--text-sub); margin-bottom: 1.25rem;">Manufacturer coverage derived from purchase date, duration, and category policy.</p>
+
+{% if detail %}
+{% set d = detail %}
+<div class="panel">
+    <div class="panel-header">
+        <div class="panel-title">{{ d.product.product_id }} — {{ d.product.product_name }}</div>
+        <span class="status-badge {% if d.warranty_status in ['Active', 'Extended Warranty Active'] %}status-valid{% elif d.warranty_status == 'Expiring Soon' %}status-review{% else %}status-invalid{% endif %}">{{ d.warranty_status }}</span>
+    </div>
+    <div class="panel-body">
+        <div class="form-row">
+            <div class="form-group"><div class="form-label">Coverage provider</div><div>{{ d.policy.get('category_name', 'Manufacturer') }}</div></div>
+            <div class="form-group"><div class="form-label">Start / expiry</div><div>{{ d.warranty_start_date }} → {{ d.warranty_expiry_date }}</div></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><div class="form-label">Remaining days</div><div style="font-size:1.4rem; font-weight:700;">{{ d.remaining_warranty_days }}</div></div>
+            <div class="form-group"><div class="form-label">Grace period</div><div>{{ d.policy.get('grace_period_days', 15) }} days</div></div>
+        </div>
+        {% if d.product.has_extended_warranty or d.product.extended_warranty_provider %}
+        <div class="form-row" style="padding: 0.65rem 0.85rem; background: rgba(16, 185, 129, 0.08); border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 0.85rem;">
+            <div class="form-group" style="margin:0;">
+                <div class="form-label" style="color:#10b981; font-weight:600;"><svg class="icon" aria-hidden="true" style="width:12px;height:12px;"><use href="/static/icons.svg#fa-shield-halved"></use></svg> Extended Warranty Provider</div>
+                <div>{{ d.product.extended_warranty_provider or 'Third-Party' }}</div>
+            </div>
+            <div class="form-group" style="margin:0;">
+                <div class="form-label" style="color:#10b981; font-weight:600;">Contract # / Additional Coverage</div>
+                <div>{{ d.product.extended_warranty_contract_number or 'N/A' }} (+{{ d.product.extended_warranty_duration_months or 0 }} months)</div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="form-label">Exclusions</div>
+        <p style="font-size:0.85rem; color: var(--text-sub);">{{ d.policy.get('exclusions', []) | join(', ') }}</p>
+        <div class="form-label" style="margin-top:0.75rem;">Authorized service required</div>
+        <p>{{ 'Yes' if d.policy.get('authorized_service_center_required') else 'No' }}</p>
+        <a class="btn btn-primary" href="/claims/new?product_id={{ d.product.product_id }}">File claim</a>
+    </div>
+</div>
+{% endif %}
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Status</th>
+            <th>Expiry</th>
+            <th>Remaining</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for card in product_cards %}
+        <tr>
+            <td>
+                {{ card.product.product_id }} · {{ card.product.product_name }}
+                {% if card.product.has_extended_warranty or card.product.extended_warranty_provider %}
+                <span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.7rem; padding: 1px 5px; margin-left: 4px;">Extended</span>
+                {% endif %}
+            </td>
+            <td>
+                <span class="status-badge {% if card.warranty_status in ['Active', 'Extended Warranty Active'] %}status-valid{% elif card.warranty_status == 'Expiring Soon' %}status-review{% else %}status-invalid{% endif %}" style="font-size: 0.775rem;">
+                    {{ card.warranty_status }}
+                </span>
+            </td>
+            <td>{{ card.warranty_expiry_date }}</td>
+            <td>{{ card.remaining_warranty_days }} days</td>
+            <td><a class="link" href="/warranties/{{ card.product.product_id }}">Open</a></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="color:var(--text-sub);">No warranty records. Register a product first.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include "components/pagination.html" %}
+{% endblock %}

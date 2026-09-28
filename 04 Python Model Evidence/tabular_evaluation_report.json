@@ -1,0 +1,80 @@
+{
+  "model_version": "v2",
+  "selected_algorithm": "XGBoost",
+  "cv_train_results": {
+    "RandomForest": {
+      "mean": 0.9095238095238095,
+      "std": 0.00903507902905248
+    },
+    "LogisticRegression": {
+      "mean": 0.779047619047619,
+      "std": 0.01771530975022693
+    },
+    "XGBoost": {
+      "mean": 0.9238095238095237,
+      "std": 0.016218463205644178
+    }
+  },
+  "validation_results": {
+    "RandomForest": 0.8622222222222222,
+    "LogisticRegression": 0.7777777777777778,
+    "XGBoost": 0.8977777777777778
+  },
+  "test_accuracy": 0.92,
+  "per_class_metrics": {
+    "Invalid Claim": {
+      "precision": 0.9559,
+      "recall": 0.8667,
+      "f1_score": 0.9091
+    },
+    "Manual Review": {
+      "precision": 0.875,
+      "recall": 0.9333,
+      "f1_score": 0.9032
+    },
+    "Valid Claim": {
+      "precision": 0.9351,
+      "recall": 0.96,
+      "f1_score": 0.9474
+    }
+  },
+  "confusion_matrix": [
+    [
+      65,
+      10,
+      0
+    ],
+    [
+      0,
+      70,
+      5
+    ],
+    [
+      3,
+      0,
+      72
+    ]
+  ],
+  "classes": [
+    "Invalid Claim",
+    "Manual Review",
+    "Valid Claim"
+  ],
+  "top_features": {
+    "damage_type_none": 0.11840000003576279,
+    "damage_type_voltage_fluctuation_damage": 0.094200000166893,
+    "damage_type_pest_infestation_damage": 0.0803999975323677,
+    "damage_type_commercial_use_overload": 0.06480000168085098,
+    "serial_match_status_Mismatch": 0.04610000178217888,
+    "contradiction_flag": 0.045499999076128006,
+    "duplicate_claim_flag": 0.04470000043511391,
+    "has_unauthorized_repairs": 0.04390000179409981,
+    "serial_match_status_Partial": 0.041099999099969864,
+    "has_receipt": 0.039799999445676804,
+    "previous_repairs_count": 0.03849999979138374,
+    "damage_type_cosmetic_scratch": 0.03539999946951866,
+    "has_warranty_card": 0.03240000084042549,
+    "remaining_warranty_days": 0.03200000151991844,
+    "product_age_days": 0.027300000190734863
+  }
+}

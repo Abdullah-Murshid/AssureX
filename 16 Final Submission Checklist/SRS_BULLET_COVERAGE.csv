@@ -1,0 +1,333 @@
+﻿SRS item,Exact bullet or explicit constraint,Prepared location,Completion status
+1.10.1.01,Problem definition,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.02,Background and business necessity,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.03,Proposed solution,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.04,Purpose of the document,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.05,Scope of the project,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.06,Assumptions,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.07,Constraints,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.08,Functional requirements,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.09,Non-functional requirements,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.10,Application architecture,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.11,Module descriptions,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.12,Database design,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.13,Data dictionary,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.14,Data Flow Diagram,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.15,Use Case Diagram,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.16,Activity Diagram,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.17,Sequence Diagram,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.18,Decision Flow Diagram,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.19,Rule-engine design,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.20,Python classification model design,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.21,Google Teachable Machine model design,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.22,Dataset description,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.23,Dataset-generation method,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.24,Data preprocessing and feature-engineering steps,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.25,Python model-training procedure,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.26,Google Teachable Machine training procedure,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.27,Model evaluation,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.28,Confusion matrix,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.29,"Accuracy, precision, recall, and F1-score",01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.30,Model prediction and confidence comparison,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.31,Testing strategy,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.32,Security considerations,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.33,Privacy considerations,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.34,Limitations,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.1.35,Future enhancements,01 Project Report/PROJECT_REPORT.pdf; DATABASE_DICTIONARY.md; diagrams/,Prepared document or baseline artifact; final build review required
+1.10.2.01,Python frontend and backend files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.02,"HTML, CSS, JavaScript, or Streamlit files",02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.03,Database scripts,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.04,Dataset-generation scripts,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.05,Data-preprocessing scripts,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.06,Python model-training scripts,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.07,Saved Python model files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.08,Label encoders and preprocessing files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.09,Claim Summary Card generation scripts,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.10,Google Teachable Machine exported model files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.11,Warranty-policy files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.12,Rule-engine files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.13,OCR and document-processing files,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.14,Automated test scripts,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.2.15,Sample claim data,02 Source Repository/,Prepared document or baseline artifact; final build review required
+1.10.3.01,Structured CSV training dataset,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.02,Structured CSV validation dataset,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.03,Structured CSV testing dataset,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.04,Claim Summary Card training images,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.05,Claim Summary Card validation images,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.06,Claim Summary Card testing images,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.07,Dataset-generation scripts,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.08,Claim scenario definitions,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.09,Dataset labels,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.10,Dataset statistics,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.11,Data dictionary,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.3.12,Claim ID and image filename mapping file,03 Common Dataset/,Prepared document or baseline artifact; final build review required
+1.10.4.01,Structured dataset used for model training,04 Python Model Evidence/,Historical evidence retained; version-matched final training run required
+1.10.4.02,Data-preprocessing notebook or script,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.03,Feature descriptions,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.04,Feature-engineering steps,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.05,Missing-value handling method,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.06,Categorical encoding method,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.07,Numerical scaling or normalization method,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.08,Algorithms tested,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.09,Hyperparameter settings,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.10,Training results,04 Python Model Evidence/,Historical evidence retained; version-matched final training run required
+1.10.4.11,Validation results,04 Python Model Evidence/,Historical evidence retained; version-matched final training run required
+1.10.4.12,Testing results,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.13,Cross-validation results,04 Python Model Evidence/,Historical evidence retained; version-matched final training run required
+1.10.4.14,Confusion matrix,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.15,Accuracy,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.16,Precision,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.17,Recall,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.18,F1-score,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.19,Class-wise performance,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.20,"Feature-importance analysis, where applicable",04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.21,Saved Python model file,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.22,Label encoder files,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.23,Preprocessing pipeline files,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.24,Model version,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.4.25,Sample test predictions,04 Python Model Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.01,Google Teachable Machine project link or permitted project evidence,05 Teachable Machine Evidence/,Authentic project evidence blank; user to supply
+1.10.5.02,Screenshots of the three classes,05 Teachable Machine Evidence/,Authentic project evidence blank; user to supply
+1.10.5.03,Valid Claim class samples,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.04,Invalid Claim class samples,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.05,Manual Review class samples,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.06,Training configuration,05 Teachable Machine Evidence/,Authentic project evidence blank; user to supply
+1.10.5.07,Number of images per class,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.08,Training observations,05 Teachable Machine Evidence/,Authentic project evidence blank; user to supply
+1.10.5.09,Incorrectly classified samples,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.10,Retraining details,05 Teachable Machine Evidence/,Authentic project evidence blank; user to supply
+1.10.5.11,Exported Google Teachable Machine model,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.12,Label file,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.13,Model version,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.5.14,Model test screenshots,05 Teachable Machine Evidence/,Authentic project evidence blank; user to supply
+1.10.5.15,Sample Claim Summary Cards,05 Teachable Machine Evidence/,Prepared document or baseline artifact; final build review required
+1.10.6.01,One structured claim record for the Python model,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.02,One corresponding Claim Summary Card for Google Teachable Machine,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.03,Claim ID,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.04,Actual claim class,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.05,Python model predicted class,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.06,Python confidence for Valid Claim,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.07,Python confidence for Invalid Claim,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.08,Python confidence for Manual Review,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.09,Claim Summary Card filename,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.10,Google Teachable Machine predicted class,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.11,Google Teachable Machine confidence for Valid Claim,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.12,Google Teachable Machine confidence for Invalid Claim,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.13,Google Teachable Machine confidence for Manual Review,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.14,Predicted-class match status,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.15,Top-class confidence difference,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.16,Model consistency status,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.17,Warranty-rule result,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.18,Missing documents,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.19,Contradictions detected,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.20,Duplicate-claim indicators,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.21,Final application decision,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.22,Explanation of major disagreements,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.23,Overall comparison summary,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.24,Strong Match,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.25,Acceptable Match,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.26,Weak Match,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.27,Model Disagreement,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.6.28,Uncertain Result,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,Prepared document or baseline artifact; final build review required
+1.10.7.01,Product category,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.02,Coverage duration,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.03,Warranty start conditions,07 Warranty Policies/,Completion-template field; implementation team to define/enforce
+1.10.7.04,Covered faults,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.05,Exclusions,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.06,Claim-reporting period,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.07,Repair conditions,07 Warranty Policies/,Completion-template field; implementation team to define/enforce
+1.10.7.08,Authorized service-centre requirements,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.09,Replacement conditions,07 Warranty Policies/,Completion-template field; implementation team to define/enforce
+1.10.7.10,Grace periods,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.11,Mandatory documents,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.12,Hard-fail rules,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.13,Warning rules,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.7.14,Manual-review rules,07 Warranty Policies/,Prepared document or baseline artifact; final build review required
+1.10.8.01,Functional test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.02,Integration test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.03,Boundary test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.04,Negative test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.05,Security test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.06,Database test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.07,OCR test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.08,Python model test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.09,Google Teachable Machine test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.10,Model-comparison test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.11,Rule-engine test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.12,Contradiction-detection tests,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.13,Missing-document tests,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.14,Duplicate-claim tests,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.15,Serial-number mismatch tests,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.16,Low-confidence test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.17,Model-disagreement test cases,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.18,Hidden-test readiness checklist,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.19,One valid claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.20,One invalid claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.21,One manual-review claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.22,One expired-warranty claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.23,One missing-document claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.24,One duplicate claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.25,One contradictory claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.26,One serial-number mismatch,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.27,One unauthorized-repair claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.28,One tricky boundary-date claim,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.8.29,One case where the two models disagree,08 Test Cases and Results/,Prepared document or baseline artifact; final build review required
+1.10.9.01,Prerequisite software,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.02,Supported operating system,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.03,Required Python version,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.04,Virtual-environment creation steps,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.05,Dependency installation steps,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.06,Database configuration,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.07,Database initialization or seed steps,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.08,Model placement instructions,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.09,Google Teachable Machine model placement,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.10,OCR installation and configuration,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.11,Environment-variable configuration,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.12,Folder setup,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.13,Application execution command,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.14,Test execution command,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.15,Default administrator setup,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.9.16,Troubleshooting instructions,09 Installation Instructions/INSTALLATION.md,Prepared document or baseline artifact; final build review required
+1.10.10.01,How to install the application,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.02,How to register or log in,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.03,How to register a product,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.04,How to add warranty information,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.05,How to create a claim,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.06,How to upload documents,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.07,How to verify extracted information,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.08,How to submit a claim,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.09,How to generate the Python prediction,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.10,How to interpret Python confidence scores,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.11,How to generate the Claim Summary Card,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.12,How to obtain the Google Teachable Machine prediction,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.13,How to compare both model results,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.14,How to review warranty-rule results,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.15,How to check contradictions,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.16,How to identify duplicate claims,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.17,How to access the manual-review queue,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.18,How to access the administrator dashboard,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.19,How to track claim status,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.20,How to export a claim report,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.10.21,How to run automated tests,10 Execution Instructions/EXECUTION.md; 02 Source Repository/README.md,Prepared document or baseline artifact; final build review required
+1.10.11.01,Have public access,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.02,Contain meaningful commit history,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.03,Include commits from all team members,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.04,Include complete source code,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.05,Include model and configuration instructions,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.06,Include the structured dataset or dataset-generation instructions,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.07,Include Claim Summary Card samples,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.08,Avoid confidential or real customer information,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.09,Include known limitations,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.10,Include assumptions,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.11,Include sample evaluator login details,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.12,Include database initialization instructions,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.13,Include screenshots of the working application,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.14,Include test results,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.15,Include the project report or report link,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.16,Include the blog link,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.11.17,Include the demonstration video link,11 GitHub Repository/PUBLICATION_CHECKLIST.md,Instructions/forms prepared; genuine user evidence required
+1.10.12.01,Public application URL,12 Deployment/DEPLOYMENT_RECORD.md,Instructions/forms prepared; genuine user evidence required
+1.10.12.02,Evaluator login credentials,12 Deployment/DEPLOYMENT_RECORD.md,Instructions/forms prepared; genuine user evidence required
+1.10.12.03,Administrator login credentials,12 Deployment/DEPLOYMENT_RECORD.md,Instructions/forms prepared; genuine user evidence required
+1.10.12.04,Sample claim records,12 Deployment/DEPLOYMENT_RECORD.md,Instructions/forms prepared; genuine user evidence required
+1.10.12.05,Instructions for testing the application,12 Deployment/DEPLOYMENT_RECORD.md,Instructions/forms prepared; genuine user evidence required
+1.10.13.01,User registration or login,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.02,Product registration,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.03,Warranty registration,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.04,Claim creation,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.05,Receipt and document upload,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.06,OCR extraction,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.07,Extracted-data verification,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.08,Data preprocessing,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.09,Python classification model prediction,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.10,Python confidence scores for all three classes,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.11,Claim Summary Card generation,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.12,Google Teachable Machine classification,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.13,Google Teachable Machine confidence scores,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.14,Comparison of both model predictions,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.15,Confidence-difference calculation,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.16,Warranty-rule execution,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.17,Missing-document detection,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.18,Contradiction detection,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.19,Duplicate-claim detection,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.20,Manual-review routing,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.21,Reviewer comments or override,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.22,Administrator dashboard,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.23,Claim status tracking,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.24,Report generation,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.25,One valid claim,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.26,One invalid claim,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.27,One manual-review claim,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.28,One tricky boundary case,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.13.29,One model-disagreement case,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,Instructions/forms prepared; genuine user evidence required
+1.10.14.01,Business problem,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.02,Background and necessity,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.03,Proposed solution,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.04,Application architecture,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.05,Dataset creation,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.06,Dataset challenges,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.07,Python model development,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.08,Algorithms compared,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.09,Google Teachable Machine training,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.10,Claim Summary Card generation,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.11,Python integration,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.12,Model prediction comparison,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.13,Confidence-score comparison,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.14,Warranty-rule design,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.15,OCR and document processing,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.16,Difficulties encountered,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.17,Model errors,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.18,Model disagreement cases,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.19,Testing results,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.20,Security considerations,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.21,Limitations,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.22,Lessons learned,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.14.23,Future enhancements,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,Article draft prepared; user publication required
+1.10.15.01,Name of the AI tool,15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.15.02,Purpose of use,15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.15.03,Prompt or type of assistance requested,15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.15.04,Files or modules affected,15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.15.05,Modifications performed by the team,15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.15.06,Testing completed by the team,15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.15.07,"Name of the team member who verified the output AI-generated images may be used for visual representation, but the tool used must be declared.",15 AI Usage Declaration/AI_USAGE.md; TEAM_CONTRIBUTIONS.md,Declaration prepared; independent team review/signoff required
+1.10.16.01,Project report,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.02,Public GitHub repository URL,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.03,Complete source code,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.04,Structured warranty claim dataset,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.05,Claim Summary Card image dataset,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.06,Python model files,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.07,Google Teachable Machine model files,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.08,Warranty-policy files,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.09,Model-comparison report,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.10,Test cases and results,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.11,Installation instructions,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.12,Execution instructions,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.13,"Deployment URL, where applicable",16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.14,Demonstration video,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.15,Technical blog link,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.16,AI_USAGE.md declaration,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.16.17,Team contribution record,16 Final Submission Checklist/,Prepared document or baseline artifact; final build review required
+1.10.2.structure,README.md,02 Source Repository/README.md,Included in snapshot
+1.10.2.structure,AI_USAGE.md,02 Source Repository/AI_USAGE.md,Included in snapshot
+1.10.2.structure,requirements.txt,02 Source Repository/requirements.txt,Included in snapshot
+1.10.2.structure,LICENSE,02 Source Repository/LICENSE,Owner-selected license text required
+1.10.2.structure,src/,02 Source Repository/src/,Included in snapshot
+1.10.2.structure,templates/,02 Source Repository/templates/,Included in snapshot
+1.10.2.structure,static/,02 Source Repository/static/,Included in snapshot
+1.10.2.structure,data/,02 Source Repository/data/,Included in snapshot
+1.10.2.structure,notebooks/,02 Source Repository/notebooks/,Included in snapshot
+1.10.2.structure,model/,02 Source Repository/model/,Included in snapshot
+1.10.2.structure,policies/,02 Source Repository/policies/,Included in snapshot
+1.10.2.structure,dataset_generator/,02 Source Repository/dataset_generator/,Included in snapshot
+1.10.2.structure,database/,02 Source Repository/database/,Included in snapshot
+1.10.2.structure,tests/,02 Source Repository/tests/,Included in snapshot
+1.10.2.structure,sample_claims/,02 Source Repository/sample_claims/,Included in snapshot
+1.10.2.structure,documentation/,02 Source Repository/documentation/,Included in snapshot
+1.10.2.structure,screenshots/,02 Source Repository/screenshots/,Real screenshots required
+1.10.2.structure,reports/,02 Source Repository/reports/,Included in snapshot
+1.10.2.structure,config/,02 Source Repository/config/,Included in snapshot
+1.10.4.minimum,At least three suitable classification algorithms compared,04 Python Model Evidence/,Three-candidate script and historical evidence; final provenance/run pending
+1.10.6.minimum,At least 30 unseen paired test claims,06 Model Comparison/comparison_table.csv; comparison_details.json; paired_records/; paired_cards/,30 paired genuine outputs included; original training provenance unresolved
+1.10.7.minimum,At least three configurable policy files,07 Warranty Policies/,Three source policies and separately labeled completion templates
+1.10.13.format,Mandatory playable MP4 demonstration,13 Demonstration Video/RECORDING_SCRIPT.md; VIDEO_COVERAGE.csv,User must record final working build; no fake video included
+1.10.14.length,Published article of at least 2000 words,14 Technical Blog/TECHNICAL_BLOG_DRAFT.md,2786-word draft prepared; user publication required

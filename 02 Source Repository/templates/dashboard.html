@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - AssureX Claim Engine{% endblock %}
+
+{% block content %}
+
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Operations dashboard</h1>
+        <p style="color: var(--text-sub); font-size: 0.875rem;">Registered products, warranties, pending actions, and claims.</p>
+    </div>
+    <div style="display: flex; gap: 0.5rem;">
+        <a href="/products/new" class="btn btn-secondary">Register product</a>
+        <a href="/claims/import-csv" class="btn btn-secondary"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-file-csv"></use></svg> Import CSV</a>
+        <a href="/claims/new" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-plus"></use></svg> Submit Claim</a>
+    </div>
+</div>
+
+{% if request.query_params.get('imported') %}
+    <div style="background-color: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+        <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-circle-check"></use></svg> Successfully imported and adjudicated {{ request.query_params.get('imported') }} claims from CSV file!
+    </div>
+{% endif %}
+
+<div class="metrics-row">
+    <div class="metric-card">
+        <div class="metric-label">Total Claims</div>
+        <div class="metric-value">{{ total_claims }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label" style="color: var(--success);">Likely Valid</div>
+        <div class="metric-value" style="color: var(--success);">{{ valid_claims }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label" style="color: var(--danger);">Likely Invalid</div>
+        <div class="metric-value" style="color: var(--danger);">{{ invalid_claims }}</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label" style="color: var(--warning);">Manual Review</div>
+        <div class="metric-value" style="color: var(--warning);">{{ review_claims }}</div>
+    </div>
+</div>
+
+<form class="filter-bar" method="GET" action="/">
+    <div class="form-group"><label class="form-label">Claim ID</label><input class="form-input" name="claim_id" value="{{ filters.claim_id }}"></div>
+    <div class="form-group"><label class="form-label">Product ID</label><input class="form-input" name="product_id" value="{{ filters.product_id }}"></div>
+    <div class="form-group"><label class="form-label">Serial</label><input class="form-input" name="serial" value="{{ filters.serial }}"></div>
+    <div class="form-group">
+        <label class="form-label">Status</label>
+        <select class="form-select" name="claim_status">
+            <option value="">Any</option>
+            {% for st in status_steps %}
+            <option value="{{ st }}" {% if filters.claim_status == st %}selected{% endif %}>{{ st }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn-secondary" type="submit">Search</button>
+</form>
+
+{% if pending_actions %}
+<div class="panel">
+    <div class="panel-header"><div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-bell"></use></svg> Pending warranty actions</div></div>
+    <div class="panel-body">
+        {% for row in pending_actions[:5] %}
+        <div style="margin-bottom:0.4rem;">{{ row.product.product_name }} — <span class="status-badge status-review">{{ row.warranty_status }}</span></div>
+        {% endfor %}
+        <a class="link" href="/alerts">All alerts</a>
+    </div>
+</div>
+{% endif %}
+
+{% if product_cards %}
+<div class="panel">
+    <div class="panel-header"><div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-box"></use></svg> Registered products</div></div>
+    <div class="panel-body" style="padding:0;">
+        <table class="data-table">
+            <thead><tr><th>ID</th><th>Name</th><th>Warranty</th><th></th></tr></thead>
+            <tbody>
+            {% for card in product_cards[:8] %}
+            <tr>
+                <td>{{ card.product.product_id }}</td>
+                <td>{{ card.product.product_name }}</td>
+                <td>{{ card.warranty_status }} ({{ card.remaining_warranty_days }}d)</td>
+                <td><a class="link" href="/claims/new?product_id={{ card.product.product_id }}">Claim</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+<div class="panel">
+    <div class="panel-header">
+        <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-list"></use></svg> Recent Claim Submissions</div>
+    </div>
+    <div class="panel-body" style="padding: 0;">
+        {% if recent_claims %}
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Fault Category</th>
+                    <th>Python ML Result</th>
+                    <th>Vision Model Result</th>
+                    <th>Consistency</th>
+                    <th>Final Decision</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in recent_claims %}
+                <tr>
+                    <td><a href="/claims/view/{{ c.claim_id }}" class="link">{{ c.claim_id }}</a></td>
+                    <td>{{ c.fault_category.replace('_', ' ').title() }}</td>
+                    <td>{{ (c.python_predicted_class ~ " (" ~ ("%.2f"|format(c.python_top_confidence or 0)) ~ ")") if c.python_predicted_class else "—" }}</td>
+                    <td>{{ (c.vision_predicted_class ~ " (" ~ ("%.2f"|format(c.vision_top_confidence or 0)) ~ ")") if c.vision_predicted_class else "—" }}</td>
+                    <td style="color: var(--text-sub);">{{ c.consistency_status or "—" }}</td>
+                    <td>
+                        {% if c.status == 'Draft' %}
+                            <span class="status-badge" style="background: rgba(148, 163, 184, 0.2); color: #94a3b8;">Draft</span>
+                        {% elif c.status == 'Closed' %}
+                            <span class="status-badge" style="background: rgba(100, 116, 139, 0.2); color: #cbd5e1;">Closed</span>
+                        {% elif c.status == 'Request More Info' %}
+                            <span class="status-badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">More Info</span>
+                        {% elif c.final_decision == 'Likely Valid' %}
+                            <span class="status-badge status-valid">Valid</span>
+                        {% elif c.final_decision == 'Likely Invalid' %}
+                            <span class="status-badge status-invalid">Invalid</span>
+                        {% else %}
+                            <span class="status-badge status-review">Review</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if c.status == 'Draft' %}
+                        <a href="/claims/new?draft_id={{ c.claim_id }}" class="btn btn-primary" style="padding: 0.25rem 0.6rem; font-size: 0.775rem;">Resume</a>
+                        {% else %}
+                        <a href="/claims/view/{{ c.claim_id }}" class="btn btn-secondary" style="padding: 0.25rem 0.6rem; font-size: 0.775rem;">View</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div style="padding: 2.5rem; text-align: center; color: var(--text-sub);">
+            No claims logged in system. Click "Submit Claim" to get started.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

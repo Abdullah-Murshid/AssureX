@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Register Product - AssureX{% endblock %}
+{% block content %}
+<div style="max-width: 860px; margin: 0 auto;">
+    <h1 style="font-size: 1.5rem; font-weight: 700;">Register a product</h1>
+    <p style="color: var(--text-sub); margin-bottom: 1.25rem;">Decoupled from claim filing. Assigns a unique Product ID at purchase time.</p>
+    <form action="/products/new" method="POST">
+        <div class="panel">
+            <div class="panel-header"><div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-box"></use></svg> Product details</div></div>
+            <div class="panel-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Product name</label>
+                        <input class="form-input" name="product_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category" required>
+                            <option value="electronics">Electronics</option>
+                            <option value="appliances">Appliances</option>
+                            <option value="automotive">Automotive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Brand</label>
+                        <input class="form-input" name="brand" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Model number</label>
+                        <input class="form-input" name="model_number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Serial number</label>
+                        <input class="form-input" name="serial_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Purchase date</label>
+                        <input class="form-input" type="date" name="purchase_date" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Purchase price ($)</label>
+                        <input class="form-input" type="number" step="0.01" min="0" name="purchase_price" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Retailer</label>
+                        <input class="form-input" name="retailer" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Standard warranty duration (months)</label>
+                    <input class="form-input" type="number" min="1" name="warranty_duration_months" value="24" required>
+                </div>
+
+                <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                    <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+                        <svg class="icon" aria-hidden="true" style="color: var(--primary);"><use href="/static/icons.svg#fa-shield-halved"></use></svg>
+                        Extended Warranty Protection (Optional - Module IV & XI)
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Extended warranty provider</label>
+                            <input class="form-input" name="extended_warranty_provider" placeholder="e.g. CarePack, SquareTrade, Asurion">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Extended contract #</label>
+                            <input class="form-input" name="extended_warranty_contract_number" placeholder="e.g. EXT-2026-8812">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Extended warranty duration (months)</label>
+                        <input class="form-input" type="number" min="0" name="extended_warranty_duration_months" value="0">
+                        <small style="color: var(--text-sub); font-size: 0.75rem;">Additional coverage months beyond standard manufacturer warranty.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+            <a class="btn btn-secondary" href="/products">Cancel</a>
+            <button class="btn btn-primary" type="submit">Register product</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

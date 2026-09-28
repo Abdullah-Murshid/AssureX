@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+{% block title %}Submit Warranty Claim - AssureX Engine{% endblock %}
+{% block content %}
+<div style="max-width: 860px; margin: 0 auto;">
+    <div style="margin-bottom: 1.25rem;">
+        {% if draft_claim %}
+        <span class="status-badge" style="background: rgba(148, 163, 184, 0.2); color: #94a3b8; font-size: 0.8rem; margin-bottom: 0.5rem; display: inline-block;">RESUMING DRAFT: {{ draft_claim.claim_id }}</span>
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Edit &amp; Submit Draft Claim</h1>
+        <p style="color: var(--text-sub); font-size: 0.875rem;">Complete the required details and evidence files to evaluate this claim.</p>
+        {% else %}
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Warranty Claim Registration</h1>
+        <p style="color: var(--text-sub); font-size: 0.875rem;">Select a registered product (or register a new one), then describe the incident.</p>
+        {% endif %}
+    </div>
+
+    <nav class="intake-section-nav" aria-label="Claim form sections">
+        <a href="#claim-product"><span>01</span> Product</a>
+        <a href="#claim-incident"><span>02</span> Incident</a>
+        <a href="#claim-evidence"><span>03</span> Evidence</a>
+    </nav>
+    <form id="claim-form" action="/claims/submit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="draft_id" value="{{ draft_claim.claim_id if draft_claim else '' }}">
+        <div class="panel" id="claim-product">
+            <div class="panel-header"><div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-box"></use></svg> 1. Registered product</div></div>
+            <div class="panel-body">
+                <div class="form-group" style="margin-bottom:1rem;">
+                    <label class="form-label">Existing product</label>
+                    <select class="form-select" name="product_id" id="product_id" onchange="if(this.value){ window.location='/claims/new?product_id='+this.value }">
+                        <option value="">Register a new product below</option>
+                        {% for p in products %}
+                        <option value="{{ p.product_id }}" {% if selected_product and selected_product.product_id == p.product_id %}selected{% endif %}>
+                            {{ p.product_id }} · {{ p.product_name }} · SN {{ p.serial_number }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% if selected_product %}
+                <p style="font-size:0.85rem; color:var(--text-sub); display: flex; align-items: center; flex-wrap: wrap; gap: 6px;">
+                    <span>Using {{ selected_product.product_id }} — {{ selected_product.brand }} {{ selected_product.model_number }} (SN {{ selected_product.serial_number }}).</span>
+                    {% if selected_product.has_extended_warranty or selected_product.extended_warranty_provider %}
+                    <span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.75rem; padding: 2px 6px; display: inline-flex; align-items: center; gap: 4px;">
+                        <svg class="icon" aria-hidden="true" style="width: 11px; height: 11px;"><use href="/static/icons.svg#fa-shield-halved"></use></svg>
+                        Extended: {{ selected_product.extended_warranty_provider }} (Contract #{{ selected_product.extended_warranty_contract_number or 'N/A' }})
+                    </span>
+                    {% endif %}
+                </p>
+                {% else %}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Product Name</label>
+                        <input type="text" name="product_name" class="form-input" placeholder="e.g. Sony OLED-C2 TV">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select name="product_category" class="form-select">
+                            <option value="electronics">Electronics</option>
+                            <option value="appliances">Appliances</option>
+                            <option value="automotive">Automotive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Brand</label><input type="text" name="brand" class="form-input"></div>
+                    <div class="form-group"><label class="form-label">Model Number</label><input type="text" name="model_number" class="form-input"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Serial Number</label><input type="text" name="serial_number" class="form-input"></div>
+                    <div class="form-group"><label class="form-label">Purchase Date</label><input type="date" name="purchase_date" class="form-input"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Purchase Price ($)</label><input type="number" step="0.01" min="0" name="purchase_price" class="form-input"></div>
+                    <div class="form-group"><label class="form-label">Retailer</label><input type="text" name="retailer" class="form-input"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Warranty months</label><input type="number" min="1" name="warranty_months" class="form-input" value="24"></div>
+                    <div class="form-group"><label class="form-label">Extended warranty duration (months)</label><input type="number" min="0" name="extended_warranty_duration_months" class="form-input" value="0"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label">Extended Warranty Provider (Optional)</label><input type="text" name="extended_warranty_provider" class="form-input" placeholder="e.g. CarePack, SquareTrade" value="{{ draft_claim.extended_warranty_provider if draft_claim else '' }}"></div>
+                    <div class="form-group"><label class="form-label">Extended Contract # (Optional)</label><input type="text" name="extended_warranty_contract_number" class="form-input" placeholder="e.g. EXT-2026-0041" value="{{ draft_claim.extended_warranty_contract_number if draft_claim else '' }}"></div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="panel" id="claim-incident">
+            <div class="panel-header"><div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-circle-exclamation"></use></svg> 2. Incident diagnostics</div></div>
+            <div class="panel-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Fault Category</label>
+                        <select name="fault_category" class="form-select" required>
+                            <option value="motherboard_failure" {% if draft_claim and draft_claim.fault_category == 'motherboard_failure' %}selected{% endif %}>Motherboard / Board Failure</option>
+                            <option value="screen_flicker_defect" {% if draft_claim and draft_claim.fault_category == 'screen_flicker_defect' %}selected{% endif %}>Screen Flicker / Display Fault</option>
+                            <option value="battery_charging_failure" {% if draft_claim and draft_claim.fault_category == 'battery_charging_failure' %}selected{% endif %}>Battery / Power Failure</option>
+                            <option value="audio_speaker_malfunction" {% if draft_claim and draft_claim.fault_category == 'audio_speaker_malfunction' %}selected{% endif %}>Speaker Malfunction</option>
+                            <option value="overheating_shutdown" {% if draft_claim and draft_claim.fault_category == 'overheating_shutdown' %}selected{% endif %}>Overheating Shutdown</option>
+                            <option value="compressor_failure" {% if draft_claim and draft_claim.fault_category == 'compressor_failure' %}selected{% endif %}>Compressor Failure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Damage / Exclusions</label>
+                        <select name="damage_type" class="form-select">
+                            <option value="none" {% if draft_claim and draft_claim.damage_type == 'none' %}selected{% endif %}>None (Standard Defect)</option>
+                            <option value="liquid_spill_damage" {% if draft_claim and draft_claim.damage_type == 'liquid_spill_damage' %}selected{% endif %}>Liquid Damage (Excluded)</option>
+                            <option value="physical_drop_crack" {% if draft_claim and draft_claim.damage_type == 'physical_drop_crack' %}selected{% endif %}>Physical Impact (Excluded)</option>
+                            <option value="unauthorized_repair_attempt" {% if draft_claim and draft_claim.damage_type == 'unauthorized_repair_attempt' %}selected{% endif %}>Unauthorized Service (Excluded)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Fault Occurrence Date</label>
+                        <input type="date" name="fault_occurrence_date" class="form-input" value="{{ draft_claim.fault_occurrence_date if draft_claim else '' }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Claim date</label>
+                        <input type="date" name="claim_submission_date" class="form-input" value="{{ today }}">
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label class="form-label">Fault Description</label>
+                    <textarea name="description" class="form-textarea" rows="3" placeholder="Enter symptom details...">{{ draft_claim.description if draft_claim else '' }}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="claim-evidence">
+            <div class="panel-header"><div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-file-arrow-up"></use></svg> 3. Evidence dropzone</div></div>
+            <div class="panel-body">
+                {% if vault_docs %}
+                <p class="form-label">Attach existing vault files</p>
+                {% for d in vault_docs %}
+                <label style="display:block; font-size:0.85rem; margin-bottom:0.35rem;">
+                    <input type="checkbox" class="attach-doc" value="{{ d.doc_id }}"> {{ d.doc_id }} · {{ d.file_type }}
+                </label>
+                {% endfor %}
+                <input type="hidden" name="attach_doc_ids" id="attach_doc_ids" value="">
+                {% endif %}
+                <div class="form-row" style="margin-top:0.75rem;">
+                    <div class="form-group">
+                        <label class="form-label">Purchase receipt</label>
+                        <div class="dropzone-upload-wrapper">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;"><svg class="icon" aria-hidden="true" style="width:16px;height:16px;color:var(--primary);vertical-align:middle;margin-right:4px;"><use href="/static/icons.svg#fa-cloud-arrow-up"></use></svg> Drop receipt file here or click to browse</div>
+                            <input type="file" name="receipt_file" accept=".pdf,.png,.jpg,.jpeg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Warranty card</label>
+                        <div class="dropzone-upload-wrapper">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;"><svg class="icon" aria-hidden="true" style="width:16px;height:16px;color:var(--primary);vertical-align:middle;margin-right:4px;"><use href="/static/icons.svg#fa-cloud-arrow-up"></use></svg> Drop warranty card here or click to browse</div>
+                            <input type="file" name="warranty_card_file" accept=".pdf,.png,.jpg,.jpeg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Product photo</label>
+                        <div class="dropzone-upload-wrapper">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;"><svg class="icon" aria-hidden="true" style="width:16px;height:16px;color:var(--primary);vertical-align:middle;margin-right:4px;"><use href="/static/icons.svg#fa-cloud-arrow-up"></use></svg> Drop product photo here</div>
+                            <input type="file" name="product_photo_file" accept=".png,.jpg,.jpeg">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Serial plate photo</label>
+                        <div class="dropzone-upload-wrapper">
+                            <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;"><svg class="icon" aria-hidden="true" style="width:16px;height:16px;color:var(--primary);vertical-align:middle;margin-right:4px;"><use href="/static/icons.svg#fa-cloud-arrow-up"></use></svg> Drop serial plate photo here</div>
+                            <input type="file" name="serial_photo_file" accept=".png,.jpg,.jpeg">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Damage close-up</label>
+                    <div class="dropzone-upload-wrapper">
+                        <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;"><svg class="icon" aria-hidden="true" style="width:16px;height:16px;color:var(--primary);vertical-align:middle;margin-right:4px;"><use href="/static/icons.svg#fa-cloud-arrow-up"></use></svg> Drop damage close-up image here</div>
+                        <input type="file" name="damage_photo_file" accept=".png,.jpg,.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="precheck-box" class="panel" style="display:none;">
+            <div class="panel-header"><div class="panel-title">Pre-submission readiness</div></div>
+            <div class="panel-body" id="precheck-body"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="/" class="btn btn-secondary">Cancel</a>
+                <button type="button" class="btn btn-secondary" id="precheck-btn">Pre-check</button>
+                <button type="submit" name="action_type" value="draft" class="btn btn-secondary" id="draft-btn" formnovalidate style="display: inline-flex; align-items: center; gap: 6px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-floppy-disk"></use></svg> Save as Draft
+                </button>
+                <button type="submit" name="action_type" value="submit" class="btn btn-primary" id="submit-btn" style="display: inline-flex; align-items: center; gap: 6px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-check"></use></svg> Submit Claim
+                </button>
+            </div>
+            <div id="submitting-spinner" style="display: none; font-size: 0.825rem; color: var(--text-sub); align-items: center; gap: 0.5rem;">
+                <svg class="icon" aria-hidden="true" style="animation: spin 1s linear infinite;"><use href="/static/icons.svg#fa-rotate"></use></svg>
+                Processing evidence, OCR extraction &amp; AI adjudication... Please wait.
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+let lastAction = 'submit';
+document.getElementById('draft-btn')?.addEventListener('click', function() { lastAction = 'draft'; });
+document.getElementById('submit-btn')?.addEventListener('click', function() { lastAction = 'submit'; });
+
+document.getElementById('claim-form').addEventListener('submit', function (e) {
+  const ids = Array.from(document.querySelectorAll('.attach-doc:checked')).map(el => el.value);
+  const hidden = document.getElementById('attach_doc_ids');
+  if (hidden) hidden.value = ids.join(',');
+
+  if (lastAction === 'submit') {
+    const submitBtn = document.getElementById('submit-btn');
+    const spinner = document.getElementById('submitting-spinner');
+    if (submitBtn) {
+      setTimeout(function() {
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+      }, 10);
+      submitBtn.innerHTML = 'Submitting & Evaluating...';
+    }
+    if (spinner) {
+      spinner.style.display = 'flex';
+    }
+  }
+});
+document.getElementById('precheck-btn').addEventListener('click', async function () {
+  const form = document.getElementById('claim-form');
+  const data = new FormData();
+  data.append('product_id', form.product_id.value);
+  data.append('fault_occurrence_date', form.fault_occurrence_date.value);
+  data.append('claim_submission_date', form.claim_submission_date.value);
+  data.append('fault_category', form.fault_category.value);
+  data.append('damage_type', form.damage_type.value);
+  const box = document.getElementById('precheck-box');
+  const body = document.getElementById('precheck-body');
+  box.style.display = 'block';
+  body.textContent = 'Checking…';
+  const res = await fetch('/claims/pre-check', { method: 'POST', body: data });
+  const json = await res.json();
+  body.innerHTML = '<div>Ready: <strong>' + json.ready + '</strong></div>' +
+    '<div>Missing: ' + (json.missing_documents || []).join(', ') + '</div>' +
+    '<div>Warnings: ' + (json.warnings || []).join('; ') + '</div>' +
+    '<div>Actions: ' + (json.recommended_actions || []).join('; ') + '</div>';
+});
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{
+  "total_unique_claim_records": 1500,
+  "split_counts": {
+    "train": 1050,
+    "validation": 225,
+    "test": 225
+  },
+  "class_distribution": {
+    "Valid Claim": 500,
+    "Invalid Claim": 500,
+    "Manual Review": 500
+  },
+  "category_distribution": {
+    "automotive": 522,
+    "appliances": 490,
+    "electronics": 488
+  },
+  "total_summary_card_images": 2550,
+  "train_card_images": 2100,
+  "val_card_images": 225,
+  "test_card_images": 225,
+  "average_product_age_days": 427.22,
+  "average_remaining_warranty_days": 285.1,
+  "contradiction_claims_count": 202,
+  "duplicate_claims_count": 14
+}

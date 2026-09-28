@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}Repairs - AssureX{% endblock %}
+{% block content %}
+<div class="page-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+    <div>
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Repair service center</h1>
+        <p style="color: var(--text-sub);">Authorized vs unauthorized repair history per product.</p>
+    </div>
+    {% if user.role in ['customer', 'service_center', 'admin'] %}
+    <a class="btn btn-primary" href="/repairs/new">Log repair</a>
+    {% endif %}
+</div>
+
+{% if show_form %}
+<div class="panel">
+    <div class="panel-header"><div class="panel-title">New repair</div></div>
+    <div class="panel-body">
+        <form action="/repairs/new" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Product</label>
+                    <select class="form-select" name="product_id" required>
+                        {% for p in products %}
+                        <option value="{{ p.product_id }}">{{ p.product_id }} · {{ p.product_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Repair date</label>
+                    <input class="form-input" type="date" name="repair_date" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Service center</label>
+                    <input class="form-input" name="service_center_name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Replaced parts</label>
+                    <input class="form-input" name="replaced_parts">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Cost ($)</label>
+                    <input class="form-input" type="number" step="0.01" min="0" name="repair_cost" value="0">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Outcome</label>
+                    <input class="form-input" name="outcome">
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom:1rem;">
+                <label class="form-label">Authorization</label>
+                <select class="form-select" name="authorized">
+                    <option value="true">Authorized service center</option>
+                    <option value="false">Unauthorized center</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Save repair</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+
+<div class="panel">
+    <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-wrench"></use></svg> Service Records ({{ pagination.total if pagination else repairs|length }})</div>
+        <div class="view-switch">
+            <span class="view-switch-btn active" role="button" tabindex="0" data-view-target="repair-table-pane" data-view-group="repair">Table View</span>
+            <span class="view-switch-btn" role="button" tabindex="0" data-view-target="repair-timeline-pane" data-view-group="repair">Timeline Journey</span>
+        </div>
+    </div>
+    <div class="panel-body" style="padding: 0;">
+        <div id="repair-table-pane" data-view-pane="repair">
+            <table class="data-table">
+                <thead>
+                    <tr><th>Repair ID</th><th>Product</th><th>Date</th><th>Center</th><th>Authorized</th><th>Cost</th></tr>
+                </thead>
+                <tbody>
+                    {% for r in repairs %}
+                    <tr>
+                        <td>{{ r.repair_id }}</td>
+                        <td>{{ r.product_id }}</td>
+                        <td>{{ r.repair_date }}</td>
+                        <td>{{ r.service_center_name }}</td>
+                        <td>
+                            {% if r.authorized %}
+                            <span class="status-badge status-valid">Authorized</span>
+                            {% else %}
+                            <span class="status-badge status-invalid">Unauthorized</span>
+                            {% endif %}
+                        </td>
+                        <td>${{ "%.2f"|format(r.repair_cost or 0) }}</td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="6" style="color:var(--text-sub);">No repairs logged.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="repair-timeline-pane" data-view-pane="repair" hidden class="timeline-container">
+            {% if repairs %}
+            <div class="timeline-track">
+                {% for r in repairs %}
+                <div class="timeline-node">
+                    <span class="timeline-dot {% if r.authorized %}authorized{% else %}unauthorized{% endif %}"></span>
+                    <div class="timeline-content-card">
+                        <div class="timeline-header-row">
+                            <div>
+                                <span class="timeline-date">{{ r.repair_date }}</span>
+                                <span style="font-size:11px; color:var(--text-muted); margin-left:8px;">{{ r.repair_id }} · Product: <strong>{{ r.product_id }}</strong></span>
+                            </div>
+                            <div>
+                                {% if r.authorized %}
+                                <span class="status-badge status-valid">Authorized Service</span>
+                                {% else %}
+                                <span class="status-badge status-invalid">Unauthorized Center</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="timeline-center">🏢 {{ r.service_center_name }}</div>
+                        {% if r.replaced_parts %}
+                        <div class="timeline-parts">🔩 Replaced Parts: <strong>{{ r.replaced_parts }}</strong></div>
+                        {% endif %}
+                        {% if r.outcome %}
+                        <div style="font-size:12px; color:var(--text-sub); margin-top:4px;">📋 Outcome: {{ r.outcome }}</div>
+                        {% endif %}
+                        <div style="margin-top:8px; font-size:12px; font-weight:600; color:var(--primary);">
+                            Total Cost: ${{ "%.2f"|format(r.repair_cost or 0) }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div style="padding: 2.5rem; text-align: center; color: var(--text-sub);">
+                No repairs logged.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% include "components/pagination.html" %}
+{% endblock %}

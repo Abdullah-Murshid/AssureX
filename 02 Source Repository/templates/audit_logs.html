@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Audit logs - AssureX{% endblock %}
+{% block content %}
+<h1 style="font-size: 1.5rem; font-weight: 700;">Audit trail</h1>
+<p style="color: var(--text-sub); margin-bottom: 1rem;">Immutable system events: accounts, products, documents, inference, and overrides.</p>
+
+<form class="filter-bar" method="GET" action="/audit-logs">
+    <div class="form-group"><label class="form-label">Action</label><input class="form-input" name="action" value="{{ filters.action }}"></div>
+    <div class="form-group"><label class="form-label">User ID</label><input class="form-input" name="user_id" value="{{ filters.user_id }}"></div>
+    <div class="form-group"><label class="form-label">Claim ID</label><input class="form-input" name="claim_id" value="{{ filters.claim_id }}"></div>
+    <button class="btn btn-secondary" type="submit">Filter</button>
+</form>
+
+<table class="data-table">
+    <thead>
+        <tr><th>Time</th><th>Action</th><th>By</th><th>Entity</th><th>Claim</th></tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.timestamp }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.performed_by }}</td>
+            <td>{{ log.entity_type or '—' }} {{ log.entity_id or '' }}</td>
+            <td>{% if log.claim_id %}<a class="link" href="/claims/view/{{ log.claim_id }}">{{ log.claim_id }}</a>{% else %}—{% endif %}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="color:var(--text-sub);">No audit events.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include "components/pagination.html" %}
+{% endblock %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#14283f">
+    <title>{% block title %}AssureX Claim Engine{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('assurex.theme');
+        if (savedTheme === 'dark' || !savedTheme) {
+          document.documentElement.classList.add('dark-theme');
+        }
+        if (localStorage.getItem('assurex.sidebar') === 'collapsed') {
+          document.documentElement.classList.add('sidebar-collapsed', 'no-sidebar-transition');
+        }
+      } catch(e) {}
+    })();
+    </script>
+    <script src="/static/js/dashboard.js" defer></script>
+    {% block extra_head %}{% endblock %}
+</head>
+{% set active_role = user.role if user else request.session.get('role') %}
+{% set active_name = user.full_name if user else request.session.get('full_name') %}
+{% set path = request.url.path %}
+{% macro nav(url, label, icon, prefix=false) %}
+<a href="{{ url }}" aria-label="{{ label }}" class="nav-item-link{% if path == url or (prefix and path.startswith(url + '/')) %} active{% endif %}" {% if path == url or (prefix and path.startswith(url + '/')) %}aria-current="page"{% endif %} title="{{ label }}">
+    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#{{ icon }}"></use></svg><span class="nav-label">{{ label }}</span>
+</a>
+{% endmacro %}
+<body class="{% if active_role %}app-layout{% else %}auth-layout{% endif %}">
+<script>
+if (document.documentElement.classList.contains('sidebar-collapsed')) {
+  document.body.classList.add('sidebar-collapsed');
+}
+</script>
+<a class="skip-link" href="#main-content">Skip to content</a>
+{% if active_role %}
+<aside class="sidebar" id="app-sidebar" aria-label="Application sidebar">
+    <a href="/" class="sidebar-brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-shield-halved"></use></svg></span><span class="nav-label">AssureX<small>CLAIM ENGINE</small></span></a>
+    <nav class="sidebar-nav" aria-label="Main navigation">
+        <div class="nav-section-label">Workspace</div>
+        {{ nav('/', 'Overview', 'fa-chart-line') }}
+        {{ nav('/products', 'Products', 'fa-box', true) }}
+        {{ nav('/warranties', 'Warranties', 'fa-shield', true) }}
+        {{ nav('/documents', 'Document vault', 'fa-folder-open', true) }}
+        {{ nav('/repairs', 'Repair history', 'fa-wrench', true) }}
+        {{ nav('/alerts', 'Expiry alerts', 'fa-bell') }}
+        {% if active_role in ['customer', 'service_center', 'admin'] %}
+        <div class="nav-section-label">Claims</div>
+        {{ nav('/claims/new', 'New claim', 'fa-plus') }}
+        {{ nav('/claims/import-csv', 'Batch import', 'fa-file-csv') }}
+        {% endif %}
+        {% if active_role in ['reviewer', 'admin'] %}
+        <div class="nav-section-label">Review & governance</div>
+        {{ nav('/reviewer/queue', 'Review queue', 'fa-list-check') }}
+        {{ nav('/audit-logs', 'Audit trail', 'fa-clock-rotate-left') }}
+        {% endif %}
+        {% if active_role == 'admin' %}
+        <div class="nav-section-label">Administration</div>
+        {{ nav('/admin/analytics', 'Analytics', 'fa-chart-bar') }}
+        {{ nav('/admin/policies', 'Policy rules', 'fa-scroll') }}
+        {{ nav('/admin/export-csv', 'Export claims', 'fa-file-export') }}
+        {% endif %}
+    </nav>
+    <div class="sidebar-bottom">
+        {{ nav('/profile', 'My account', 'fa-user-circle') }}
+        {{ nav('/logout', 'Sign out', 'fa-right-from-bracket') }}
+    </div>
+</aside>
+<button class="sidebar-backdrop" type="button" aria-label="Close navigation" tabindex="-1" hidden></button>
+<div class="app-workspace">
+<header class="app-topbar">
+    <div class="topbar-left">
+        <button class="icon-button" id="sidebar-toggle" type="button" aria-controls="app-sidebar" aria-expanded="true" aria-label="Toggle navigation"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-bars"></use></svg></button>
+        <span class="workspace-label">Warranty workspace</span>
+    </div>
+    <div class="topbar-actions">
+        <button class="icon-button theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle dark/light theme"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-wand-magic-sparkles"></use></svg></button>
+        <a href="/alerts" class="icon-button alerts-link" aria-label="Expiry alerts{% if alert_count %}: {{ alert_count }}{% endif %}" title="Expiry alerts"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-bell"></use></svg>{% if alert_count %}<span class="nav-badge">{{ alert_count }}</span>{% endif %}</a>
+        <a href="/profile" class="account-link"><span class="avatar">{{ (active_name or 'A')[:1]|upper }}</span><span class="account-text">{{ active_name }}<small>{{ active_role.replace('_', ' ')|title }}</small></span><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-chevron-down"></use></svg></a>
+    </div>
+</header>
+{% else %}
+<header class="auth-header"><a href="/" class="sidebar-brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-shield-halved"></use></svg></span><span>AssureX<small>CLAIM ENGINE</small></span></a><a class="btn btn-secondary" href="{% if path == '/register' %}/login{% else %}/register{% endif %}">{% if path == '/register' %}Sign in{% else %}Create account{% endif %}</a></header>
+<div class="auth-workspace">
+<section class="auth-story"><span class="eyebrow">WARRANTY OPERATIONS</span><h1>Clarity in every claim.</h1><p>One workspace for your products, documents and warranty decisions.</p><div class="auth-story-rule"></div><div class="story-point"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-file-circle-check"></use></svg><span>Evidence in one place<small>Keep receipts and warranty records together.</small></span></div><div class="story-point"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-scale-balanced"></use></svg><span>Decisions you can follow<small>Review model results and policy checks.</small></span></div><div class="story-point"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-shield-halved"></use></svg><span>Coverage at a glance<small>Track products and upcoming expirations.</small></span></div></section>
+{% endif %}
+<main class="main-content" id="main-content" tabindex="-1">
+    {% if flash %}
+    <div role="status" class="flash {% if flash_kind == 'error' %}flash-error{% else %}flash-success{% endif %}"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#{{ 'fa-triangle-exclamation' if flash_kind == 'error' else 'fa-circle-check' }}"></use></svg>{{ flash }}</div>
+    {% endif %}
+    {% if alert_count and path != '/alerts' %}
+    <div class="alert-banner"><span><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-hourglass-half"></use></svg> {{ alert_count }} product(s) are in the final {{ 30 }} days of warranty coverage.</span><a href="/alerts" class="link">View alerts <span aria-hidden="true">→</span></a></div>
+    {% endif %}
+    {% block content %}{% endblock %}
+</main>
+{% if active_role %}<footer class="app-footer"><span>AssureX Claim Engine</span><span>Warranty adjudication · v1.0</span></footer>{% endif %}
+</div>
+</body>
+</html>

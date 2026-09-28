@@ -1,0 +1,9 @@
+[project]
+name = "assurex-claim-engine"
+version = "2.0.1"
+description = "Techwiz warranty claim evaluation with tabular ML and Google Teachable Machine"
+requires-python = ">=3.11,<3.12"
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]

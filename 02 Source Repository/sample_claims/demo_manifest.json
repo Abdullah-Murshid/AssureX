@@ -1,0 +1,710 @@
+[
+  {
+    "claim_id": "DEMO-001",
+    "product_id": "DEMO-PRD-001",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9631999731063843,
+      "probabilities": {
+        "Invalid Claim": 0.9631999731063843,
+        "Manual Review": 0.018300000578165054,
+        "Valid Claim": 0.01850000023841858
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.8244,
+      "probabilities": {
+        "Valid Claim": 0.1199,
+        "Invalid Claim": 0.0558,
+        "Manual Review": 0.8244
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-001",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-001",
+      "product_name": "Garmin Matrix-Battery-12V",
+      "product_category": "automotive",
+      "brand": "Garmin",
+      "model_number": "Matrix-Battery-12V",
+      "user_serial_number": "GAR457506",
+      "ocr_serial_number": "GAR457506",
+      "serial_match_status": "Exact",
+      "purchase_date": "2026-02-27",
+      "purchase_price": 1566.55,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2026-02-27",
+      "warranty_expiry_date": "2027-02-22",
+      "fault_occurrence_date": "2026-10-17",
+      "claim_submission_date": "2026-10-30",
+      "fault_category": "gps_module_failure",
+      "damage_type": "improper_wiring_modifications",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 245,
+      "remaining_warranty_days": 115,
+      "reporting_delay_days": 13,
+      "actual_class": "Invalid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-002",
+    "product_id": "DEMO-PRD-002",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9728999733924866,
+      "probabilities": {
+        "Invalid Claim": 0.9728999733924866,
+        "Manual Review": 0.014000000432133675,
+        "Valid Claim": 0.013100000098347664
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.8254,
+      "probabilities": {
+        "Valid Claim": 0.1454,
+        "Invalid Claim": 0.0292,
+        "Manual Review": 0.8254
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-002",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-002",
+      "product_name": "Asus UltraView-55",
+      "product_category": "electronics",
+      "brand": "Asus",
+      "model_number": "UltraView-55",
+      "user_serial_number": "ASU391248",
+      "ocr_serial_number": "ASU391248",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-10-15",
+      "purchase_price": 152.31,
+      "retailer": "Target",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2024-10-15",
+      "warranty_expiry_date": "2026-10-05",
+      "fault_occurrence_date": "2025-07-28",
+      "claim_submission_date": "2025-08-10",
+      "fault_category": "screen_flicker_defect",
+      "damage_type": "liquid_spill_damage",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 299,
+      "remaining_warranty_days": 421,
+      "reporting_delay_days": 13,
+      "actual_class": "Invalid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-003",
+    "product_id": "DEMO-PRD-003",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9700000286102295,
+      "probabilities": {
+        "Invalid Claim": 0.9700000286102295,
+        "Manual Review": 0.015799999237060547,
+        "Valid Claim": 0.0142000000923872
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.8421,
+      "probabilities": {
+        "Valid Claim": 0.1142,
+        "Invalid Claim": 0.0437,
+        "Manual Review": 0.8421
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-003",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-003",
+      "product_name": "Apple MacBook-Air-M2",
+      "product_category": "electronics",
+      "brand": "Apple",
+      "model_number": "MacBook-Air-M2",
+      "user_serial_number": "APP149840",
+      "ocr_serial_number": "APP149840",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-04-01",
+      "purchase_price": 601.05,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-04-01",
+      "warranty_expiry_date": "2027-03-22",
+      "fault_occurrence_date": "2026-11-19",
+      "claim_submission_date": "2026-11-25",
+      "fault_category": "motherboard_failure",
+      "damage_type": "unauthorized_repair_attempt",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 603,
+      "remaining_warranty_days": 117,
+      "reporting_delay_days": 6,
+      "actual_class": "Invalid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-004",
+    "product_id": "DEMO-PRD-004",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9700000286102295,
+      "probabilities": {
+        "Invalid Claim": 0.9700000286102295,
+        "Manual Review": 0.015699999406933784,
+        "Valid Claim": 0.014299999922513962
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.5818,
+      "probabilities": {
+        "Valid Claim": 0.3267,
+        "Invalid Claim": 0.0915,
+        "Manual Review": 0.5818
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-004",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-004",
+      "product_name": "GE Appliances Inverter-AC-1.5T",
+      "product_category": "appliances",
+      "brand": "GE Appliances",
+      "model_number": "Inverter-AC-1.5T",
+      "user_serial_number": "GE 187128",
+      "ocr_serial_number": "GE 187128",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-12-30",
+      "purchase_price": 1181.02,
+      "retailer": "Best Buy",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2024-12-30",
+      "warranty_expiry_date": "2027-12-15",
+      "fault_occurrence_date": "2027-02-04",
+      "claim_submission_date": "2027-02-08",
+      "fault_category": "cooling_leakage",
+      "damage_type": "improper_installation",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 770,
+      "remaining_warranty_days": 310,
+      "reporting_delay_days": 4,
+      "actual_class": "Invalid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-005",
+    "product_id": "DEMO-PRD-005",
+    "dataset_class": "Valid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.7973999977111816,
+      "probabilities": {
+        "Invalid Claim": 0.02070000022649765,
+        "Manual Review": 0.1818999946117401,
+        "Valid Claim": 0.7973999977111816
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.865,
+      "probabilities": {
+        "Valid Claim": 0.1137,
+        "Invalid Claim": 0.0213,
+        "Manual Review": 0.865
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-005",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-005",
+      "product_name": "Bose MacBook-Air-M2",
+      "product_category": "electronics",
+      "brand": "Bose",
+      "model_number": "MacBook-Air-M2",
+      "user_serial_number": "BOS438503",
+      "ocr_serial_number": "BOS438503",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-06-13",
+      "purchase_price": 1541.46,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-06-13",
+      "warranty_expiry_date": "2027-06-03",
+      "fault_occurrence_date": "2026-07-16",
+      "claim_submission_date": "2026-07-29",
+      "fault_category": "screen_flicker_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 411,
+      "remaining_warranty_days": 309,
+      "reporting_delay_days": 13,
+      "actual_class": "Valid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-006",
+    "product_id": "DEMO-PRD-006",
+    "dataset_class": "Manual Review",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8062999844551086,
+      "probabilities": {
+        "Invalid Claim": 0.022099999710917473,
+        "Manual Review": 0.17159999907016754,
+        "Valid Claim": 0.8062999844551086
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.6807,
+      "probabilities": {
+        "Valid Claim": 0.2849,
+        "Invalid Claim": 0.0344,
+        "Manual Review": 0.6807
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-006",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-006",
+      "product_name": "Panasonic EcoSilence-Drive",
+      "product_category": "appliances",
+      "brand": "Panasonic",
+      "model_number": "EcoSilence-Drive",
+      "user_serial_number": "PAN449497",
+      "ocr_serial_number": "PAN449497",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-06-22",
+      "purchase_price": 1609.87,
+      "retailer": "Walmart",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-06-22",
+      "warranty_expiry_date": "2028-06-06",
+      "fault_occurrence_date": "2027-06-27",
+      "claim_submission_date": "2027-06-28",
+      "fault_category": "control_board_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 736,
+      "remaining_warranty_days": 344,
+      "reporting_delay_days": 1,
+      "actual_class": "Manual Review"
+    }
+  },
+  {
+    "claim_id": "DEMO-007",
+    "product_id": "DEMO-PRD-007",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.657800018787384,
+      "probabilities": {
+        "Invalid Claim": 0.18250000476837158,
+        "Manual Review": 0.657800018787384,
+        "Valid Claim": 0.15960000455379486
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.7181,
+      "probabilities": {
+        "Valid Claim": 0.2452,
+        "Invalid Claim": 0.0367,
+        "Manual Review": 0.7181
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-007",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-007",
+      "product_name": "Dell QuietComfort-45",
+      "product_category": "electronics",
+      "brand": "Dell",
+      "model_number": "QuietComfort-45",
+      "user_serial_number": "DEL905942",
+      "ocr_serial_number": "DEL905942",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-10-30",
+      "purchase_price": 896.53,
+      "retailer": "Best Buy",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-10-30",
+      "warranty_expiry_date": "2027-10-20",
+      "fault_occurrence_date": "2025-12-13",
+      "claim_submission_date": "2025-12-19",
+      "fault_category": "overheating_shutdown",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": true,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 50,
+      "remaining_warranty_days": 670,
+      "reporting_delay_days": 6,
+      "actual_class": "Invalid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-008",
+    "product_id": "DEMO-PRD-008",
+    "dataset_class": "Manual Review",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.5652999877929688,
+      "probabilities": {
+        "Invalid Claim": 0.36910000443458557,
+        "Manual Review": 0.5652999877929688,
+        "Valid Claim": 0.06560000032186508
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.845,
+      "probabilities": {
+        "Valid Claim": 0.1411,
+        "Invalid Claim": 0.0139,
+        "Manual Review": 0.845
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-008",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-008",
+      "product_name": "Apple OLED-C2",
+      "product_category": "electronics",
+      "brand": "Apple",
+      "model_number": "OLED-C2",
+      "user_serial_number": "APP607620",
+      "ocr_serial_number": "APP607699",
+      "serial_match_status": "Mismatch",
+      "purchase_date": "2026-02-15",
+      "purchase_price": 218.69,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2026-02-15",
+      "warranty_expiry_date": "2028-02-05",
+      "fault_occurrence_date": "2027-03-30",
+      "claim_submission_date": "2027-04-03",
+      "fault_category": "audio_speaker_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 412,
+      "remaining_warranty_days": 308,
+      "reporting_delay_days": 4,
+      "actual_class": "Manual Review"
+    }
+  },
+  {
+    "claim_id": "DEMO-009",
+    "product_id": "DEMO-PRD-009",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8062000274658203,
+      "probabilities": {
+        "Invalid Claim": 0.8062000274658203,
+        "Manual Review": 0.16300000250339508,
+        "Valid Claim": 0.030799999833106995
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.7742,
+      "probabilities": {
+        "Valid Claim": 0.1994,
+        "Invalid Claim": 0.0264,
+        "Manual Review": 0.7742
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-009",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-009",
+      "product_name": "Samsung OLED-C2",
+      "product_category": "electronics",
+      "brand": "Samsung",
+      "model_number": "OLED-C2",
+      "user_serial_number": "SAM731262",
+      "ocr_serial_number": "SAM731262",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-06-28",
+      "purchase_price": 891.19,
+      "retailer": "Target",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2024-06-28",
+      "warranty_expiry_date": "2026-06-18",
+      "fault_occurrence_date": "2026-09-22",
+      "claim_submission_date": "2026-09-27",
+      "fault_category": "overheating_shutdown",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 821,
+      "remaining_warranty_days": -101,
+      "reporting_delay_days": 5,
+      "actual_class": "Invalid Claim"
+    }
+  },
+  {
+    "claim_id": "DEMO-010",
+    "product_id": "DEMO-PRD-010",
+    "dataset_class": "Manual Review",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9376999735832214,
+      "probabilities": {
+        "Invalid Claim": 0.039400000125169754,
+        "Manual Review": 0.9376999735832214,
+        "Valid Claim": 0.02290000021457672
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.8751,
+      "probabilities": {
+        "Valid Claim": 0.1107,
+        "Invalid Claim": 0.0142,
+        "Manual Review": 0.8751
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-010",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-010",
+      "product_name": "Garmin AVH-Z5200BT-Infotainment",
+      "product_category": "automotive",
+      "brand": "Garmin",
+      "model_number": "AVH-Z5200BT-Infotainment",
+      "user_serial_number": "GAR701866",
+      "ocr_serial_number": "GAR701866",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-11-29",
+      "purchase_price": 213.98,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2024-11-29",
+      "warranty_expiry_date": "2025-11-24",
+      "fault_occurrence_date": "2024-11-05",
+      "claim_submission_date": "2025-08-02",
+      "fault_category": "alternator_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": true,
+      "duplicate_claim_flag": false,
+      "product_age_days": 246,
+      "remaining_warranty_days": 114,
+      "reporting_delay_days": 270,
+      "actual_class": "Manual Review"
+    }
+  },
+  {
+    "claim_id": "DEMO-011",
+    "product_id": "DEMO-PRD-011",
+    "dataset_class": "Manual Review",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9376999735832214,
+      "probabilities": {
+        "Invalid Claim": 0.039400000125169754,
+        "Manual Review": 0.9376999735832214,
+        "Valid Claim": 0.02290000021457672
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9472,
+      "probabilities": {
+        "Valid Claim": 0.0426,
+        "Invalid Claim": 0.0102,
+        "Manual Review": 0.9472
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-011",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-011",
+      "product_name": "Varta Matrix-Battery-12V",
+      "product_category": "automotive",
+      "brand": "Varta",
+      "model_number": "Matrix-Battery-12V",
+      "user_serial_number": "VAR116325",
+      "ocr_serial_number": "VAR116325",
+      "serial_match_status": "Exact",
+      "purchase_date": "2026-03-20",
+      "purchase_price": 903.21,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2026-03-20",
+      "warranty_expiry_date": "2027-03-15",
+      "fault_occurrence_date": "2026-02-26",
+      "claim_submission_date": "2027-03-10",
+      "fault_category": "starter_motor_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": true,
+      "duplicate_claim_flag": false,
+      "product_age_days": 355,
+      "remaining_warranty_days": 5,
+      "reporting_delay_days": 377,
+      "actual_class": "Manual Review"
+    }
+  },
+  {
+    "claim_id": "DEMO-012",
+    "product_id": "DEMO-PRD-012",
+    "dataset_class": "Invalid Claim",
+    "actual_live_decision": "Manual Review Required",
+    "python": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9025999903678894,
+      "probabilities": {
+        "Invalid Claim": 0.9025999903678894,
+        "Manual Review": 0.07989999651908875,
+        "Valid Claim": 0.017500000074505806
+      }
+    },
+    "gtm": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9373,
+      "probabilities": {
+        "Valid Claim": 0.0522,
+        "Invalid Claim": 0.0106,
+        "Manual Review": 0.9373
+      }
+    },
+    "scenario": {
+      "claim_id": "DEMO-012",
+      "user_id": "USR-0001",
+      "product_id": "DEMO-PRD-012",
+      "product_name": "Samsung Inverter-AC-1.5T",
+      "product_category": "appliances",
+      "brand": "Samsung",
+      "model_number": "Inverter-AC-1.5T",
+      "user_serial_number": "SAM678333",
+      "ocr_serial_number": "SAM678333",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-03-05",
+      "purchase_price": 448.11,
+      "retailer": "TechZone Distributors",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-03-05",
+      "warranty_expiry_date": "2028-02-18",
+      "fault_occurrence_date": "2028-07-06",
+      "claim_submission_date": "2028-07-11",
+      "fault_category": "compressor_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 1224,
+      "remaining_warranty_days": -144,
+      "reporting_delay_days": 5,
+      "actual_class": "Invalid Claim"
+    }
+  }
+]

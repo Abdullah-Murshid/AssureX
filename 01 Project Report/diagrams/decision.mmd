@@ -1,0 +1,12 @@
+flowchart TD
+  a["Models rules and evidence"]
+  b["Any review trigger present"]
+  c["Manual Review Required"]
+  d["No trigger: agreed model class"]
+  e["Likely Valid"]
+  f["Likely Invalid"]
+  a --> b
+  b -->|"yes"| c
+  b -->|"no"| d
+  d -->|"Valid"| e
+  d -->|"Invalid"| f

@@ -1,0 +1,93 @@
+{
+  "product_category": "electronics",
+  "category_name": "Consumer Electronics & Gadgets",
+  "coverage_duration_months": 24,
+  "extended_coverage_months": 12,
+  "grace_period_days": 15,
+  "reporting_deadline_days": 30,
+  "covered_faults": [
+    "screen_flicker_defect",
+    "motherboard_failure",
+    "battery_charging_failure",
+    "audio_speaker_malfunction",
+    "camera_sensor_defect",
+    "overheating_shutdown",
+    "bluetooth_wifi_card_failure",
+    "button_unresponsive"
+  ],
+  "exclusions": [
+    "liquid_spill_damage",
+    "physical_drop_crack",
+    "unauthorized_repair_attempt",
+    "software_malware_corruption",
+    "normal_cosmetic_wear",
+    "power_surge_external",
+    "stolen_lost_device"
+  ],
+  "authorized_service_center_required": true,
+  "mandatory_documents": [
+    "purchase_receipt",
+    "warranty_card",
+    "product_image",
+    "serial_number_photo"
+  ],
+  "hard_fail_rules": [
+    {
+      "rule_id": "EL_FAIL_01",
+      "rule_type": "warranty_expiry",
+      "name": "Warranty Expiry Hard Fail",
+      "description": "Claim submission date is beyond warranty duration plus grace period.",
+      "condition": "claim_age_days > (warranty_duration_days + grace_period_days)"
+    },
+    {
+      "rule_id": "EL_FAIL_02",
+      "rule_type": "excluded_damage",
+      "name": "Excluded Liquid / Physical Damage",
+      "description": "Reported fault falls under excluded physical or liquid damage categories.",
+      "condition": "damage_type in exclusions"
+    },
+    {
+      "rule_id": "EL_FAIL_03",
+      "rule_type": "unauthorized_repair",
+      "name": "Unauthorized Service Center Attempt",
+      "description": "Previous repair conducted by unauthorized third party.",
+      "condition": "has_previous_unauthorized_repair == True"
+    }
+  ],
+  "warning_rules": [
+    {
+      "rule_id": "EL_WARN_01",
+      "rule_type": "late_reporting",
+      "name": "Reporting Period Exceeded",
+      "description": "Fault reported more than 30 days after occurrence.",
+      "condition": "reporting_delay_days > reporting_deadline_days"
+    },
+    {
+      "rule_id": "EL_WARN_02",
+      "rule_type": "serial_mismatch",
+      "name": "Serial Number Optical Mismatch",
+      "description": "Serial number on receipt slightly differs from user input or photo.",
+      "condition": "serial_match_score < 0.90"
+    }
+  ],
+  "manual_review_rules": [
+    {
+      "rule_id": "EL_REV_01",
+      "rule_type": "missing_documents",
+      "name": "Missing Secondary Evidence",
+      "description": "Missing serial number photograph or diagnostic report.",
+      "condition": "missing_document_count > 0"
+    },
+    {
+      "rule_id": "EL_REV_02",
+      "rule_type": "repair_frequency",
+      "name": "Multiple Previous Repairs",
+      "description": "More than 2 previous repair claims logged for the same product ID.",
+      "condition": "previous_repair_count >= 2"
+    }
+  ],
+  "warranty_start_conditions": "[[POLICY_ELECTRONICS_WARRANTY_START_CONDITIONS]]",
+  "repair_conditions": "[[POLICY_ELECTRONICS_REPAIR_CONDITIONS]]",
+  "replacement_conditions": "[[POLICY_ELECTRONICS_REPLACEMENT_CONDITIONS]]",
+  "_submission_note": "Review template only. Not an approved or automatically enforced runtime policy."
+}

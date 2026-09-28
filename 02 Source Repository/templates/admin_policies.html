@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% block title %}Warranty Policies - AssureX{% endblock %}
+{% block content %}
+<div style="margin-bottom: 1.5rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+        <div>
+            <h1 style="font-size: 1.6rem; font-weight: 700; margin: 0; color: var(--text-main);">Configurable Warranty Policies</h1>
+            <p style="color: var(--text-sub); margin-top: 0.25rem; font-size: 0.9rem;">
+                Manage category coverage timelines, defect definitions, damage exclusions, and rules in structured text format.
+            </p>
+        </div>
+    </div>
+
+    <!-- Category Selector Tabs -->
+    <div style="display: flex; gap: 0.5rem; margin-top: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;">
+        {% for cat in categories %}
+        <a class="btn {% if selected == cat %}btn-primary{% else %}btn-secondary{% endif %}" 
+           href="/admin/policies?category={{ cat }}"
+           style="text-transform: capitalize; padding: 0.45rem 1.1rem;">
+            {{ cat }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<form action="/admin/policies/edit" method="POST" id="policy-form">
+    <input type="hidden" name="category" value="{{ selected }}">
+    <input type="hidden" name="edit_mode" value="form">
+
+    <!-- 1. General Timelines & Coverage Panel -->
+    <div class="panel" style="margin-bottom: 1.5rem;">
+        <div class="panel-header">
+            <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                1. Coverage Timelines & Classification
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-sub);">Category: <strong>{{ selected|title }}</strong></span>
+        </div>
+        <div class="panel-body">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                <div>
+                    <label class="form-label" for="category_name">Category Display Name</label>
+                    <input type="text" id="category_name" name="category_name" class="form-input" 
+                           value="{{ policy.get('category_name', selected|title) }}" required style="width: 100%;">
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Full business name displayed to customers</small>
+                </div>
+
+                <div>
+                    <label class="form-label" for="coverage_duration_months">Standard Warranty Duration (Months)</label>
+                    <input type="number" id="coverage_duration_months" name="coverage_duration_months" class="form-input" 
+                           value="{{ policy.get('coverage_duration_months', 24) }}" min="1" max="120" required style="width: 100%;">
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Base OEM warranty duration from date of purchase</small>
+                </div>
+
+                <div>
+                    <label class="form-label" for="extended_coverage_months">Extended Warranty Coverage (Months)</label>
+                    <input type="number" id="extended_coverage_months" name="extended_coverage_months" class="form-input" 
+                           value="{{ policy.get('extended_coverage_months', 12) }}" min="0" max="60" required style="width: 100%;">
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Optional extended warranty tier coverage</small>
+                </div>
+
+                <div>
+                    <label class="form-label" for="grace_period_days">Grace Period Allowed (Days)</label>
+                    <input type="number" id="grace_period_days" name="grace_period_days" class="form-input" 
+                           value="{{ policy.get('grace_period_days', 15) }}" min="0" max="90" required style="width: 100%;">
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Days allowed past expiry before hard disqualification</small>
+                </div>
+
+                <div>
+                    <label class="form-label" for="reporting_deadline_days">Reporting Delay Deadline (Days)</label>
+                    <input type="number" id="reporting_deadline_days" name="reporting_deadline_days" class="form-input" 
+                           value="{{ policy.get('reporting_deadline_days', 30) }}" min="1" max="180" required style="width: 100%;">
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Days between fault occurrence and claim submission</small>
+                </div>
+
+                <div>
+                    <label class="form-label" for="authorized_service_center_required">Authorized Service Center Requirement</label>
+                    <select id="authorized_service_center_required" name="authorized_service_center_required" class="form-select" style="width: 100%;">
+                        <option value="true" {% if policy.get('authorized_service_center_required', true) %}selected{% endif %}>
+                            Mandatory (Must be OEM Authorized)
+                        </option>
+                        <option value="false" {% if not policy.get('authorized_service_center_required', true) %}selected{% endif %}>
+                            Optional (Third-party repairs permitted)
+                        </option>
+                    </select>
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Requires certified service center for prior repairs</small>
+                </div>
+
+                <div>
+                    <label class="form-label" for="warranty_alert_days" style="display: flex; align-items: center; gap: 6px;">
+                        <svg class="icon" aria-hidden="true" style="width: 14px; height: 14px; color: var(--primary);"><use href="/static/icons.svg#fa-bell"></use></svg>
+                        Expiry Alert Lead Time (Days) — Module IX
+                    </label>
+                    <input type="number" id="warranty_alert_days" name="warranty_alert_days" class="form-input" 
+                           value="{{ warranty_alert_days }}" min="1" max="180" required style="width: 100%;">
+                    <small style="color: var(--text-sub); font-size: 0.75rem;">Days prior to expiry when 'Expiring Soon' alert generates for users & dashboard</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Text Lists: Covered Faults, Exclusions, Mandatory Documents -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+        
+        <!-- Covered Faults Textarea -->
+        <div class="panel" style="margin-bottom: 0;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    2. Covered Defect Types
+                </div>
+                <span class="status-badge status-valid">{{ policy.get('covered_faults', [])|length }} Active</span>
+            </div>
+            <div class="panel-body">
+                <label class="form-label" for="covered_faults_text" style="font-weight: 500; font-size: 0.85rem;">
+                    Enter one covered fault per line (plain text):
+                </label>
+                <textarea id="covered_faults_text" name="covered_faults_text" class="form-textarea" rows="9" 
+                          style="font-family: ui-monospace, monospace; font-size: 0.85rem; line-height: 1.45; width: 100%; resize: vertical;"
+                          placeholder="screen_flicker_defect&#10;motherboard_failure&#10;battery_charging_failure">{{ covered_faults_text }}</textarea>
+                <p style="color: var(--text-sub); font-size: 0.75rem; margin-top: 0.4rem;">
+                    Claims matching these fault categories are qualified for warranty repair.
+                </p>
+            </div>
+        </div>
+
+        <!-- Exclusions Textarea -->
+        <div class="panel" style="margin-bottom: 0;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    3. Exclusions & Disqualifications
+                </div>
+                <span class="status-badge status-invalid">{{ policy.get('exclusions', [])|length }} Excluded</span>
+            </div>
+            <div class="panel-body">
+                <label class="form-label" for="exclusions_text" style="font-weight: 500; font-size: 0.85rem;">
+                    Enter one exclusion per line (plain text):
+                </label>
+                <textarea id="exclusions_text" name="exclusions_text" class="form-textarea" rows="9" 
+                          style="font-family: ui-monospace, monospace; font-size: 0.85rem; line-height: 1.45; width: 100%; resize: vertical;"
+                          placeholder="liquid_spill_damage&#10;physical_drop_crack&#10;unauthorized_repair_attempt">{{ exclusions_text }}</textarea>
+                <p style="color: var(--text-sub); font-size: 0.75rem; margin-top: 0.4rem;">
+                    Claims with these damage types trigger the Excluded Damage hard fail rule.
+                </p>
+            </div>
+        </div>
+
+        <!-- Mandatory Documents Textarea -->
+        <div class="panel" style="margin-bottom: 0;">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    4. Required Documents
+                </div>
+                <span class="status-badge status-review">{{ policy.get('mandatory_documents', [])|length }} Required</span>
+            </div>
+            <div class="panel-body">
+                <label class="form-label" for="mandatory_documents_text" style="font-weight: 500; font-size: 0.85rem;">
+                    Enter required document keys per line:
+                </label>
+                <textarea id="mandatory_documents_text" name="mandatory_documents_text" class="form-textarea" rows="9" 
+                          style="font-family: ui-monospace, monospace; font-size: 0.85rem; line-height: 1.45; width: 100%; resize: vertical;"
+                          placeholder="purchase_receipt&#10;warranty_card&#10;product_image&#10;serial_number_photo">{{ mandatory_docs_text }}</textarea>
+                <p style="color: var(--text-sub); font-size: 0.75rem; margin-top: 0.4rem;">
+                    Missing any of these files will route claims to the manual review queue.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Active Rule Engine Logic (Readable Overview) -->
+    <div class="panel" style="margin-bottom: 1.5rem;">
+        <div class="panel-header">
+            <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                5. Registered Adjudication Rules (Live Engine Configuration)
+            </div>
+            <span style="font-size: 0.8rem; color: var(--text-sub);">Evaluated dynamically for every claim</span>
+        </div>
+        <div class="panel-body" style="padding: 1rem 1.25rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
+                
+                <!-- Hard Fail Rules -->
+                <div style="background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 6px; padding: 0.9rem;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <strong style="color: #ef4444; font-size: 0.85rem;">Hard Fail Rules (Auto Reject)</strong>
+                        <span class="status-badge status-invalid">{{ policy.get('hard_fail_rules', [])|length }}</span>
+                    </div>
+                    {% for r in policy.get('hard_fail_rules', []) %}
+                    <div style="font-size: 0.8rem; margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px dashed rgba(239, 68, 68, 0.15);">
+                        <div style="font-weight: 600; color: var(--text-main);">{{ r.name }} <code style="font-size: 0.75rem; color: var(--text-sub);">[{{ r.rule_id }}]</code></div>
+                        <div style="color: var(--text-sub); font-size: 0.75rem;">{{ r.description }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Warning Rules -->
+                <div style="background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 6px; padding: 0.9rem;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <strong style="color: #f59e0b; font-size: 0.85rem;">Warning Rules (Confidence Penalty)</strong>
+                        <span class="status-badge status-review">{{ policy.get('warning_rules', [])|length }}</span>
+                    </div>
+                    {% for r in policy.get('warning_rules', []) %}
+                    <div style="font-size: 0.8rem; margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px dashed rgba(245, 158, 11, 0.15);">
+                        <div style="font-weight: 600; color: var(--text-main);">{{ r.name }} <code style="font-size: 0.75rem; color: var(--text-sub);">[{{ r.rule_id }}]</code></div>
+                        <div style="color: var(--text-sub); font-size: 0.75rem;">{{ r.description }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Manual Review Rules -->
+                <div style="background: rgba(59, 130, 246, 0.04); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 6px; padding: 0.9rem;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <strong style="color: #3b82f6; font-size: 0.85rem;">Manual Review Triggers (Escalations)</strong>
+                        <span class="status-badge" style="background: rgba(59,130,246,0.15); color:#60a5fa; border:1px solid rgba(59,130,246,0.3);">
+                            {{ policy.get('manual_review_rules', [])|length }}
+                        </span>
+                    </div>
+                    {% for r in policy.get('manual_review_rules', []) %}
+                    <div style="font-size: 0.8rem; margin-bottom: 0.6rem; padding-bottom: 0.4rem; border-bottom: 1px dashed rgba(59, 130, 246, 0.15);">
+                        <div style="font-weight: 600; color: var(--text-main);">{{ r.name }} <code style="font-size: 0.75rem; color: var(--text-sub);">[{{ r.rule_id }}]</code></div>
+                        <div style="color: var(--text-sub); font-size: 0.75rem;">{{ r.description }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions & Save Bar -->
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+        <button class="btn btn-primary" type="submit" style="padding: 0.7rem 1.75rem; font-size: 0.95rem; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            Save {{ policy.get('category_name', selected|title) }} Policy
+        </button>
+        <a class="btn btn-secondary" href="/admin/policies?category={{ selected }}">
+            Reset Changes
+        </a>
+    </div>
+</form>
+
+<!-- Optional Developer / Auditor Collapsible JSON Inspector -->
+<details style="margin-top: 2.5rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-panel); overflow: hidden;">
+    <summary style="cursor: pointer; padding: 0.75rem 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--text-sub); background: var(--bg-panel-header); display: flex; align-items: center; justify-content: space-between;">
+        <span>Backend JSON Storage Audit (Developer Inspection)</span>
+        <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-sub);">Click to expand</span>
+    </summary>
+    <div style="padding: 1rem 1.25rem;">
+        <p style="font-size: 0.8rem; color: var(--text-sub); margin-bottom: 0.5rem;">
+            When you save above, the text inputs are compiled and verified into this exact backend JSON file (<code style="color: var(--primary);">policies/{{ selected }}_policy.json</code>):
+        </p>
+        <pre style="background: rgba(0,0,0,0.25); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; font-size: 0.8rem; overflow-x: auto; color: var(--text-main); font-family: ui-monospace, monospace; margin: 0;">{{ policy_json_str }}</pre>
+    </div>
+</details>
+{% endblock %}

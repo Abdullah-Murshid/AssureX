@@ -1,0 +1,1824 @@
+[
+  {
+    "record": {
+      "claim_id": "CLM-2026-0137",
+      "user_id": "USR-6901",
+      "product_id": "PRD-14697",
+      "product_name": "Bose MacBook-Air-M2",
+      "product_category": "electronics",
+      "brand": "Bose",
+      "model_number": "MacBook-Air-M2",
+      "user_serial_number": "BOS438503",
+      "ocr_serial_number": "BOS438503",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-06-13",
+      "purchase_price": 1541.46,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-06-13",
+      "warranty_expiry_date": "2027-06-03",
+      "fault_occurrence_date": "2026-07-16",
+      "claim_submission_date": "2026-07-29",
+      "fault_category": "screen_flicker_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 411,
+      "remaining_warranty_days": 309,
+      "reporting_delay_days": 13,
+      "actual_class": "Valid Claim"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.7973999977111816,
+      "probabilities": {
+        "Invalid Claim": 0.02070000022649765,
+        "Manual Review": 0.1818999946117401,
+        "Valid Claim": 0.7973999977111816
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8742,
+      "probabilities": {
+        "Valid Claim": 0.0697,
+        "Invalid Claim": 0.8742,
+        "Manual Review": 0.0561
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0137",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.7973999977111816,
+        "python_probabilities": {
+          "Invalid Claim": 0.02070000022649765,
+          "Manual Review": 0.1818999946117401,
+          "Valid Claim": 0.7973999977111816
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.8742,
+        "vision_probabilities": {
+          "Valid Claim": 0.0697,
+          "Invalid Claim": 0.8742,
+          "Manual Review": 0.0561
+        },
+        "confidence_difference": 0.0768,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Fault Reported Within Allowable Period",
+          "Serial Number Match Verified",
+          "Mandatory Documents Complete",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0137",
+        "user_id": "USR-6901",
+        "product_id": "PRD-14697",
+        "product_name": "Bose MacBook-Air-M2",
+        "product_category": "electronics",
+        "brand": "Bose",
+        "model_number": "MacBook-Air-M2",
+        "user_serial_number": "BOS438503",
+        "ocr_serial_number": "BOS438503",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-06-13",
+        "purchase_price": 1541.46,
+        "retailer": "Amazon Retail",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2025-06-13",
+        "warranty_expiry_date": "2027-06-03",
+        "fault_occurrence_date": "2026-07-16",
+        "claim_submission_date": "2026-07-29",
+        "fault_category": "screen_flicker_defect",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 411,
+        "remaining_warranty_days": 309,
+        "reporting_delay_days": 13,
+        "actual_class": "Valid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0137 was initiated for Bose MacBook-Air-M2 regarding Screen Flicker Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0137_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0537",
+      "user_id": "USR-5065",
+      "product_id": "PRD-33203",
+      "product_name": "Panasonic EcoSilence-Drive",
+      "product_category": "appliances",
+      "brand": "Panasonic",
+      "model_number": "EcoSilence-Drive",
+      "user_serial_number": "PAN449497",
+      "ocr_serial_number": "PAN449497",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-06-22",
+      "purchase_price": 1609.87,
+      "retailer": "Walmart",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-06-22",
+      "warranty_expiry_date": "2028-06-06",
+      "fault_occurrence_date": "2027-06-27",
+      "claim_submission_date": "2027-06-28",
+      "fault_category": "control_board_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 736,
+      "remaining_warranty_days": 344,
+      "reporting_delay_days": 1,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8062999844551086,
+      "probabilities": {
+        "Invalid Claim": 0.022099999710917473,
+        "Manual Review": 0.17159999907016754,
+        "Valid Claim": 0.8062999844551086
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.5549,
+      "probabilities": {
+        "Valid Claim": 0.2819,
+        "Invalid Claim": 0.5549,
+        "Manual Review": 0.1632
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0537",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8062999844551086,
+        "python_probabilities": {
+          "Invalid Claim": 0.022099999710917473,
+          "Manual Review": 0.17159999907016754,
+          "Valid Claim": 0.8062999844551086
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.5549,
+        "vision_probabilities": {
+          "Valid Claim": 0.2819,
+          "Invalid Claim": 0.5549,
+          "Manual Review": 0.1632
+        },
+        "confidence_difference": 0.2514,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0537",
+        "user_id": "USR-5065",
+        "product_id": "PRD-33203",
+        "product_name": "Panasonic EcoSilence-Drive",
+        "product_category": "appliances",
+        "brand": "Panasonic",
+        "model_number": "EcoSilence-Drive",
+        "user_serial_number": "PAN449497",
+        "ocr_serial_number": "PAN449497",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-06-22",
+        "purchase_price": 1609.87,
+        "retailer": "Walmart",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-06-22",
+        "warranty_expiry_date": "2028-06-06",
+        "fault_occurrence_date": "2027-06-27",
+        "claim_submission_date": "2027-06-28",
+        "fault_category": "control_board_malfunction",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 736,
+        "remaining_warranty_days": 344,
+        "reporting_delay_days": 1,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-0537 was initiated for Panasonic EcoSilence-Drive regarding Control Board Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0537_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1111",
+      "user_id": "USR-1390",
+      "product_id": "PRD-74387",
+      "product_name": "Apple OLED-C2",
+      "product_category": "electronics",
+      "brand": "Apple",
+      "model_number": "OLED-C2",
+      "user_serial_number": "APP607620",
+      "ocr_serial_number": "APP607699",
+      "serial_match_status": "Mismatch",
+      "purchase_date": "2026-02-15",
+      "purchase_price": 218.69,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2026-02-15",
+      "warranty_expiry_date": "2028-02-05",
+      "fault_occurrence_date": "2027-03-30",
+      "claim_submission_date": "2027-04-03",
+      "fault_category": "audio_speaker_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 412,
+      "remaining_warranty_days": 308,
+      "reporting_delay_days": 4,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.5652999877929688,
+      "probabilities": {
+        "Invalid Claim": 0.36910000443458557,
+        "Manual Review": 0.5652999877929688,
+        "Valid Claim": 0.06560000032186508
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.7706,
+      "probabilities": {
+        "Valid Claim": 0.1401,
+        "Invalid Claim": 0.7706,
+        "Manual Review": 0.0893
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1111",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.5652999877929688,
+        "python_probabilities": {
+          "Invalid Claim": 0.36910000443458557,
+          "Manual Review": 0.5652999877929688,
+          "Valid Claim": 0.06560000032186508
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.7706,
+        "vision_probabilities": {
+          "Valid Claim": 0.1401,
+          "Invalid Claim": 0.7706,
+          "Manual Review": 0.0893
+        },
+        "confidence_difference": 0.2053,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Fault Reported Within Allowable Period",
+          "Mandatory Documents Complete",
+          "Repair Frequency Normal"
+        ],
+        "failed_rules": [],
+        "warnings": [
+          "Serial Number Mismatch: User input does not match OCR/Photo."
+        ],
+        "manual_review_triggers": [
+          "Unlisted Fault Category: 'audio_speaker_malfunction' requires verification."
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": true,
+        "contradiction_count": 1,
+        "contradictions": [
+          "Serial Mismatch: User input 'APP607620' does not match OCR 'APP607699'."
+        ]
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1111",
+        "user_id": "USR-1390",
+        "product_id": "PRD-74387",
+        "product_name": "Apple OLED-C2",
+        "product_category": "electronics",
+        "brand": "Apple",
+        "model_number": "OLED-C2",
+        "user_serial_number": "APP607620",
+        "ocr_serial_number": "APP607699",
+        "serial_match_status": "Mismatch",
+        "purchase_date": "2026-02-15",
+        "purchase_price": 218.69,
+        "retailer": "Amazon Retail",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2026-02-15",
+        "warranty_expiry_date": "2028-02-05",
+        "fault_occurrence_date": "2027-03-30",
+        "claim_submission_date": "2027-04-03",
+        "fault_category": "audio_speaker_malfunction",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 412,
+        "remaining_warranty_days": 308,
+        "reporting_delay_days": 4,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Serial Number Mismatch: User input does not match OCR/Photo."
+        ],
+        "required_actions": [
+          "Review the policy violation and record an authorized disposition."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-1111 was initiated for Apple OLED-C2 regarding Audio Speaker Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1111_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1409",
+      "user_id": "USR-6656",
+      "product_id": "PRD-22709",
+      "product_name": "Garmin AVH-Z5200BT-Infotainment",
+      "product_category": "automotive",
+      "brand": "Garmin",
+      "model_number": "AVH-Z5200BT-Infotainment",
+      "user_serial_number": "GAR701866",
+      "ocr_serial_number": "GAR701866",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-11-29",
+      "purchase_price": 213.98,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2024-11-29",
+      "warranty_expiry_date": "2025-11-24",
+      "fault_occurrence_date": "2024-11-05",
+      "claim_submission_date": "2025-08-02",
+      "fault_category": "alternator_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": true,
+      "duplicate_claim_flag": false,
+      "product_age_days": 246,
+      "remaining_warranty_days": 114,
+      "reporting_delay_days": 270,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9376999735832214,
+      "probabilities": {
+        "Invalid Claim": 0.039400000125169754,
+        "Manual Review": 0.9376999735832214,
+        "Valid Claim": 0.02290000021457672
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.6483,
+      "probabilities": {
+        "Valid Claim": 0.0896,
+        "Invalid Claim": 0.6483,
+        "Manual Review": 0.2621
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1409",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.9376999735832214,
+        "python_probabilities": {
+          "Invalid Claim": 0.039400000125169754,
+          "Manual Review": 0.9376999735832214,
+          "Valid Claim": 0.02290000021457672
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.6483,
+        "vision_probabilities": {
+          "Valid Claim": 0.0896,
+          "Invalid Claim": 0.6483,
+          "Manual Review": 0.2621
+        },
+        "confidence_difference": 0.2894,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": true,
+        "contradiction_count": 1,
+        "contradictions": [
+          "Contradiction: Fault Date (2024-11-05) is prior to Purchase Date (2024-11-29)."
+        ]
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1409",
+        "user_id": "USR-6656",
+        "product_id": "PRD-22709",
+        "product_name": "Garmin AVH-Z5200BT-Infotainment",
+        "product_category": "automotive",
+        "brand": "Garmin",
+        "model_number": "AVH-Z5200BT-Infotainment",
+        "user_serial_number": "GAR701866",
+        "ocr_serial_number": "GAR701866",
+        "serial_match_status": "Exact",
+        "purchase_date": "2024-11-29",
+        "purchase_price": 213.98,
+        "retailer": "Direct Brand Store",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2024-11-29",
+        "warranty_expiry_date": "2025-11-24",
+        "fault_occurrence_date": "2024-11-05",
+        "claim_submission_date": "2025-08-02",
+        "fault_category": "alternator_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 0,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": true,
+        "duplicate_claim_flag": false,
+        "product_age_days": 246,
+        "remaining_warranty_days": 114,
+        "reporting_delay_days": 270,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Contradiction: Fault Date (2024-11-05) is prior to Purchase Date (2024-11-29)."
+        ],
+        "required_actions": [
+          "Inspect timeline inconsistencies and request revised invoice."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-1409 was initiated for Garmin AVH-Z5200BT-Infotainment regarding Alternator Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1409_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0541",
+      "user_id": "USR-4562",
+      "product_id": "PRD-69026",
+      "product_name": "Varta Matrix-Battery-12V",
+      "product_category": "automotive",
+      "brand": "Varta",
+      "model_number": "Matrix-Battery-12V",
+      "user_serial_number": "VAR116325",
+      "ocr_serial_number": "VAR116325",
+      "serial_match_status": "Exact",
+      "purchase_date": "2026-03-20",
+      "purchase_price": 903.21,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2026-03-20",
+      "warranty_expiry_date": "2027-03-15",
+      "fault_occurrence_date": "2026-02-26",
+      "claim_submission_date": "2027-03-10",
+      "fault_category": "starter_motor_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": true,
+      "duplicate_claim_flag": false,
+      "product_age_days": 355,
+      "remaining_warranty_days": 5,
+      "reporting_delay_days": 377,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9376999735832214,
+      "probabilities": {
+        "Invalid Claim": 0.039400000125169754,
+        "Manual Review": 0.9376999735832214,
+        "Valid Claim": 0.02290000021457672
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.4955,
+      "probabilities": {
+        "Valid Claim": 0.1298,
+        "Invalid Claim": 0.4955,
+        "Manual Review": 0.3747
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0541",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.9376999735832214,
+        "python_probabilities": {
+          "Invalid Claim": 0.039400000125169754,
+          "Manual Review": 0.9376999735832214,
+          "Valid Claim": 0.02290000021457672
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.4955,
+        "vision_probabilities": {
+          "Valid Claim": 0.1298,
+          "Invalid Claim": 0.4955,
+          "Manual Review": 0.3747
+        },
+        "confidence_difference": 0.4422,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": true,
+        "contradiction_count": 1,
+        "contradictions": [
+          "Contradiction: Fault Date (2026-02-26) is prior to Purchase Date (2026-03-20)."
+        ]
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0541",
+        "user_id": "USR-4562",
+        "product_id": "PRD-69026",
+        "product_name": "Varta Matrix-Battery-12V",
+        "product_category": "automotive",
+        "brand": "Varta",
+        "model_number": "Matrix-Battery-12V",
+        "user_serial_number": "VAR116325",
+        "ocr_serial_number": "VAR116325",
+        "serial_match_status": "Exact",
+        "purchase_date": "2026-03-20",
+        "purchase_price": 903.21,
+        "retailer": "Direct Brand Store",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2026-03-20",
+        "warranty_expiry_date": "2027-03-15",
+        "fault_occurrence_date": "2026-02-26",
+        "claim_submission_date": "2027-03-10",
+        "fault_category": "starter_motor_defect",
+        "damage_type": "none",
+        "previous_repairs_count": 0,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": true,
+        "duplicate_claim_flag": false,
+        "product_age_days": 355,
+        "remaining_warranty_days": 5,
+        "reporting_delay_days": 377,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Contradiction: Fault Date (2026-02-26) is prior to Purchase Date (2026-03-20)."
+        ],
+        "required_actions": [
+          "Inspect timeline inconsistencies and request revised invoice."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0541 was initiated for Varta Matrix-Battery-12V regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0541_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0152",
+      "user_id": "USR-7096",
+      "product_id": "PRD-71463",
+      "product_name": "GE Appliances Inverter-AC-1.5T",
+      "product_category": "appliances",
+      "brand": "GE Appliances",
+      "model_number": "Inverter-AC-1.5T",
+      "user_serial_number": "GE 762201",
+      "ocr_serial_number": "GE 762299",
+      "serial_match_status": "Mismatch",
+      "purchase_date": "2025-05-01",
+      "purchase_price": 1494.64,
+      "retailer": "Walmart",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-05-01",
+      "warranty_expiry_date": "2028-04-15",
+      "fault_occurrence_date": "2026-03-25",
+      "claim_submission_date": "2026-04-04",
+      "fault_category": "thermostat_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 338,
+      "remaining_warranty_days": 742,
+      "reporting_delay_days": 10,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.5965999960899353,
+      "probabilities": {
+        "Invalid Claim": 0.33309999108314514,
+        "Manual Review": 0.5965999960899353,
+        "Valid Claim": 0.07020000368356705
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.3998,
+      "probabilities": {
+        "Valid Claim": 0.2336,
+        "Invalid Claim": 0.3998,
+        "Manual Review": 0.3666
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0152",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.5965999960899353,
+        "python_probabilities": {
+          "Invalid Claim": 0.33309999108314514,
+          "Manual Review": 0.5965999960899353,
+          "Valid Claim": 0.07020000368356705
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.3998,
+        "vision_probabilities": {
+          "Valid Claim": 0.2336,
+          "Invalid Claim": 0.3998,
+          "Manual Review": 0.3666
+        },
+        "confidence_difference": 0.1968,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Mandatory Documents Complete",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": true,
+        "contradiction_count": 1,
+        "contradictions": [
+          "Serial Mismatch: User input 'GE 762201' does not match OCR 'GE 762299'."
+        ]
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0152",
+        "user_id": "USR-7096",
+        "product_id": "PRD-71463",
+        "product_name": "GE Appliances Inverter-AC-1.5T",
+        "product_category": "appliances",
+        "brand": "GE Appliances",
+        "model_number": "Inverter-AC-1.5T",
+        "user_serial_number": "GE 762201",
+        "ocr_serial_number": "GE 762299",
+        "serial_match_status": "Mismatch",
+        "purchase_date": "2025-05-01",
+        "purchase_price": 1494.64,
+        "retailer": "Walmart",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-05-01",
+        "warranty_expiry_date": "2028-04-15",
+        "fault_occurrence_date": "2026-03-25",
+        "claim_submission_date": "2026-04-04",
+        "fault_category": "thermostat_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 338,
+        "remaining_warranty_days": 742,
+        "reporting_delay_days": 10,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Serial Mismatch: User input 'GE 762201' does not match OCR 'GE 762299'."
+        ],
+        "required_actions": [
+          "Inspect timeline inconsistencies and request revised invoice."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0152 was initiated for GE Appliances Inverter-AC-1.5T regarding Thermostat Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0152_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0728",
+      "user_id": "USR-8385",
+      "product_id": "PRD-80675",
+      "product_name": "Garmin Matrix-Battery-12V",
+      "product_category": "automotive",
+      "brand": "Garmin",
+      "model_number": "Matrix-Battery-12V",
+      "user_serial_number": "GAR460137",
+      "ocr_serial_number": "GAR460199",
+      "serial_match_status": "Mismatch",
+      "purchase_date": "2025-11-01",
+      "purchase_price": 1467.91,
+      "retailer": "Best Buy",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2025-11-01",
+      "warranty_expiry_date": "2026-10-27",
+      "fault_occurrence_date": "2026-09-27",
+      "claim_submission_date": "2026-09-29",
+      "fault_category": "sensor_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 332,
+      "remaining_warranty_days": 28,
+      "reporting_delay_days": 2,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.5831999778747559,
+      "probabilities": {
+        "Invalid Claim": 0.34929999709129333,
+        "Manual Review": 0.5831999778747559,
+        "Valid Claim": 0.06759999692440033
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8302,
+      "probabilities": {
+        "Valid Claim": 0.1158,
+        "Invalid Claim": 0.8302,
+        "Manual Review": 0.054
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0728",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.5831999778747559,
+        "python_probabilities": {
+          "Invalid Claim": 0.34929999709129333,
+          "Manual Review": 0.5831999778747559,
+          "Valid Claim": 0.06759999692440033
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.8302,
+        "vision_probabilities": {
+          "Valid Claim": 0.1158,
+          "Invalid Claim": 0.8302,
+          "Manual Review": 0.054
+        },
+        "confidence_difference": 0.247,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [
+          "Serial Number Mismatch: User input does not match OCR/Photo."
+        ],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": true,
+        "contradiction_count": 1,
+        "contradictions": [
+          "Serial Mismatch: User input 'GAR460137' does not match OCR 'GAR460199'."
+        ]
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0728",
+        "user_id": "USR-8385",
+        "product_id": "PRD-80675",
+        "product_name": "Garmin Matrix-Battery-12V",
+        "product_category": "automotive",
+        "brand": "Garmin",
+        "model_number": "Matrix-Battery-12V",
+        "user_serial_number": "GAR460137",
+        "ocr_serial_number": "GAR460199",
+        "serial_match_status": "Mismatch",
+        "purchase_date": "2025-11-01",
+        "purchase_price": 1467.91,
+        "retailer": "Best Buy",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2025-11-01",
+        "warranty_expiry_date": "2026-10-27",
+        "fault_occurrence_date": "2026-09-27",
+        "claim_submission_date": "2026-09-29",
+        "fault_category": "sensor_malfunction",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 332,
+        "remaining_warranty_days": 28,
+        "reporting_delay_days": 2,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Serial Number Mismatch: User input does not match OCR/Photo."
+        ],
+        "required_actions": [
+          "Review the policy violation and record an authorized disposition."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0728 was initiated for Garmin Matrix-Battery-12V regarding Sensor Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0728_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0575",
+      "user_id": "USR-7483",
+      "product_id": "PRD-53544",
+      "product_name": "Exide AVH-Z5200BT-Infotainment",
+      "product_category": "automotive",
+      "brand": "Exide",
+      "model_number": "AVH-Z5200BT-Infotainment",
+      "user_serial_number": "EXI561607",
+      "ocr_serial_number": "EXI561607",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-05-09",
+      "purchase_price": 645.72,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2025-05-09",
+      "warranty_expiry_date": "2026-05-04",
+      "fault_occurrence_date": "2025-12-25",
+      "claim_submission_date": "2026-01-07",
+      "fault_category": "sensor_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 243,
+      "remaining_warranty_days": 117,
+      "reporting_delay_days": 13,
+      "actual_class": "Valid Claim"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8137999773025513,
+      "probabilities": {
+        "Invalid Claim": 0.02019999921321869,
+        "Manual Review": 0.16599999368190765,
+        "Valid Claim": 0.8137999773025513
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8151,
+      "probabilities": {
+        "Valid Claim": 0.0887,
+        "Invalid Claim": 0.8151,
+        "Manual Review": 0.0962
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0575",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8137999773025513,
+        "python_probabilities": {
+          "Invalid Claim": 0.02019999921321869,
+          "Manual Review": 0.16599999368190765,
+          "Valid Claim": 0.8137999773025513
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.8151,
+        "vision_probabilities": {
+          "Valid Claim": 0.0887,
+          "Invalid Claim": 0.8151,
+          "Manual Review": 0.0962
+        },
+        "confidence_difference": 0.0013,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0575",
+        "user_id": "USR-7483",
+        "product_id": "PRD-53544",
+        "product_name": "Exide AVH-Z5200BT-Infotainment",
+        "product_category": "automotive",
+        "brand": "Exide",
+        "model_number": "AVH-Z5200BT-Infotainment",
+        "user_serial_number": "EXI561607",
+        "ocr_serial_number": "EXI561607",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-05-09",
+        "purchase_price": 645.72,
+        "retailer": "Direct Brand Store",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2025-05-09",
+        "warranty_expiry_date": "2026-05-04",
+        "fault_occurrence_date": "2025-12-25",
+        "claim_submission_date": "2026-01-07",
+        "fault_category": "sensor_malfunction",
+        "damage_type": "none",
+        "previous_repairs_count": 0,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 243,
+        "remaining_warranty_days": 117,
+        "reporting_delay_days": 13,
+        "actual_class": "Valid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0575 was initiated for Exide AVH-Z5200BT-Infotainment regarding Sensor Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0575_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0226",
+      "user_id": "USR-9710",
+      "product_id": "PRD-60506",
+      "product_name": "Samsung OLED-C2",
+      "product_category": "electronics",
+      "brand": "Samsung",
+      "model_number": "OLED-C2",
+      "user_serial_number": "SAM788784",
+      "ocr_serial_number": "SAM788784",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-02-10",
+      "purchase_price": 1381.08,
+      "retailer": "TechZone Distributors",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-02-10",
+      "warranty_expiry_date": "2027-01-31",
+      "fault_occurrence_date": "2026-09-26",
+      "claim_submission_date": "2026-10-06",
+      "fault_category": "motherboard_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 603,
+      "remaining_warranty_days": 117,
+      "reporting_delay_days": 10,
+      "actual_class": "Valid Claim"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8015000224113464,
+      "probabilities": {
+        "Invalid Claim": 0.021400000900030136,
+        "Manual Review": 0.17710000276565552,
+        "Valid Claim": 0.8015000224113464
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8048,
+      "probabilities": {
+        "Valid Claim": 0.1215,
+        "Invalid Claim": 0.8048,
+        "Manual Review": 0.0737
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0226",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8015000224113464,
+        "python_probabilities": {
+          "Invalid Claim": 0.021400000900030136,
+          "Manual Review": 0.17710000276565552,
+          "Valid Claim": 0.8015000224113464
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.8048,
+        "vision_probabilities": {
+          "Valid Claim": 0.1215,
+          "Invalid Claim": 0.8048,
+          "Manual Review": 0.0737
+        },
+        "confidence_difference": 0.0033,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Fault Reported Within Allowable Period",
+          "Serial Number Match Verified",
+          "Mandatory Documents Complete",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0226",
+        "user_id": "USR-9710",
+        "product_id": "PRD-60506",
+        "product_name": "Samsung OLED-C2",
+        "product_category": "electronics",
+        "brand": "Samsung",
+        "model_number": "OLED-C2",
+        "user_serial_number": "SAM788784",
+        "ocr_serial_number": "SAM788784",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-02-10",
+        "purchase_price": 1381.08,
+        "retailer": "TechZone Distributors",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2025-02-10",
+        "warranty_expiry_date": "2027-01-31",
+        "fault_occurrence_date": "2026-09-26",
+        "claim_submission_date": "2026-10-06",
+        "fault_category": "motherboard_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 603,
+        "remaining_warranty_days": 117,
+        "reporting_delay_days": 10,
+        "actual_class": "Valid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0226 was initiated for Samsung OLED-C2 regarding Motherboard Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0226_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1262",
+      "user_id": "USR-8488",
+      "product_id": "PRD-62989",
+      "product_name": "Sony MacBook-Air-M2",
+      "product_category": "electronics",
+      "brand": "Sony",
+      "model_number": "MacBook-Air-M2",
+      "user_serial_number": "SON957074",
+      "ocr_serial_number": "SON957074",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-03-13",
+      "purchase_price": 1639.85,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-03-13",
+      "warranty_expiry_date": "2027-03-03",
+      "fault_occurrence_date": "2025-03-08",
+      "claim_submission_date": "2026-03-06",
+      "fault_category": "overheating_shutdown",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": true,
+      "duplicate_claim_flag": false,
+      "product_age_days": 358,
+      "remaining_warranty_days": 362,
+      "reporting_delay_days": 363,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9358000159263611,
+      "probabilities": {
+        "Invalid Claim": 0.04149999842047691,
+        "Manual Review": 0.9358000159263611,
+        "Valid Claim": 0.02280000038444996
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9599,
+      "probabilities": {
+        "Valid Claim": 0.0336,
+        "Invalid Claim": 0.9599,
+        "Manual Review": 0.0065
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1262",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.9358000159263611,
+        "python_probabilities": {
+          "Invalid Claim": 0.04149999842047691,
+          "Manual Review": 0.9358000159263611,
+          "Valid Claim": 0.02280000038444996
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.9599,
+        "vision_probabilities": {
+          "Valid Claim": 0.0336,
+          "Invalid Claim": 0.9599,
+          "Manual Review": 0.0065
+        },
+        "confidence_difference": 0.0241,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Serial Number Match Verified",
+          "Mandatory Documents Complete",
+          "Repair Frequency Normal"
+        ],
+        "failed_rules": [],
+        "warnings": [
+          "Late Fault Reporting: Fault reported 363 days after occurrence (Deadline: 30 days)."
+        ],
+        "manual_review_triggers": [
+          "Unlisted Fault Category: 'overheating_shutdown' requires verification."
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": true,
+        "contradiction_count": 1,
+        "contradictions": [
+          "Contradiction: Fault Date (2025-03-08) is prior to Purchase Date (2025-03-13)."
+        ]
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1262",
+        "user_id": "USR-8488",
+        "product_id": "PRD-62989",
+        "product_name": "Sony MacBook-Air-M2",
+        "product_category": "electronics",
+        "brand": "Sony",
+        "model_number": "MacBook-Air-M2",
+        "user_serial_number": "SON957074",
+        "ocr_serial_number": "SON957074",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-03-13",
+        "purchase_price": 1639.85,
+        "retailer": "Amazon Retail",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2025-03-13",
+        "warranty_expiry_date": "2027-03-03",
+        "fault_occurrence_date": "2025-03-08",
+        "claim_submission_date": "2026-03-06",
+        "fault_category": "overheating_shutdown",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": true,
+        "duplicate_claim_flag": false,
+        "product_age_days": 358,
+        "remaining_warranty_days": 362,
+        "reporting_delay_days": 363,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Late Fault Reporting: Fault reported 363 days after occurrence (Deadline: 30 days)."
+        ],
+        "required_actions": [
+          "Review the policy violation and record an authorized disposition."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-1262 was initiated for Sony MacBook-Air-M2 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1262_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0738",
+      "user_id": "USR-5510",
+      "product_id": "PRD-88470",
+      "product_name": "Garmin Matrix-Battery-12V",
+      "product_category": "automotive",
+      "brand": "Garmin",
+      "model_number": "Matrix-Battery-12V",
+      "user_serial_number": "GAR656937",
+      "ocr_serial_number": "GAR656937",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-11-06",
+      "purchase_price": 899.23,
+      "retailer": "TechZone Distributors",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2024-11-06",
+      "warranty_expiry_date": "2025-11-01",
+      "fault_occurrence_date": "2025-07-04",
+      "claim_submission_date": "2025-07-08",
+      "fault_category": "starter_motor_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 244,
+      "remaining_warranty_days": 116,
+      "reporting_delay_days": 4,
+      "actual_class": "Valid Claim"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8021000027656555,
+      "probabilities": {
+        "Invalid Claim": 0.020899999886751175,
+        "Manual Review": 0.1768999993801117,
+        "Valid Claim": 0.8021000027656555
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.6265,
+      "probabilities": {
+        "Valid Claim": 0.1734,
+        "Invalid Claim": 0.6265,
+        "Manual Review": 0.2001
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0738",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8021000027656555,
+        "python_probabilities": {
+          "Invalid Claim": 0.020899999886751175,
+          "Manual Review": 0.1768999993801117,
+          "Valid Claim": 0.8021000027656555
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.6265,
+        "vision_probabilities": {
+          "Valid Claim": 0.1734,
+          "Invalid Claim": 0.6265,
+          "Manual Review": 0.2001
+        },
+        "confidence_difference": 0.1756,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0738",
+        "user_id": "USR-5510",
+        "product_id": "PRD-88470",
+        "product_name": "Garmin Matrix-Battery-12V",
+        "product_category": "automotive",
+        "brand": "Garmin",
+        "model_number": "Matrix-Battery-12V",
+        "user_serial_number": "GAR656937",
+        "ocr_serial_number": "GAR656937",
+        "serial_match_status": "Exact",
+        "purchase_date": "2024-11-06",
+        "purchase_price": 899.23,
+        "retailer": "TechZone Distributors",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2024-11-06",
+        "warranty_expiry_date": "2025-11-01",
+        "fault_occurrence_date": "2025-07-04",
+        "claim_submission_date": "2025-07-08",
+        "fault_category": "starter_motor_defect",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 244,
+        "remaining_warranty_days": 116,
+        "reporting_delay_days": 4,
+        "actual_class": "Valid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0738 was initiated for Garmin Matrix-Battery-12V regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0738_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0529",
+      "user_id": "USR-4619",
+      "product_id": "PRD-93839",
+      "product_name": "Bosch ProStarter-80A",
+      "product_category": "automotive",
+      "brand": "Bosch",
+      "model_number": "ProStarter-80A",
+      "user_serial_number": "BOS247475",
+      "ocr_serial_number": "BOS247475",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-05-06",
+      "purchase_price": 427.01,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2025-05-06",
+      "warranty_expiry_date": "2026-05-01",
+      "fault_occurrence_date": "2025-06-24",
+      "claim_submission_date": "2025-06-27",
+      "fault_category": "starter_motor_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 52,
+      "remaining_warranty_days": 308,
+      "reporting_delay_days": 3,
+      "actual_class": "Valid Claim"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8011000156402588,
+      "probabilities": {
+        "Invalid Claim": 0.022199999541044235,
+        "Manual Review": 0.17669999599456787,
+        "Valid Claim": 0.8011000156402588
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.7211,
+      "probabilities": {
+        "Valid Claim": 0.1265,
+        "Invalid Claim": 0.7211,
+        "Manual Review": 0.1524
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0529",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8011000156402588,
+        "python_probabilities": {
+          "Invalid Claim": 0.022199999541044235,
+          "Manual Review": 0.17669999599456787,
+          "Valid Claim": 0.8011000156402588
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.7211,
+        "vision_probabilities": {
+          "Valid Claim": 0.1265,
+          "Invalid Claim": 0.7211,
+          "Manual Review": 0.1524
+        },
+        "confidence_difference": 0.08,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0529",
+        "user_id": "USR-4619",
+        "product_id": "PRD-93839",
+        "product_name": "Bosch ProStarter-80A",
+        "product_category": "automotive",
+        "brand": "Bosch",
+        "model_number": "ProStarter-80A",
+        "user_serial_number": "BOS247475",
+        "ocr_serial_number": "BOS247475",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-05-06",
+        "purchase_price": 427.01,
+        "retailer": "Amazon Retail",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2025-05-06",
+        "warranty_expiry_date": "2026-05-01",
+        "fault_occurrence_date": "2025-06-24",
+        "claim_submission_date": "2025-06-27",
+        "fault_category": "starter_motor_defect",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 52,
+        "remaining_warranty_days": 308,
+        "reporting_delay_days": 3,
+        "actual_class": "Valid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0529 was initiated for Bosch ProStarter-80A regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0529_v1.png"
+  }
+]

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Create Account - AssureX Claim Engine{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <div class="panel">
+        <div class="panel-header" style="text-align: center; justify-content: center; padding: 1.25rem;">
+            <h1 class="panel-title" style="font-size: 1.15rem;">
+                <svg class="icon" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-user-plus"></use></svg> Create New Account
+            </h1>
+        </div>
+        <div class="panel-body" style="padding: 1.5rem;">
+            {% if error %}
+            <div style="background-color: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1.25rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg>
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
+
+            <form action="/register" method="POST">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Full Name</label>
+                    <input type="text" name="full_name" class="form-input" style="width: 100%;" placeholder="e.g. Jane Doe" value="{{ full_name or '' }}" required autofocus>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Email Address</label>
+                    <input type="email" name="email" class="form-input" style="width: 100%;" placeholder="e.g. jane@example.com" value="{{ email or '' }}" required>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Password</label>
+                    <input type="password" name="password" class="form-input" style="width: 100%;" placeholder="Minimum 6 characters" minlength="6" required>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Account Role</label>
+                    <select name="role" class="form-select" style="width: 100%;" required>
+                        <option value="customer" {% if role == 'customer' %}selected{% endif %}>Customer (Product Owner & Claimant)</option>
+                        <option value="service_center" {% if role == 'service_center' %}selected{% endif %}>Authorized Service Center Staff</option>
+                    </select>
+                    <div style="font-size: 0.725rem; color: var(--text-muted); margin-top: 0.25rem;">Note: Reviewer and Admin accounts are assigned internally.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.65rem; font-size: 0.9rem;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-user-check"></use></svg> Register Account
+                </button>
+            </form>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.825rem; color: var(--text-sub); text-align: center;">
+                Already have an account? <a href="/login" class="link">Sign in here</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - AssureX Engine{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 1.5rem;">
+    <h1 style="font-size: 1.5rem; font-weight: 700;">System Analytics & Reporting</h1>
+    <p style="color: var(--text-sub); font-size: 0.875rem;">Warranty claims metric distribution and model agreement summary.</p>
+    <a class="btn btn-secondary" href="/admin/export-csv">Download CSV export</a>
+</div>
+{% if monitor and monitor.flags %}
+<div class="alert-banner" style="margin-bottom:1rem;">
+    <span>{% for f in monitor.flags %}{{ f }} {% endfor %}</span>
+</div>
+{% endif %}
+
+<div class="metrics-row">
+    <div class="metric-card" style="background-color: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <div style="color: var(--text-sub); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Total Evaluated</div>
+        <div style="font-size: 1.75rem; font-weight: 700;">{{ total }}</div>
+    </div>
+    <div class="metric-card" style="background-color: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <div style="color: var(--success); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Valid Ratio</div>
+        <div style="font-size: 1.75rem; font-weight: 700; color: var(--success);">
+            {{ "%.1f"|format((valid/total*100) if total > 0 else 0) }}%
+        </div>
+    </div>
+    <div class="metric-card" style="background-color: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <div style="color: var(--danger); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Invalid Ratio</div>
+        <div style="font-size: 1.75rem; font-weight: 700; color: var(--danger);">
+            {{ "%.1f"|format((invalid/total*100) if total > 0 else 0) }}%
+        </div>
+    </div>
+    <div class="metric-card" style="background-color: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem;">
+        <div style="color: var(--warning); font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Disagreement Rate</div>
+        <div style="font-size: 1.75rem; font-weight: 700; color: var(--warning);">
+            {{ "%.1f"|format((disagreements/total*100) if total > 0 else 0) }}%
+        </div>
+    </div>
+</div>
+
+<div class="panel" style="margin-bottom: 1.5rem;">
+    <div class="panel-header">
+        <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-chart-bar"></use></svg> Adjudication Consensus & Distribution</div>
+    </div>
+    <div class="panel-body">
+        <div style="height: 14px; display: flex; border-radius: 7px; overflow: hidden; background: var(--bg-main); margin-bottom: 12px; border: 1px solid var(--border);">
+            <div style="width: {{ (valid/total*100) if total > 0 else 0 }}%; background: var(--success);" title="Valid: {{ '%.1f'|format((valid/total*100) if total > 0 else 0) }}%"></div>
+            <div style="width: {{ (invalid/total*100) if total > 0 else 0 }}%; background: var(--danger);" title="Invalid: {{ '%.1f'|format((invalid/total*100) if total > 0 else 0) }}%"></div>
+            <div style="width: {{ (disagreements/total*100) if total > 0 else 0 }}%; background: var(--warning);" title="Disagreements: {{ '%.1f'|format((disagreements/total*100) if total > 0 else 0) }}%"></div>
+        </div>
+        <div style="display: flex; gap: 20px; font-size: 12px; color: var(--text-sub); flex-wrap: wrap;">
+            <div style="display:flex; align-items:center; gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--success);display:inline-block;"></span> Valid Claims ({{ valid }})</div>
+            <div style="display:flex; align-items:center; gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--danger);display:inline-block;"></span> Invalid Claims ({{ invalid }})</div>
+            <div style="display:flex; align-items:center; gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--warning);display:inline-block;"></span> Disagreements / Review ({{ disagreements }})</div>
+        </div>
+    </div>
+</div>
+
+<div class="panel">
+    <div class="panel-header">
+        <div class="panel-title"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-database"></use></svg> Full Claims Audit Log</div>
+    </div>
+    <div class="panel-body" style="padding: 0;">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Claim ID</th>
+                    <th>Submission Date</th>
+                    <th>Python ML Class</th>
+                    <th>Vision Model Class</th>
+                    <th>Conf Diff</th>
+                    <th>Final Decision</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in all_claims %}
+                <tr>
+                    <td><a href="/claims/view/{{ c.claim_id }}" class="link">{{ c.claim_id }}</a></td>
+                    <td>{{ c.claim_submission_date }}</td>
+                    <td>{{ c.python_predicted_class }}</td>
+                    <td>{{ c.vision_predicted_class }}</td>
+                    <td>{{ "%.4f"|format(c.confidence_difference or 0) }}</td>
+                    <td>
+                        {% if c.final_decision == 'Likely Valid' %}
+                            <span class="status-badge status-valid">Valid</span>
+                        {% elif c.final_decision == 'Likely Invalid' %}
+                            <span class="status-badge status-invalid">Invalid</span>
+                        {% else %}
+                            <span class="status-badge status-review">Review</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ c.status }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="7">No evaluated claims yet. Results will appear here after claims are processed.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

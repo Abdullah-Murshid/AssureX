@@ -1,0 +1,80 @@
+{
+  "splits": {
+    "train": {
+      "rows": 1050,
+      "unique_claim_ids": 1050,
+      "labels": {
+        "Invalid Claim": 350,
+        "Valid Claim": 350,
+        "Manual Review": 350
+      }
+    },
+    "val": {
+      "rows": 225,
+      "unique_claim_ids": 225,
+      "labels": {
+        "Valid Claim": 75,
+        "Manual Review": 75,
+        "Invalid Claim": 75
+      }
+    },
+    "test": {
+      "rows": 225,
+      "unique_claim_ids": 225,
+      "labels": {
+        "Valid Claim": 75,
+        "Manual Review": 75,
+        "Invalid Claim": 75
+      }
+    }
+  },
+  "image_sets": {
+    "summary_cards": {
+      "counts": {
+        "train": 2100,
+        "val": 225,
+        "test": 225
+      },
+      "id_or_label_mismatches": 0,
+      "examples": []
+    },
+    "v2_summary_cards": {
+      "counts": {
+        "train": 2100,
+        "val": 225,
+        "test": 225
+      },
+      "id_or_label_mismatches": 2053,
+      "examples": [
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0004_v1.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0004_v2.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0014_v1.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0014_v2.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0015_v1.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0015_v2.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0019_v1.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0019_v2.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0020_v1.png",
+        "v2_summary_cards\\train\\Invalid Claim\\CLM-2026-0020_v2.png"
+      ]
+    }
+  },
+  "mapping_errors": [],
+  "missing_source_deliverables": [
+    "AI_USAGE.md",
+    "LICENSE",
+    "notebooks",
+    "sample_claims",
+    "documentation",
+    "screenshots",
+    "reports",
+    "data/train.csv",
+    "data/val.csv",
+    "data/test.csv"
+  ],
+  "split_overlap": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  }
+}

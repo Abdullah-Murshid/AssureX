@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Report - {{ claim.claim_id }} - AssureX</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #0f172a;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --bg-light: #f8fafc;
+            --success: #059669;
+            --danger: #dc2626;
+            --warning: #d97706;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .actions-toolbar {
+            max-width: 900px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        .toolbar-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--primary-dark);
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .company-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--primary-dark);
+        }
+
+        .company-subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .report-meta {
+            text-align: right;
+            font-size: 0.825rem;
+            color: var(--text-muted);
+        }
+
+        .claim-ref {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .verdict-banner {
+            padding: 0.875rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.025em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .verdict-valid {
+            background-color: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .verdict-invalid {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .verdict-review {
+            background-color: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .section {
+            margin-bottom: 1.75rem;
+        }
+
+        .section-header {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary-dark);
+            background-color: var(--bg-light);
+            padding: 0.4rem 0.75rem;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 0.875rem;
+        }
+
+        .narrative-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: var(--bg-light);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.775rem;
+            text-transform: uppercase;
+        }
+
+        .data-label {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 40%;
+        }
+
+        .data-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .model-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .model-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #475569;
+        }
+
+        .model-pred {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .model-conf {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .rule-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        .rule-pass { background: #d1fae5; color: #065f46; }
+        .rule-fail { background: #fee2e2; color: #991b1b; }
+        .rule-warn { background: #fef3c7; color: #92400e; }
+
+        .factors-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.85rem;
+        }
+
+        .factors-list li {
+            padding: 0.35rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .signoff-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .signoff-line {
+            width: 250px;
+            border-bottom: 1px solid #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+                margin: 0;
+            }
+
+            .actions-toolbar {
+                display: none !important;
+            }
+
+            .report-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="actions-toolbar">
+        <div>
+            <strong>AssureX Adjudication Report</strong> — {{ claim.claim_id }}
+        </div>
+        <div class="toolbar-buttons">
+            <button class="btn btn-primary" onclick="window.print()">
+                Print Document
+            </button>
+            <a class="btn btn-secondary" href="/claims/{{ claim.claim_id }}/report/pdf">
+                Download PDF
+            </a>
+            <a class="btn btn-secondary" href="/claims/view/{{ claim.claim_id }}">
+                Back to Dossier
+            </a>
+        </div>
+    </div>
+
+    <div class="report-container">
+        <!-- Header -->
+        <div class="report-header">
+            <div>
+                <div class="company-title">ASSUREX CLAIM ENGINE</div>
+                <div class="company-subtitle">Automated AI Adjudication & Compliance Dossier — Module XLIV</div>
+            </div>
+            <div class="report-meta">
+                <div class="claim-ref">{{ claim.claim_id }}</div>
+                <div>Generated: {{ generated_at }}</div>
+                <div>Engine Ver: {{ claim.model_version or 'v2-production' }}</div>
+            </div>
+        </div>
+
+        <!-- Verdict Banner -->
+        {% set dec_lower = (claim.final_decision or '') | lower %}
+        {% if 'valid' in dec_lower and 'invalid' not in dec_lower %}
+            <div class="verdict-banner verdict-valid">
+                <span>LIKELY VALID CLAIM — AUTOMATED APPROVAL RECOMMENDED</span>
+                <span>STATUS: {{ claim.status | upper }}</span>
+            </div>
+        {% elif 'invalid' in dec_lower %}
+            <div class="verdict-banner verdict-invalid">
+                <span>LIKELY INVALID CLAIM — DISQUALIFICATION RECOMMENDED</span>
+                <span>STATUS: {{ claim.status | upper }}</span>
+            </div>
+        {% else %}
+            <div class="verdict-banner verdict-review">
+                <span>MANUAL REVIEW REQUIRED — AUDIT DESK ESCALATION</span>
+                <span>STATUS: {{ claim.status | upper }}</span>
+            </div>
+        {% endif %}
+
+        <!-- Section 1: Executive Narrative Summary -->
+        <div class="section">
+            <div class="section-header">1. Executive AI Narrative Summary (Module XXXII)</div>
+            <div class="narrative-box">
+                {{ narrative_summary }}
+            </div>
+        </div>
+
+        <!-- Section 2: Claim & Product Overview -->
+        <div class="section">
+            <div class="section-header">2. Claim & Product Asset Specifications</div>
+            <div class="grid-2">
+                <table class="data-table">
+                    <tr>
+                        <td class="data-label">Claim ID</td>
+                        <td class="data-value">{{ claim.claim_id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Claimant User ID</td>
+                        <td class="data-value">{{ claim.user_id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Product Name</td>
+                        <td class="data-value">{{ product.product_name if product else claim.product_id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Category & Brand</td>
+                        <td class="data-value">{{ product.category | capitalize if product else 'N/A' }} ({{ product.brand if product else 'N/A' }})</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Model / Serial</td>
+                        <td class="data-value">{{ product.model_number if product else 'N/A' }} / {{ product.serial_number if product else claim.user_serial_number or 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Retailer / Store</td>
+                        <td class="data-value">{{ product.retailer if product else 'N/A' }}</td>
+                    </tr>
+                </table>
+
+                <table class="data-table">
+                    <tr>
+                        <td class="data-label">Claim Amount</td>
+                        <td class="data-value">${{ "%.2f" | format(claim.claim_amount or 0.0) }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Fault Category</td>
+                        <td class="data-value">{{ (claim.fault_category or 'N/A') | replace('_', ' ') | title }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Damage Type</td>
+                        <td class="data-value">{{ (claim.damage_type or 'None') | replace('_', ' ') | title }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Occurrence Date</td>
+                        <td class="data-value">{{ claim.fault_occurrence_date or 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Submission Date</td>
+                        <td class="data-value">{{ claim.claim_submission_date or 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-label">Purchase Date</td>
+                        <td class="data-value">{{ product.purchase_date if product else 'N/A' }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 3: Warranty Coverage -->
+        <div class="section">
+            <div class="section-header">3. Warranty Coverage & Extended Protection (Modules IV, VIII, XI)</div>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">OEM Warranty Duration</td>
+                    <td class="data-value">{{ product.warranty_duration_months if product else 24 }} Months Standard Coverage</td>
+                    <td class="data-label">Extended Protection Plan</td>
+                    <td class="data-value">
+                        {% if claim.extended_warranty_provider or (product and product.extended_warranty_provider) %}
+                            Active ({{ claim.extended_warranty_provider or product.extended_warranty_provider }})
+                        {% else %}
+                            None (OEM Standard Only)
+                        {% endif %}
+                    </td>
+                </tr>
+                {% if claim.extended_warranty_contract_number or (product and product.extended_warranty_contract_number) %}
+                <tr>
+                    <td class="data-label">Contract Reference #</td>
+                    <td class="data-value" colspan="3">{{ claim.extended_warranty_contract_number or product.extended_warranty_contract_number }}</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+
+        <!-- Page Break for clean multi-page print -->
+        <div class="page-break"></div>
+
+        <!-- Section 4: Dual-Model ML Adjudication -->
+        <div class="section">
+            <div class="section-header">4. Dual-Model ML Adjudication & Confidence Comparison (Modules XVIII - XXIV)</div>
+            <div class="grid-2" style="margin-bottom: 0.75rem;">
+                <div class="model-card">
+                    <div class="model-title">Python Tabular Classifier (XGBoost / LightGBM)</div>
+                    <div class="model-pred">{{ claim.python_predicted_class or 'N/A' }}</div>
+                    <div class="model-conf">Confidence: {{ "%.1f" | format((claim.python_top_confidence or 0.0) * 100) }}%</div>
+                </div>
+                <div class="model-card">
+                    <div class="model-title">Vision Summary Card Classifier (ResNet / CNN)</div>
+                    <div class="model-pred">{{ claim.vision_predicted_class or 'N/A' }}</div>
+                    <div class="model-conf">Confidence: {{ "%.1f" | format((claim.vision_top_confidence or 0.0) * 100) }}%</div>
+                </div>
+            </div>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">Cross-Model Consistency</td>
+                    <td class="data-value">
+                        {% if claim.consistency_status == 'Consistent' %}
+                            <span style="color: var(--success); font-weight: 700;">Consistent (Models Concur)</span>
+                        {% else %}
+                            <span style="color: var(--warning); font-weight: 700;">Contradiction / Divergence Detected</span>
+                        {% endif %}
+                    </td>
+                    <td class="data-label">Confidence Difference Gap</td>
+                    <td class="data-value">{{ "%.4f" | format(claim.confidence_difference or 0.0) }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Section 5: Policy Rules & Contradictions -->
+        <div class="section">
+            <div class="section-header">5. Business Policy Rules & Contradiction Audit (Module XXV)</div>
+            {% set rule_eval = dossier.get('rule_evaluation', {}) %}
+            {% set passed_rules = rule_eval.get('passed_rules', []) %}
+            {% set failed_rules = rule_eval.get('failed_rules', []) %}
+            {% set warnings = rule_eval.get('warnings', []) %}
+
+            {% if passed_rules or failed_rules or warnings %}
+                <ul class="factors-list">
+                    {% for r in passed_rules %}
+                    <li><span class="rule-badge rule-pass">PASS</span> {{ r }}</li>
+                    {% endfor %}
+                    {% for r in failed_rules %}
+                    <li><span class="rule-badge rule-fail">FAIL</span> {{ r }}</li>
+                    {% endfor %}
+                    {% for r in warnings %}
+                    <li><span class="rule-badge rule-warn">WARN</span> {{ r }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Standard policy rules verified with zero hard block criteria.</p>
+            {% endif %}
+        </div>
+
+        <!-- Section 6: Uploaded Evidence -->
+        <div class="section">
+            <div class="section-header">6. Uploaded Evidence & Verification Trail (Modules VI, XIV, XXXI)</div>
+            {% if documents %}
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Doc ID</th>
+                            <th>File Name</th>
+                            <th>Type</th>
+                            <th>OCR Status</th>
+                            <th>Uploaded At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for doc in documents %}
+                        <tr>
+                            <td>{{ doc.doc_id }}</td>
+                            <td>{{ doc.filename }}</td>
+                            <td>{{ (doc.document_type or 'document') | replace('_', ' ') | title }}</td>
+                            <td>
+                                {% if doc.ocr_extracted_text %}
+                                    <span style="color: var(--success); font-weight: 600;">Verified / Parsed</span>
+                                {% else %}
+                                    <span style="color: var(--text-muted);">Pending OCR</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ doc.created_at.strftime('%Y-%m-%d %H:%M') if doc.created_at else 'N/A' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p style="font-size: 0.85rem; color: var(--text-muted);">No uploaded documents recorded for this claim dossier.</p>
+            {% endif %}
+        </div>
+
+        <!-- Section 7: Explainability Factors -->
+        <div class="section">
+            <div class="section-header">7. Decision Explainability Factors (Module XXVIII)</div>
+            {% set explanation = dossier.get('explanation', {}) %}
+            <div class="grid-2">
+                <div>
+                    <strong style="font-size: 0.8rem; color: var(--success); text-transform: uppercase;">Supporting Factors:</strong>
+                    <ul class="factors-list" style="margin-top: 0.4rem;">
+                        {% for f in explanation.get('supporting_factors', []) %}
+                        <li>✓ {{ f }}</li>
+                        {% else %}
+                        <li>Standard warranty policy criteria satisfied.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <strong style="font-size: 0.8rem; color: var(--danger); text-transform: uppercase;">Opposing Factors:</strong>
+                    <ul class="factors-list" style="margin-top: 0.4rem;">
+                        {% for f in explanation.get('opposing_factors', []) %}
+                        <li>✗ {{ f }}</li>
+                        {% else %}
+                        <li>No adverse exclusion risk factors detected.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Reviewer Audit Comments & Signoff -->
+        <div class="section">
+            <div class="section-header">8. Reviewer Audit Comments & Formal Sign-Off</div>
+            <table class="data-table">
+                <tr>
+                    <td class="data-label">Adjudicator / Reviewer</td>
+                    <td class="data-value">{{ claim.reviewed_by or 'Automated Adjudication System' }}</td>
+                    <td class="data-label">Review Date</td>
+                    <td class="data-value">{{ claim.reviewed_at or 'Automated Evaluation' }}</td>
+                </tr>
+                <tr>
+                    <td class="data-label">Reviewer Remarks</td>
+                    <td class="data-value" colspan="3">{{ claim.reviewer_comments or 'No manual override remarks recorded.' }}</td>
+                </tr>
+            </table>
+
+            <div class="signoff-section">
+                <div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">AssureX Compliance & Quality Assurance Desk</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Cryptographically signed and logged in Immutable Audit Trail.</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="signoff-line"></div>
+                    <div style="font-size: 0.8rem; font-weight: 600;">Authorized Officer Signature & Stamp</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Confidential & Proprietary — AssureX Claim Engine — All Rights Reserved. Generated for claim reference {{ claim.claim_id }}.
+        </div>
+    </div>
+
+</body>
+</html>

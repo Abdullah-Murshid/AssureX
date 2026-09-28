@@ -1,0 +1,1809 @@
+[
+  {
+    "record": {
+      "claim_id": "CLM-2026-0537",
+      "user_id": "USR-5065",
+      "product_id": "PRD-33203",
+      "product_name": "Panasonic EcoSilence-Drive",
+      "product_category": "appliances",
+      "brand": "Panasonic",
+      "model_number": "EcoSilence-Drive",
+      "user_serial_number": "PAN449497",
+      "ocr_serial_number": "PAN449497",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-06-22",
+      "purchase_price": 1609.87,
+      "retailer": "Walmart",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-06-22",
+      "warranty_expiry_date": "2028-06-06",
+      "fault_occurrence_date": "2027-06-27",
+      "claim_submission_date": "2027-06-28",
+      "fault_category": "control_board_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 736,
+      "remaining_warranty_days": 344,
+      "reporting_delay_days": 1,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8062999844551086,
+      "probabilities": {
+        "Invalid Claim": 0.022099999710917473,
+        "Manual Review": 0.17159999907016754,
+        "Valid Claim": 0.8062999844551086
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.5549,
+      "probabilities": {
+        "Valid Claim": 0.2819,
+        "Invalid Claim": 0.5549,
+        "Manual Review": 0.1632
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0537",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8062999844551086,
+        "python_probabilities": {
+          "Invalid Claim": 0.022099999710917473,
+          "Manual Review": 0.17159999907016754,
+          "Valid Claim": 0.8062999844551086
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.5549,
+        "vision_probabilities": {
+          "Valid Claim": 0.2819,
+          "Invalid Claim": 0.5549,
+          "Manual Review": 0.1632
+        },
+        "confidence_difference": 0.2514,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0537",
+        "user_id": "USR-5065",
+        "product_id": "PRD-33203",
+        "product_name": "Panasonic EcoSilence-Drive",
+        "product_category": "appliances",
+        "brand": "Panasonic",
+        "model_number": "EcoSilence-Drive",
+        "user_serial_number": "PAN449497",
+        "ocr_serial_number": "PAN449497",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-06-22",
+        "purchase_price": 1609.87,
+        "retailer": "Walmart",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-06-22",
+        "warranty_expiry_date": "2028-06-06",
+        "fault_occurrence_date": "2027-06-27",
+        "claim_submission_date": "2027-06-28",
+        "fault_category": "control_board_malfunction",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 736,
+        "remaining_warranty_days": 344,
+        "reporting_delay_days": 1,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-0537 was initiated for Panasonic EcoSilence-Drive regarding Control Board Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0537_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0829",
+      "user_id": "USR-7844",
+      "product_id": "PRD-15796",
+      "product_name": "Dell QuietComfort-45",
+      "product_category": "electronics",
+      "brand": "Dell",
+      "model_number": "QuietComfort-45",
+      "user_serial_number": "DEL905942",
+      "ocr_serial_number": "DEL905942",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-10-30",
+      "purchase_price": 896.53,
+      "retailer": "Best Buy",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2025-10-30",
+      "warranty_expiry_date": "2027-10-20",
+      "fault_occurrence_date": "2025-12-13",
+      "claim_submission_date": "2025-12-19",
+      "fault_category": "overheating_shutdown",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": true,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 50,
+      "remaining_warranty_days": 670,
+      "reporting_delay_days": 6,
+      "actual_class": "Invalid Claim"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.657800018787384,
+      "probabilities": {
+        "Invalid Claim": 0.18250000476837158,
+        "Manual Review": 0.657800018787384,
+        "Valid Claim": 0.15960000455379486
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.863,
+      "probabilities": {
+        "Valid Claim": 0.1005,
+        "Invalid Claim": 0.863,
+        "Manual Review": 0.0365
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0829",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.657800018787384,
+        "python_probabilities": {
+          "Invalid Claim": 0.18250000476837158,
+          "Manual Review": 0.657800018787384,
+          "Valid Claim": 0.15960000455379486
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.863,
+        "vision_probabilities": {
+          "Valid Claim": 0.1005,
+          "Invalid Claim": 0.863,
+          "Manual Review": 0.0365
+        },
+        "confidence_difference": 0.2052,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": true,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "Fault Reported Within Allowable Period",
+          "Serial Number Match Verified",
+          "Mandatory Documents Complete",
+          "Repair Frequency Normal"
+        ],
+        "failed_rules": [
+          "Unauthorized Repair Detected: Product serviced by non-certified center."
+        ],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Unlisted Fault Category: 'overheating_shutdown' requires verification."
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0829",
+        "user_id": "USR-7844",
+        "product_id": "PRD-15796",
+        "product_name": "Dell QuietComfort-45",
+        "product_category": "electronics",
+        "brand": "Dell",
+        "model_number": "QuietComfort-45",
+        "user_serial_number": "DEL905942",
+        "ocr_serial_number": "DEL905942",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-10-30",
+        "purchase_price": 896.53,
+        "retailer": "Best Buy",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2025-10-30",
+        "warranty_expiry_date": "2027-10-20",
+        "fault_occurrence_date": "2025-12-13",
+        "claim_submission_date": "2025-12-19",
+        "fault_category": "overheating_shutdown",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": true,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 50,
+        "remaining_warranty_days": 670,
+        "reporting_delay_days": 6,
+        "actual_class": "Invalid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Unauthorized Repair Detected: Product serviced by non-certified center."
+        ],
+        "required_actions": [
+          "Review the policy violation and record an authorized disposition."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0829 was initiated for Dell QuietComfort-45 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-0829_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0103",
+      "user_id": "USR-3539",
+      "product_id": "PRD-81840",
+      "product_name": "Bose UltraView-55",
+      "product_category": "electronics",
+      "brand": "Bose",
+      "model_number": "UltraView-55",
+      "user_serial_number": "BOS570284",
+      "ocr_serial_number": "BOS570284",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-11-10",
+      "purchase_price": 236.6,
+      "retailer": "TechZone Distributors",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2024-11-10",
+      "warranty_expiry_date": "2026-10-31",
+      "fault_occurrence_date": "2025-03-18",
+      "claim_submission_date": "2025-03-30",
+      "fault_category": "battery_charging_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 0,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 140,
+      "remaining_warranty_days": 580,
+      "reporting_delay_days": 12,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8277000188827515,
+      "probabilities": {
+        "Invalid Claim": 0.0215000007301569,
+        "Manual Review": 0.15080000460147858,
+        "Valid Claim": 0.8277000188827515
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.6654,
+      "probabilities": {
+        "Valid Claim": 0.1544,
+        "Invalid Claim": 0.6654,
+        "Manual Review": 0.1802
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0103",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8277000188827515,
+        "python_probabilities": {
+          "Invalid Claim": 0.0215000007301569,
+          "Manual Review": 0.15080000460147858,
+          "Valid Claim": 0.8277000188827515
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.6654,
+        "vision_probabilities": {
+          "Valid Claim": 0.1544,
+          "Invalid Claim": 0.6654,
+          "Manual Review": 0.1802
+        },
+        "confidence_difference": 0.1623,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Fault Reported Within Allowable Period",
+          "Serial Number Match Verified",
+          "Repair Frequency Normal"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)",
+          "Unlisted Fault Category: 'battery_charging_failure' requires verification."
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0103",
+        "user_id": "USR-3539",
+        "product_id": "PRD-81840",
+        "product_name": "Bose UltraView-55",
+        "product_category": "electronics",
+        "brand": "Bose",
+        "model_number": "UltraView-55",
+        "user_serial_number": "BOS570284",
+        "ocr_serial_number": "BOS570284",
+        "serial_match_status": "Exact",
+        "purchase_date": "2024-11-10",
+        "purchase_price": 236.6,
+        "retailer": "TechZone Distributors",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2024-11-10",
+        "warranty_expiry_date": "2026-10-31",
+        "fault_occurrence_date": "2025-03-18",
+        "claim_submission_date": "2025-03-30",
+        "fault_category": "battery_charging_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 0,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 140,
+        "remaining_warranty_days": 580,
+        "reporting_delay_days": 12,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)",
+          "Unlisted Fault Category: 'battery_charging_failure' requires verification."
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-0103 was initiated for Bose UltraView-55 regarding Battery Charging Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0103_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0298",
+      "user_id": "USR-1423",
+      "product_id": "PRD-29631",
+      "product_name": "Panasonic Convection-Microwave-30L",
+      "product_category": "appliances",
+      "brand": "Panasonic",
+      "model_number": "Convection-Microwave-30L",
+      "user_serial_number": "PAN804830",
+      "ocr_serial_number": "PAN804830",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-09-26",
+      "purchase_price": 1050.53,
+      "retailer": "Best Buy",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2024-09-26",
+      "warranty_expiry_date": "2027-09-11",
+      "fault_occurrence_date": "2027-08-04",
+      "claim_submission_date": "2027-08-14",
+      "fault_category": "cooling_leakage",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 1052,
+      "remaining_warranty_days": 28,
+      "reporting_delay_days": 10,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8069000244140625,
+      "probabilities": {
+        "Invalid Claim": 0.021400000900030136,
+        "Manual Review": 0.17170000076293945,
+        "Valid Claim": 0.8069000244140625
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.7863,
+      "probabilities": {
+        "Valid Claim": 0.1513,
+        "Invalid Claim": 0.7863,
+        "Manual Review": 0.0624
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0298",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8069000244140625,
+        "python_probabilities": {
+          "Invalid Claim": 0.021400000900030136,
+          "Manual Review": 0.17170000076293945,
+          "Valid Claim": 0.8069000244140625
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.7863,
+        "vision_probabilities": {
+          "Valid Claim": 0.1513,
+          "Invalid Claim": 0.7863,
+          "Manual Review": 0.0624
+        },
+        "confidence_difference": 0.0206,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0298",
+        "user_id": "USR-1423",
+        "product_id": "PRD-29631",
+        "product_name": "Panasonic Convection-Microwave-30L",
+        "product_category": "appliances",
+        "brand": "Panasonic",
+        "model_number": "Convection-Microwave-30L",
+        "user_serial_number": "PAN804830",
+        "ocr_serial_number": "PAN804830",
+        "serial_match_status": "Exact",
+        "purchase_date": "2024-09-26",
+        "purchase_price": 1050.53,
+        "retailer": "Best Buy",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2024-09-26",
+        "warranty_expiry_date": "2027-09-11",
+        "fault_occurrence_date": "2027-08-04",
+        "claim_submission_date": "2027-08-14",
+        "fault_category": "cooling_leakage",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 1052,
+        "remaining_warranty_days": 28,
+        "reporting_delay_days": 10,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-0298 was initiated for Panasonic Convection-Microwave-30L regarding Cooling Leakage. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0298_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1496",
+      "user_id": "USR-3571",
+      "product_id": "PRD-87836",
+      "product_name": "Panasonic FrostFree-500L",
+      "product_category": "appliances",
+      "brand": "Panasonic",
+      "model_number": "FrostFree-500L",
+      "user_serial_number": "PAN386840",
+      "ocr_serial_number": "PAN386840",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-09-10",
+      "purchase_price": 682.63,
+      "retailer": "Amazon Retail",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-09-10",
+      "warranty_expiry_date": "2028-08-25",
+      "fault_occurrence_date": "2027-04-08",
+      "claim_submission_date": "2027-04-11",
+      "fault_category": "thermostat_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 578,
+      "remaining_warranty_days": 502,
+      "reporting_delay_days": 3,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8104000091552734,
+      "probabilities": {
+        "Invalid Claim": 0.02319999970495701,
+        "Manual Review": 0.1664000004529953,
+        "Valid Claim": 0.8104000091552734
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8539,
+      "probabilities": {
+        "Valid Claim": 0.0788,
+        "Invalid Claim": 0.8539,
+        "Manual Review": 0.0673
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1496",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8104000091552734,
+        "python_probabilities": {
+          "Invalid Claim": 0.02319999970495701,
+          "Manual Review": 0.1664000004529953,
+          "Valid Claim": 0.8104000091552734
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.8539,
+        "vision_probabilities": {
+          "Valid Claim": 0.0788,
+          "Invalid Claim": 0.8539,
+          "Manual Review": 0.0673
+        },
+        "confidence_difference": 0.0435,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1496",
+        "user_id": "USR-3571",
+        "product_id": "PRD-87836",
+        "product_name": "Panasonic FrostFree-500L",
+        "product_category": "appliances",
+        "brand": "Panasonic",
+        "model_number": "FrostFree-500L",
+        "user_serial_number": "PAN386840",
+        "ocr_serial_number": "PAN386840",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-09-10",
+        "purchase_price": 682.63,
+        "retailer": "Amazon Retail",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-09-10",
+        "warranty_expiry_date": "2028-08-25",
+        "fault_occurrence_date": "2027-04-08",
+        "claim_submission_date": "2027-04-11",
+        "fault_category": "thermostat_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 578,
+        "remaining_warranty_days": 502,
+        "reporting_delay_days": 3,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-1496 was initiated for Panasonic FrostFree-500L regarding Thermostat Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1496_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1479",
+      "user_id": "USR-5940",
+      "product_id": "PRD-91888",
+      "product_name": "Panasonic FrostFree-500L",
+      "product_category": "appliances",
+      "brand": "Panasonic",
+      "model_number": "FrostFree-500L",
+      "user_serial_number": "PAN384261",
+      "ocr_serial_number": "PAN384261",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-10-25",
+      "purchase_price": 1433.34,
+      "retailer": "Best Buy",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-10-25",
+      "warranty_expiry_date": "2028-10-09",
+      "fault_occurrence_date": "2027-11-29",
+      "claim_submission_date": "2027-12-13",
+      "fault_category": "cooling_leakage",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": true,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 779,
+      "remaining_warranty_days": 301,
+      "reporting_delay_days": 14,
+      "actual_class": "Invalid Claim"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.6607999801635742,
+      "probabilities": {
+        "Invalid Claim": 0.1835000067949295,
+        "Manual Review": 0.6607999801635742,
+        "Valid Claim": 0.15569999814033508
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.6254,
+      "probabilities": {
+        "Valid Claim": 0.1954,
+        "Invalid Claim": 0.6254,
+        "Manual Review": 0.1792
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1479",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.6607999801635742,
+        "python_probabilities": {
+          "Invalid Claim": 0.1835000067949295,
+          "Manual Review": 0.6607999801635742,
+          "Valid Claim": 0.15569999814033508
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.6254,
+        "vision_probabilities": {
+          "Valid Claim": 0.1954,
+          "Invalid Claim": 0.6254,
+          "Manual Review": 0.1792
+        },
+        "confidence_difference": 0.0354,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Mandatory Documents Complete",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1479",
+        "user_id": "USR-5940",
+        "product_id": "PRD-91888",
+        "product_name": "Panasonic FrostFree-500L",
+        "product_category": "appliances",
+        "brand": "Panasonic",
+        "model_number": "FrostFree-500L",
+        "user_serial_number": "PAN384261",
+        "ocr_serial_number": "PAN384261",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-10-25",
+        "purchase_price": 1433.34,
+        "retailer": "Best Buy",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-10-25",
+        "warranty_expiry_date": "2028-10-09",
+        "fault_occurrence_date": "2027-11-29",
+        "claim_submission_date": "2027-12-13",
+        "fault_category": "cooling_leakage",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": true,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 779,
+        "remaining_warranty_days": 301,
+        "reporting_delay_days": 14,
+        "actual_class": "Invalid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-1479 was initiated for Panasonic FrostFree-500L regarding Cooling Leakage. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-1479_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1322",
+      "user_id": "USR-7887",
+      "product_id": "PRD-24224",
+      "product_name": "Bose UltraView-55",
+      "product_category": "electronics",
+      "brand": "Bose",
+      "model_number": "UltraView-55",
+      "user_serial_number": "BOS322072",
+      "ocr_serial_number": "BOS322072",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-08-14",
+      "purchase_price": 589.13,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2024-08-14",
+      "warranty_expiry_date": "2026-08-04",
+      "fault_occurrence_date": "2025-01-28",
+      "claim_submission_date": "2025-02-03",
+      "fault_category": "screen_flicker_defect",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 173,
+      "remaining_warranty_days": 547,
+      "reporting_delay_days": 6,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8112999796867371,
+      "probabilities": {
+        "Invalid Claim": 0.022199999541044235,
+        "Manual Review": 0.16660000383853912,
+        "Valid Claim": 0.8112999796867371
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9344,
+      "probabilities": {
+        "Valid Claim": 0.0462,
+        "Invalid Claim": 0.9344,
+        "Manual Review": 0.0195
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1322",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8112999796867371,
+        "python_probabilities": {
+          "Invalid Claim": 0.022199999541044235,
+          "Manual Review": 0.16660000383853912,
+          "Valid Claim": 0.8112999796867371
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.9344,
+        "vision_probabilities": {
+          "Valid Claim": 0.0462,
+          "Invalid Claim": 0.9344,
+          "Manual Review": 0.0195
+        },
+        "confidence_difference": 0.1231,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Fault Reported Within Allowable Period",
+          "Serial Number Match Verified",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1322",
+        "user_id": "USR-7887",
+        "product_id": "PRD-24224",
+        "product_name": "Bose UltraView-55",
+        "product_category": "electronics",
+        "brand": "Bose",
+        "model_number": "UltraView-55",
+        "user_serial_number": "BOS322072",
+        "ocr_serial_number": "BOS322072",
+        "serial_match_status": "Exact",
+        "purchase_date": "2024-08-14",
+        "purchase_price": 589.13,
+        "retailer": "Direct Brand Store",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2024-08-14",
+        "warranty_expiry_date": "2026-08-04",
+        "fault_occurrence_date": "2025-01-28",
+        "claim_submission_date": "2025-02-03",
+        "fault_category": "screen_flicker_defect",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 173,
+        "remaining_warranty_days": 547,
+        "reporting_delay_days": 6,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-1322 was initiated for Bose UltraView-55 regarding Screen Flicker Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1322_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-1231",
+      "user_id": "USR-7274",
+      "product_id": "PRD-53274",
+      "product_name": "Varta AVH-Z5200BT-Infotainment",
+      "product_category": "automotive",
+      "brand": "Varta",
+      "model_number": "AVH-Z5200BT-Infotainment",
+      "user_serial_number": "VAR946514",
+      "ocr_serial_number": "VAR946514",
+      "serial_match_status": "Exact",
+      "purchase_date": "2026-02-21",
+      "purchase_price": 1683.75,
+      "retailer": "Direct Brand Store",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2026-02-21",
+      "warranty_expiry_date": "2027-02-16",
+      "fault_occurrence_date": "2026-10-31",
+      "claim_submission_date": "2026-11-03",
+      "fault_category": "alternator_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": true,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 255,
+      "remaining_warranty_days": 105,
+      "reporting_delay_days": 3,
+      "actual_class": "Invalid Claim"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.6690999865531921,
+      "probabilities": {
+        "Invalid Claim": 0.16830000281333923,
+        "Manual Review": 0.6690999865531921,
+        "Valid Claim": 0.16269999742507935
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.7042,
+      "probabilities": {
+        "Valid Claim": 0.0833,
+        "Invalid Claim": 0.7042,
+        "Manual Review": 0.2124
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-1231",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.6690999865531921,
+        "python_probabilities": {
+          "Invalid Claim": 0.16830000281333923,
+          "Manual Review": 0.6690999865531921,
+          "Valid Claim": 0.16269999742507935
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.7042,
+        "vision_probabilities": {
+          "Valid Claim": 0.0833,
+          "Invalid Claim": 0.7042,
+          "Manual Review": 0.2124
+        },
+        "confidence_difference": 0.0351,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-1231",
+        "user_id": "USR-7274",
+        "product_id": "PRD-53274",
+        "product_name": "Varta AVH-Z5200BT-Infotainment",
+        "product_category": "automotive",
+        "brand": "Varta",
+        "model_number": "AVH-Z5200BT-Infotainment",
+        "user_serial_number": "VAR946514",
+        "ocr_serial_number": "VAR946514",
+        "serial_match_status": "Exact",
+        "purchase_date": "2026-02-21",
+        "purchase_price": 1683.75,
+        "retailer": "Direct Brand Store",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2026-02-21",
+        "warranty_expiry_date": "2027-02-16",
+        "fault_occurrence_date": "2026-10-31",
+        "claim_submission_date": "2026-11-03",
+        "fault_category": "alternator_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": true,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 255,
+        "remaining_warranty_days": 105,
+        "reporting_delay_days": 3,
+        "actual_class": "Invalid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-1231 was initiated for Varta AVH-Z5200BT-Infotainment regarding Alternator Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-1231_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0265",
+      "user_id": "USR-4493",
+      "product_id": "PRD-19269",
+      "product_name": "Apple MacBook-Air-M2",
+      "product_category": "electronics",
+      "brand": "Apple",
+      "model_number": "MacBook-Air-M2",
+      "user_serial_number": "APP147609",
+      "ocr_serial_number": "APP147609",
+      "serial_match_status": "Exact",
+      "purchase_date": "2024-11-05",
+      "purchase_price": 263.39,
+      "retailer": "Target",
+      "warranty_duration_months": 24,
+      "warranty_start_date": "2024-11-05",
+      "warranty_expiry_date": "2026-10-26",
+      "fault_occurrence_date": "2025-11-10",
+      "claim_submission_date": "2025-11-22",
+      "fault_category": "overheating_shutdown",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 382,
+      "remaining_warranty_days": 338,
+      "reporting_delay_days": 12,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8047999739646912,
+      "probabilities": {
+        "Invalid Claim": 0.021900000050663948,
+        "Manual Review": 0.17329999804496765,
+        "Valid Claim": 0.8047999739646912
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.8974,
+      "probabilities": {
+        "Valid Claim": 0.0798,
+        "Invalid Claim": 0.8974,
+        "Manual Review": 0.0228
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0265",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8047999739646912,
+        "python_probabilities": {
+          "Invalid Claim": 0.021900000050663948,
+          "Manual Review": 0.17329999804496765,
+          "Valid Claim": 0.8047999739646912
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.8974,
+        "vision_probabilities": {
+          "Valid Claim": 0.0798,
+          "Invalid Claim": 0.8974,
+          "Manual Review": 0.0228
+        },
+        "confidence_difference": 0.0926,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Consumer Electronics",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Damage Type Eligible",
+          "No Unauthorized Repair History",
+          "Fault Reported Within Allowable Period",
+          "Serial Number Match Verified",
+          "Repair Frequency Normal"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)",
+          "Unlisted Fault Category: 'overheating_shutdown' requires verification."
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0265",
+        "user_id": "USR-4493",
+        "product_id": "PRD-19269",
+        "product_name": "Apple MacBook-Air-M2",
+        "product_category": "electronics",
+        "brand": "Apple",
+        "model_number": "MacBook-Air-M2",
+        "user_serial_number": "APP147609",
+        "ocr_serial_number": "APP147609",
+        "serial_match_status": "Exact",
+        "purchase_date": "2024-11-05",
+        "purchase_price": 263.39,
+        "retailer": "Target",
+        "warranty_duration_months": 24,
+        "warranty_start_date": "2024-11-05",
+        "warranty_expiry_date": "2026-10-26",
+        "fault_occurrence_date": "2025-11-10",
+        "claim_submission_date": "2025-11-22",
+        "fault_category": "overheating_shutdown",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 382,
+        "remaining_warranty_days": 338,
+        "reporting_delay_days": 12,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)",
+          "Unlisted Fault Category: 'overheating_shutdown' requires verification."
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-0265 was initiated for Apple MacBook-Air-M2 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0265_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0221",
+      "user_id": "USR-6582",
+      "product_id": "PRD-25696",
+      "product_name": "Bosch AVH-Z5200BT-Infotainment",
+      "product_category": "automotive",
+      "brand": "Bosch",
+      "model_number": "AVH-Z5200BT-Infotainment",
+      "user_serial_number": "BOS357989",
+      "ocr_serial_number": "BOS357989",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-04-16",
+      "purchase_price": 240.61,
+      "retailer": "Target",
+      "warranty_duration_months": 12,
+      "warranty_start_date": "2025-04-16",
+      "warranty_expiry_date": "2026-04-11",
+      "fault_occurrence_date": "2026-01-25",
+      "claim_submission_date": "2026-02-07",
+      "fault_category": "gps_module_failure",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 297,
+      "remaining_warranty_days": 63,
+      "reporting_delay_days": 13,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8033999800682068,
+      "probabilities": {
+        "Invalid Claim": 0.020400000736117363,
+        "Manual Review": 0.1761000007390976,
+        "Valid Claim": 0.8033999800682068
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.7699,
+      "probabilities": {
+        "Valid Claim": 0.1336,
+        "Invalid Claim": 0.7699,
+        "Manual Review": 0.0965
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0221",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8033999800682068,
+        "python_probabilities": {
+          "Invalid Claim": 0.020400000736117363,
+          "Manual Review": 0.1761000007390976,
+          "Valid Claim": 0.8033999800682068
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.7699,
+        "vision_probabilities": {
+          "Valid Claim": 0.1336,
+          "Invalid Claim": 0.7699,
+          "Manual Review": 0.0965
+        },
+        "confidence_difference": 0.0335,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Automotive Parts & Accessories",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0221",
+        "user_id": "USR-6582",
+        "product_id": "PRD-25696",
+        "product_name": "Bosch AVH-Z5200BT-Infotainment",
+        "product_category": "automotive",
+        "brand": "Bosch",
+        "model_number": "AVH-Z5200BT-Infotainment",
+        "user_serial_number": "BOS357989",
+        "ocr_serial_number": "BOS357989",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-04-16",
+        "purchase_price": 240.61,
+        "retailer": "Target",
+        "warranty_duration_months": 12,
+        "warranty_start_date": "2025-04-16",
+        "warranty_expiry_date": "2026-04-11",
+        "fault_occurrence_date": "2026-01-25",
+        "claim_submission_date": "2026-02-07",
+        "fault_category": "gps_module_failure",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 297,
+        "remaining_warranty_days": 63,
+        "reporting_delay_days": 13,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0221 was initiated for Bosch AVH-Z5200BT-Infotainment regarding Gps Module Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0221_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0808",
+      "user_id": "USR-2546",
+      "product_id": "PRD-62508",
+      "product_name": "Samsung FrostFree-500L",
+      "product_category": "appliances",
+      "brand": "Samsung",
+      "model_number": "FrostFree-500L",
+      "user_serial_number": "SAM273616",
+      "ocr_serial_number": "SAM273616",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-06-04",
+      "purchase_price": 1166.86,
+      "retailer": "Walmart",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-06-04",
+      "warranty_expiry_date": "2028-05-19",
+      "fault_occurrence_date": "2027-01-05",
+      "claim_submission_date": "2027-01-17",
+      "fault_category": "cooling_leakage",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": false,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": false,
+      "missing_documents_count": 1,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 592,
+      "remaining_warranty_days": 488,
+      "reporting_delay_days": 12,
+      "actual_class": "Manual Review"
+    },
+    "python": {
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8043000102043152,
+      "probabilities": {
+        "Invalid Claim": 0.021900000050663948,
+        "Manual Review": 0.1738000065088272,
+        "Valid Claim": 0.8043000102043152
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.687,
+      "probabilities": {
+        "Valid Claim": 0.1892,
+        "Invalid Claim": 0.687,
+        "Manual Review": 0.1238
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0808",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Valid Claim",
+        "python_top_confidence": 0.8043000102043152,
+        "python_probabilities": {
+          "Invalid Claim": 0.021900000050663948,
+          "Manual Review": 0.1738000065088272,
+          "Valid Claim": 0.8043000102043152
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.687,
+        "vision_probabilities": {
+          "Valid Claim": 0.1892,
+          "Invalid Claim": 0.687,
+          "Manual Review": 0.1238
+        },
+        "confidence_difference": 0.1173,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": true,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0808",
+        "user_id": "USR-2546",
+        "product_id": "PRD-62508",
+        "product_name": "Samsung FrostFree-500L",
+        "product_category": "appliances",
+        "brand": "Samsung",
+        "model_number": "FrostFree-500L",
+        "user_serial_number": "SAM273616",
+        "ocr_serial_number": "SAM273616",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-06-04",
+        "purchase_price": 1166.86,
+        "retailer": "Walmart",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-06-04",
+        "warranty_expiry_date": "2028-05-19",
+        "fault_occurrence_date": "2027-01-05",
+        "claim_submission_date": "2027-01-17",
+        "fault_category": "cooling_leakage",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": false,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": false,
+        "missing_documents_count": 1,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 592,
+        "remaining_warranty_days": 488,
+        "reporting_delay_days": 12,
+        "actual_class": "Manual Review"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "Missing mandatory documents: 1 document(s)"
+        ],
+        "required_actions": []
+      },
+      "narrative_summary": "Claim CLM-2026-0808 was initiated for Samsung FrostFree-500L regarding Cooling Leakage. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0808_v1.png"
+  },
+  {
+    "record": {
+      "claim_id": "CLM-2026-0929",
+      "user_id": "USR-1393",
+      "product_id": "PRD-39710",
+      "product_name": "Haier EcoSilence-Drive",
+      "product_category": "appliances",
+      "brand": "Haier",
+      "model_number": "EcoSilence-Drive",
+      "user_serial_number": "HAI470472",
+      "ocr_serial_number": "HAI470472",
+      "serial_match_status": "Exact",
+      "purchase_date": "2025-03-21",
+      "purchase_price": 317.86,
+      "retailer": "Target",
+      "warranty_duration_months": 36,
+      "warranty_start_date": "2025-03-21",
+      "warranty_expiry_date": "2028-03-05",
+      "fault_occurrence_date": "2026-07-06",
+      "claim_submission_date": "2026-07-20",
+      "fault_category": "control_board_malfunction",
+      "damage_type": "none",
+      "previous_repairs_count": 1,
+      "has_unauthorized_repairs": true,
+      "has_receipt": true,
+      "has_warranty_card": true,
+      "has_product_photo": true,
+      "has_serial_photo": true,
+      "missing_documents_count": 0,
+      "contradiction_flag": false,
+      "duplicate_claim_flag": false,
+      "product_age_days": 486,
+      "remaining_warranty_days": 594,
+      "reporting_delay_days": 14,
+      "actual_class": "Invalid Claim"
+    },
+    "python": {
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.6363000273704529,
+      "probabilities": {
+        "Invalid Claim": 0.18469999730587006,
+        "Manual Review": 0.6363000273704529,
+        "Valid Claim": 0.17900000512599945
+      }
+    },
+    "gtm": {
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.4659,
+      "probabilities": {
+        "Valid Claim": 0.3881,
+        "Invalid Claim": 0.4659,
+        "Manual Review": 0.146
+      }
+    },
+    "dossier": {
+      "claim_id": "CLM-2026-0929",
+      "final_decision": "Manual Review Required",
+      "comparison": {
+        "classes_match": false,
+        "python_predicted_class": "Manual Review",
+        "python_top_confidence": 0.6363000273704529,
+        "python_probabilities": {
+          "Invalid Claim": 0.18469999730587006,
+          "Manual Review": 0.6363000273704529,
+          "Valid Claim": 0.17900000512599945
+        },
+        "vision_predicted_class": "Invalid Claim",
+        "vision_top_confidence": 0.4659,
+        "vision_probabilities": {
+          "Valid Claim": 0.3881,
+          "Invalid Claim": 0.4659,
+          "Manual Review": 0.146
+        },
+        "confidence_difference": 0.1704,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+      },
+      "rule_evaluation": {
+        "category_policy": "Home Appliances",
+        "hard_fail": false,
+        "manual_review_required": false,
+        "passed_rules": [
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Mandatory Documents Complete",
+          "Fault Category Covered"
+        ],
+        "failed_rules": [],
+        "warnings": [],
+        "manual_review_triggers": [],
+        "missing_documents": []
+      },
+      "contradictions": {
+        "has_contradictions": false,
+        "contradiction_count": 0,
+        "contradictions": []
+      },
+      "duplicates": {
+        "is_duplicate": false,
+        "duplicate_reasons": []
+      },
+      "claim_dict": {
+        "claim_id": "CLM-2026-0929",
+        "user_id": "USR-1393",
+        "product_id": "PRD-39710",
+        "product_name": "Haier EcoSilence-Drive",
+        "product_category": "appliances",
+        "brand": "Haier",
+        "model_number": "EcoSilence-Drive",
+        "user_serial_number": "HAI470472",
+        "ocr_serial_number": "HAI470472",
+        "serial_match_status": "Exact",
+        "purchase_date": "2025-03-21",
+        "purchase_price": 317.86,
+        "retailer": "Target",
+        "warranty_duration_months": 36,
+        "warranty_start_date": "2025-03-21",
+        "warranty_expiry_date": "2028-03-05",
+        "fault_occurrence_date": "2026-07-06",
+        "claim_submission_date": "2026-07-20",
+        "fault_category": "control_board_malfunction",
+        "damage_type": "none",
+        "previous_repairs_count": 1,
+        "has_unauthorized_repairs": true,
+        "has_receipt": true,
+        "has_warranty_card": true,
+        "has_product_photo": true,
+        "has_serial_photo": true,
+        "missing_documents_count": 0,
+        "contradiction_flag": false,
+        "duplicate_claim_flag": false,
+        "product_age_days": 486,
+        "remaining_warranty_days": 594,
+        "reporting_delay_days": 14,
+        "actual_class": "Invalid Claim"
+      },
+      "explanation": {
+        "supporting_factors": [],
+        "opposing_factors": [
+          "AI Disagreement / Uncertainty (Uncertain Result): One or both models produced low-confidence predictions (< 0.6)."
+        ],
+        "required_actions": [
+          "Manual reviewer audit required due to model confidence discrepancy."
+        ]
+      },
+      "narrative_summary": "Claim CLM-2026-0929 was initiated for Haier EcoSilence-Drive regarding Control Board Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
+    },
+    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-0929_v1.png"
+  }
+]

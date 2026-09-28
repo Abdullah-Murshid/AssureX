@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+.env
+.demo_secret
+# database/*.db
+!database/assurex.db
+uploads/*
+!uploads/README.md

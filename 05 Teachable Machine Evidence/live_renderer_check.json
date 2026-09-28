@@ -1,0 +1,332 @@
+[
+  {
+    "claim_id": "CLM-2026-0137",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.8435,
+    "probabilities": {
+      "Valid Claim": 0.131,
+      "Invalid Claim": 0.0255,
+      "Manual Review": 0.8435
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0537",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6701,
+    "probabilities": {
+      "Valid Claim": 0.2953,
+      "Invalid Claim": 0.0346,
+      "Manual Review": 0.6701
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0829",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6621,
+    "probabilities": {
+      "Valid Claim": 0.296,
+      "Invalid Claim": 0.042,
+      "Manual Review": 0.6621
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1111",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.8386,
+    "probabilities": {
+      "Valid Claim": 0.1468,
+      "Invalid Claim": 0.0146,
+      "Manual Review": 0.8386
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1309",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.7225,
+    "probabilities": {
+      "Valid Claim": 0.2464,
+      "Invalid Claim": 0.0311,
+      "Manual Review": 0.7225
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1409",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.855,
+    "probabilities": {
+      "Valid Claim": 0.1294,
+      "Invalid Claim": 0.0156,
+      "Manual Review": 0.855
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0541",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9354,
+    "probabilities": {
+      "Valid Claim": 0.0531,
+      "Invalid Claim": 0.0116,
+      "Manual Review": 0.9354
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0790",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9032,
+    "probabilities": {
+      "Valid Claim": 0.0832,
+      "Invalid Claim": 0.0137,
+      "Manual Review": 0.9032
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0152",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6922,
+    "probabilities": {
+      "Valid Claim": 0.2828,
+      "Invalid Claim": 0.025,
+      "Manual Review": 0.6922
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0728",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.7696,
+    "probabilities": {
+      "Valid Claim": 0.2116,
+      "Invalid Claim": 0.0188,
+      "Manual Review": 0.7696
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0575",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.8275,
+    "probabilities": {
+      "Valid Claim": 0.154,
+      "Invalid Claim": 0.0185,
+      "Manual Review": 0.8275
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0226",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9348,
+    "probabilities": {
+      "Valid Claim": 0.0545,
+      "Invalid Claim": 0.0107,
+      "Manual Review": 0.9348
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1262",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9081,
+    "probabilities": {
+      "Valid Claim": 0.0766,
+      "Invalid Claim": 0.0152,
+      "Manual Review": 0.9081
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0738",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9254,
+    "probabilities": {
+      "Valid Claim": 0.0626,
+      "Invalid Claim": 0.0119,
+      "Manual Review": 0.9254
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0529",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.8839,
+    "probabilities": {
+      "Valid Claim": 0.0992,
+      "Invalid Claim": 0.017,
+      "Manual Review": 0.8839
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0820",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.7709,
+    "probabilities": {
+      "Valid Claim": 0.2049,
+      "Invalid Claim": 0.0241,
+      "Manual Review": 0.7709
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0225",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9053,
+    "probabilities": {
+      "Valid Claim": 0.0796,
+      "Invalid Claim": 0.0152,
+      "Manual Review": 0.9053
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0163",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9189,
+    "probabilities": {
+      "Valid Claim": 0.0709,
+      "Invalid Claim": 0.0102,
+      "Manual Review": 0.9189
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0197",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.7943,
+    "probabilities": {
+      "Valid Claim": 0.1418,
+      "Invalid Claim": 0.0639,
+      "Manual Review": 0.7943
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0255",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.8183,
+    "probabilities": {
+      "Valid Claim": 0.1591,
+      "Invalid Claim": 0.0226,
+      "Manual Review": 0.8183
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1281",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9261,
+    "probabilities": {
+      "Valid Claim": 0.0621,
+      "Invalid Claim": 0.0118,
+      "Manual Review": 0.9261
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0504",
+    "actual_class": "Valid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9148,
+    "probabilities": {
+      "Valid Claim": 0.0718,
+      "Invalid Claim": 0.0134,
+      "Manual Review": 0.9148
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0834",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.7277,
+    "probabilities": {
+      "Valid Claim": 0.2541,
+      "Invalid Claim": 0.0182,
+      "Manual Review": 0.7277
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0103",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.9505,
+    "probabilities": {
+      "Valid Claim": 0.0401,
+      "Invalid Claim": 0.0094,
+      "Manual Review": 0.9505
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0427",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6947,
+    "probabilities": {
+      "Valid Claim": 0.28,
+      "Invalid Claim": 0.0253,
+      "Manual Review": 0.6947
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1035",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6945,
+    "probabilities": {
+      "Valid Claim": 0.2764,
+      "Invalid Claim": 0.029,
+      "Manual Review": 0.6945
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1386",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6089,
+    "probabilities": {
+      "Valid Claim": 0.3506,
+      "Invalid Claim": 0.0406,
+      "Manual Review": 0.6089
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0932",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.8193,
+    "probabilities": {
+      "Valid Claim": 0.1624,
+      "Invalid Claim": 0.0184,
+      "Manual Review": 0.8193
+    }
+  },
+  {
+    "claim_id": "CLM-2026-0298",
+    "actual_class": "Manual Review",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.6918,
+    "probabilities": {
+      "Valid Claim": 0.2893,
+      "Invalid Claim": 0.0189,
+      "Manual Review": 0.6918
+    }
+  },
+  {
+    "claim_id": "CLM-2026-1362",
+    "actual_class": "Invalid Claim",
+    "predicted_class": "Manual Review",
+    "top_confidence": 0.7964,
+    "probabilities": {
+      "Valid Claim": 0.172,
+      "Invalid Claim": 0.0316,
+      "Manual Review": 0.7964
+    }
+  }
+]

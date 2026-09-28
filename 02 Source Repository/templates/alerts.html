@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Warranty Alerts - AssureX{% endblock %}
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+    <div>
+        <h1 style="font-size: 1.5rem; font-weight: 700;">Warranty alerts</h1>
+        <p style="color: var(--text-sub); margin-top: 0.25rem; font-size: 0.9rem;">
+            {% if active_tab == 'expired' %}
+            Historical expired warranty archive — view and review past warranty coverages.
+            {% elif active_tab == 'grace' %}
+            Products in active grace period (grace coverage before permanent expiration).
+            {% elif active_tab == 'all' %}
+            Complete warranty alert directory across active, grace, and expired statuses.
+            {% else %}
+            Active upcoming alerts: products inside the final 30 days of warranty coverage.
+            {% endif %}
+        </p>
+    </div>
+</div>
+
+<!-- Professional Filter Tab Bar -->
+<div class="alerts-tab-bar" style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+    <a href="/alerts?tab=expiring" class="btn {% if active_tab == 'expiring' %}btn-primary{% else %}btn-secondary{% endif %}" style="display: flex; align-items: center; gap: 0.5rem; border-radius: 20px; font-size: 0.85rem; padding: 0.4rem 1rem;">
+        <svg class="icon" aria-hidden="true" style="width: 14px; height: 14px;"><use href="/static/icons.svg#fa-hourglass-half"></use></svg>
+        <span>Expiring Soon</span>
+        <span class="badge" style="background: rgba(255,255,255,0.22); padding: 1px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 700;">{{ summary.expiring_count|default(0) }}</span>
+    </a>
+    <a href="/alerts?tab=grace" class="btn {% if active_tab == 'grace' %}btn-primary{% else %}btn-secondary{% endif %}" style="display: flex; align-items: center; gap: 0.5rem; border-radius: 20px; font-size: 0.85rem; padding: 0.4rem 1rem;">
+        <svg class="icon" aria-hidden="true" style="width: 14px; height: 14px;"><use href="/static/icons.svg#fa-clock-rotate-left"></use></svg>
+        <span>Grace Period</span>
+        <span class="badge" style="background: rgba(255,255,255,0.22); padding: 1px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 700;">{{ summary.grace_count|default(0) }}</span>
+    </a>
+    <a href="/alerts?tab=expired" class="btn {% if active_tab == 'expired' %}btn-primary{% else %}btn-secondary{% endif %}" style="display: flex; align-items: center; gap: 0.5rem; border-radius: 20px; font-size: 0.85rem; padding: 0.4rem 1rem;">
+        <svg class="icon" aria-hidden="true" style="width: 14px; height: 14px;"><use href="/static/icons.svg#fa-box-archive"></use></svg>
+        <span>Expired Archive</span>
+        <span class="badge" style="background: rgba(255,255,255,0.22); padding: 1px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 700;">{{ summary.expired_count|default(0) }}</span>
+    </a>
+    <a href="/alerts?tab=all" class="btn {% if active_tab == 'all' %}btn-primary{% else %}btn-secondary{% endif %}" style="display: flex; align-items: center; gap: 0.5rem; border-radius: 20px; font-size: 0.85rem; padding: 0.4rem 1rem;">
+        <span>All Alerts</span>
+        <span class="badge" style="background: rgba(255,255,255,0.22); padding: 1px 7px; border-radius: 10px; font-size: 0.75rem; font-weight: 700;">{{ summary.total_all|default(0) }}</span>
+    </a>
+</div>
+
+{% if pending_actions %}
+<table class="data-table">
+    <thead>
+        <tr><th>Product</th><th>Status</th><th>Expiry</th><th>Remaining</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        {% for row in pending_actions %}
+        <tr>
+            <td>
+                <strong>{{ row.product.product_id }}</strong> · {{ row.product.product_name }}
+                <div style="font-size: 0.775rem; color: var(--text-sub);">SN: {{ row.product.serial_number }} · {{ row.product.brand }}</div>
+            </td>
+            <td>
+                <span class="status-badge {% if row.warranty_status == 'Expired' %}status-invalid{% elif row.warranty_status == 'Grace Period Active' %}status-review{% else %}status-valid{% endif %}">
+                    {{ row.warranty_status }}
+                </span>
+            </td>
+            <td>{{ row.warranty_expiry_date }}</td>
+            <td>
+                {% if row.remaining_warranty_days > 0 %}
+                <span style="color: var(--primary); font-weight: 600;">{{ row.remaining_warranty_days }} days left</span>
+                {% elif row.remaining_warranty_days == 0 %}
+                <span style="color: var(--warning, #eab308); font-weight: 600;">Expires today</span>
+                {% else %}
+                <span style="color: var(--danger, #ef4444);">Expired {{ (row.remaining_warranty_days)|abs }}d ago</span>
+                {% endif %}
+            </td>
+            <td>
+                <div style="display: flex; gap: 0.4rem; align-items: center;">
+                    <a class="btn btn-primary" style="padding: 0.3rem 0.75rem; font-size: 0.8rem;" href="/claims/new?product_id={{ row.product.product_id }}">File claim</a>
+                    <form method="POST" action="/alerts/dismiss/{{ row.product.product_id }}?tab={{ active_tab }}" style="display:inline; margin:0;">
+                        <button type="submit" class="btn btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.8rem;" title="Dismiss alert">Dismiss</button>
+                    </form>
+                    <a class="link" style="font-size: 0.85rem;" href="/warranties/{{ row.product.product_id }}">Open warranty</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include "components/pagination.html" %}
+{% else %}
+<div class="panel">
+    <div class="panel-body" style="color:var(--text-sub); text-align: center; padding: 2.5rem 1rem;">
+        <svg class="icon" aria-hidden="true" style="width: 36px; height: 36px; opacity: 0.4; margin-bottom: 0.75rem;"><use href="/static/icons.svg#fa-circle-check"></use></svg>
+        <div style="font-size: 1rem; font-weight: 600; color: var(--text);">No items in {{ active_tab.replace('_', ' ')|title }}</div>
+        <div style="font-size: 0.85rem; margin-top: 0.35rem;">All warranties in this category have been handled or are up to date.</div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

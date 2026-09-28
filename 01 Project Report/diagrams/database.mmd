@@ -1,0 +1,12 @@
+flowchart TD
+  0["User"]
+  1["Product"]
+  2["Claim"]
+  3["Repair"]
+  4["Document"]
+  5["AuditLog"]
+  0 -->|"owns"| 1
+  1 -->|"has claims"| 2
+  1 -->|"has repairs"| 3
+  2 -->|"evidence"| 4
+  2 -->|"actions"| 5

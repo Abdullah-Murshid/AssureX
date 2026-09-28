@@ -1,0 +1,13 @@
+sequenceDiagram
+ participant Browser
+ participant Web
+ participant Models
+ participant Fusion
+ participant DB
+ Browser->>Web: Submit authenticated facts
+ Web->>Models: Features and independent card
+ Models-->>Web: Three-class probabilities
+ Web->>Fusion: Predictions rules evidence
+ Fusion-->>Web: Dossier
+ Web->>DB: Store original results
+ Web-->>Browser: Claim view

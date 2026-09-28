@@ -1,0 +1,221 @@
+[
+  {
+    "test": "Both real models ready",
+    "passed": true,
+    "details": {
+      "status": "ok",
+      "models_ready": true,
+      "python_model_ready": true,
+      "gtm_model_ready": true
+    }
+  },
+  {
+    "test": "customer login",
+    "passed": true,
+    "details": 303
+  },
+  {
+    "test": "customer /",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /profile",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /products",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /warranties",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /alerts",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /documents",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /repairs",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "customer /claims/new",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "service login",
+    "passed": true,
+    "details": 303
+  },
+  {
+    "test": "service /",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "service /products",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "service /repairs",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "reviewer login",
+    "passed": true,
+    "details": 303
+  },
+  {
+    "test": "reviewer /",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "reviewer /reviewer/queue",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "admin login",
+    "passed": true,
+    "details": 303
+  },
+  {
+    "test": "admin /",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "admin /admin/analytics",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "admin /admin/policies",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "admin /audit-logs",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "admin /admin/export-csv",
+    "passed": true,
+    "details": 200
+  },
+  {
+    "test": "/claims/view/DEMO-001",
+    "passed": true,
+    "details": {
+      "status": 200,
+      "bytes": 20454
+    }
+  },
+  {
+    "test": "/claims/DEMO-001/report/pdf",
+    "passed": true,
+    "details": {
+      "status": 200,
+      "bytes": 23298
+    }
+  },
+  {
+    "test": "PDF signature",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "/claims/DEMO-001/report/print",
+    "passed": true,
+    "details": {
+      "status": 200,
+      "bytes": 21648
+    }
+  },
+  {
+    "test": "/claims/DEMO-001/report/download",
+    "passed": true,
+    "details": {
+      "status": 200,
+      "bytes": 23298
+    }
+  },
+  {
+    "test": "/uploads/DEMO-001_summary_card.png",
+    "passed": true,
+    "details": {
+      "status": 200,
+      "bytes": 58805
+    }
+  },
+  {
+    "test": "Customer denied admin",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Live claim submission",
+    "passed": true,
+    "details": {
+      "status": 303,
+      "location": "/claims/view/CLM-2026-0013",
+      "seconds": 3.330362499997136
+    }
+  },
+  {
+    "test": "Missing evidence review",
+    "passed": true,
+    "details": "Manual Review Required"
+  },
+  {
+    "test": "Real probabilities persisted",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Blank reviewer note rejected",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Invalid reviewer status rejected",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Review workflow",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Closed case removed from queue",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Original AI result preserved",
+    "passed": true,
+    "details": null
+  },
+  {
+    "test": "Evidence protected when logged out",
+    "passed": true,
+    "details": null
+  }
+]

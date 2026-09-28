@@ -1,0 +1,13 @@
+flowchart TD
+  0["Browser and roles"]
+  1["FastAPI web routes"]
+  2["SQLite and evidence files"]
+  3["Document extraction and features"]
+  4["Python model and GTM card model"]
+  5["Comparison rules and fusion"]
+  0 --> 1
+  1 --> 2
+  1 --> 3
+  3 --> 4
+  4 --> 5
+  5 -->|"store dossier"| 2

@@ -1,0 +1,51 @@
+﻿SRS requirement,Requirement,Status,Evidence and remaining work
+i,"Registration, authentication, role access",Partial,"Login and role tests pass; salted password hashing and owned file access fixed. Staff provisioning, login throttling, and a full security review remain."
+ii,Profile management,Partial,Name/email/password editing exists. Contact phone/address fields are absent.
+iii,Product registration,Implemented; further UI checks needed,Unique product IDs and requested core fields exist; invalid dates and non-finite/negative amounts are now rejected.
+iv,Warranty record management,Missing/partial,"Only product duration and category policies are stored. No per-product extended-warranty contract, provider, coverage/exclusions, or service-center record."
+v,Receipt/invoice upload and secure storage,Partial,PDF/JPG/JPEG/PNG accepted. Public uploads fixed with authenticated owner/staff checks; file-content validation and deployment storage controls remain.
+vi,Receipt scanning and extraction,Partial,"Parser extracts date, invoice, amount and serial. Product/model/retailer/warranty extraction is missing; scanned-image OCR needs genuine end-to-end verification."
+vii,Review/correct extracted data,Partial,Verification form/audit exists; verified receipt values are now read before evaluation. Newly uploaded evidence can still be submitted before explicit verification.
+viii,Warranty tracking,Partial,Active/expiring/grace/expired status exists. Actual extended coverage is unsupported; month arithmetic uses fixed 30-day periods and needs a documented policy decision.
+ix,Expiry alerts and configurable lead time,Partial,In-app expiry alerts use warranty_alert_days in YAML. No administrator settings route to change this value.
+x,Claim registration and linked records,Partial,Unique claim IDs and user/product/doc links exist. A distinct warranty record/link is absent; IDs are not concurrency-safe.
+xi,Complete claim information,Partial,Fault/date/damage/repair inputs exist. Previous replacements and extended warranty information are absent.
+xii,"Photographs, videos and diagnostic evidence",Partial,"Vault now exposes fault video, diagnostic/repair report and category-specific evidence types. Full video preview/upload integration testing remains."
+xiii,Repair histories,Implemented; verification needed,"Repair date, center, parts, cost, outcome and authorization fields/routes exist; integration coverage is limited."
+xiv,"Document organization, replace/remove",Partial,Scoped viewing/downloading exists and access tests pass. Replace/remove workflows are absent.
+xv,Validation,Partial,"Some required fields, types and size checks exist; date/amount validation improved. CSV, repair-date, empty-file, content-signature and all boundary validation need completion."
+xvi,Preprocessing and derived fields,Partial,Scaling/encoding and derived features exist. Missing evidence no longer defaults to present. Invalid-date defaults and training/live feature consistency still require a full contract.
+xvii,Common structured/image dataset,Partial,"Original CSV and summary_cards agree: 1500 records, balanced 70/15/15, 2100/225/225 cards. v2_summary_cards has 2053 ID/split/label mismatches against these CSVs; matching v2 CSVs are absent."
+xviii,Trained Python classifier and algorithm comparison,Partial,"Runnable model achieves 206/225 (91.56%) on supplied test CSV; v2 evidence compares RF/LogisticRegression/XGBoost. Its original v2 training/test corpus is not supplied, so provenance needs reconciliation."
+xix,Three-class Python confidence,Verified,Real predict_proba output and three class probabilities are available and displayed; per-record results saved in this audit.
+xx,Summary card without prediction/label leakage,Partial,Renderer uses objective fields and excludes predictions/confidence/final class. Clipping and consistency with the GTM training renderer need visual validation.
+xxi,Independent Google Teachable Machine classification,Blocked,H5 loads and produces three-class predictions under isolated TF 2.15.1/Python 3.11. Live Python 3.14 environment lacks TF; model scored 97/225 (43.11%) on supplied original test cards. Training provenance/evidence remains unverified.
+xxii,Compare predicted classes,Verified logic,Comparator and dossier compare both model classes. Model-unavailable state is now explicit.
+xxiii,Absolute top-confidence difference,Verified logic,"Uses abs(python_top - vision_top); unavailable inference now produces null, not fabricated comparison."
+xxiv,Five configurable consistency categories,Verified logic,"Strong/Acceptable/Weak Match, Model Disagreement and Uncertain Result; thresholds read from YAML, with tests."
+xxv,Independent warranty rules,Partial,"Expiry, coverage, reporting, exclusions, serial, repairs and documents exist. Extended warranty/replacement semantics are missing; some category exclusions are not fully dispatched."
+xxvi,Configurable category policies,Partial,Three JSON policies exist and admin edits reload them. Complete warranty-start/replacement/repair-condition fields and validated runtime enforcement remain.
+xxvii,Serial verification across evidence sources,Partial,Receipt serial compared; absent OCR is no longer assumed an exact match. Cross-checking every warranty/photo/repair document remains incomplete.
+xxviii,Contradiction detection,Partial,"Date order and serial conflicts exist; explicit claim-before-purchase, repair-before-purchase and model-number checks added. All evidence sources still need extraction/wiring."
+xxix,Missing mandatory evidence,Improved; partial integration,Missing flags now default to false; vehicle registration and installation certificate are checked and uploadable. Full arbitrary policy-document mapping needs completion.
+xxx,Duplicate claims,Partial,Receipt hash and serial/invoice detection exist; stored dossier details now feed comparisons. Claimant/fault similarity and all documents per claim are not fully compared.
+xxxi,Duplicate document hashes,Partial,SHA-256 vault matches are shown. Every type of duplicate evidence still needs reliable claim-level routing and tests.
+xxxii,AI-generated readable claim summary,Missing,"Dossier and factors exist, but no complete narrative summary of product, coverage, fault, repairs, evidence, issues and status."
+xxxiii,Pre-submission assistance,Partial,Pre-check endpoint and missing-document guidance exist. Deadline and all contradiction/corrective-action guidance is incomplete.
+xxxiv,Final fusion decision,Verified fix; model quality blocked,"Rule failures/warnings, duplicates, contradictions, weak/disagreeing/uncertain/unavailable models now force manual review. Agreed valid/invalid results require no review triggers."
+xxxv,Decision explanation,Improved,"Supporting rules, adverse factors and missing-evidence actions now accumulated together. Full additional-evidence guidance still depends on completed rules."
+xxxvi,Manual review queue/actions,Verified fix,Queue uses current Manual Review status; approved/rejected/information-requested claims leave queue. Reviewer actions and nonblank reasons validated.
+xxxvii,"Comments, override and original AI audit",Verified fix,AI dossier/final recommendation retained; before/after status and reasons audited; regression tested.
+xxxviii,Claim lifecycle/status tracking,Partial,"Evaluation, review, approval/rejection and information-request status exist. Draft save/resume, information resubmission and Closed transition are absent."
+xxxix,Notifications for all lifecycle events,Partial,Warranty alerts exist; persistent claim submission/status/information-request/review-completion notifications are absent.
+xl,User dashboard,Partial,"Products, warranty cards, claims and expiry actions exist; complete pending claim action and receipt counts are not implemented."
+xli,Administrator dashboard,Partial,Outcome/disagreement totals exist. Complete pending/duplicate/confidence/trend metrics not all wired to the admin dashboard.
+xlii,All required search/filter dimensions,Partial,"Claim/product IDs, category, serial and status partly supported. Warranty status, risk, confidence range, reviewer and date range not comprehensively connected."
+xliii,Analytics/reporting,Partial,"Outcome totals available; fault frequencies, rejected reasons, category/expiry/repair patterns and model-performance reporting incomplete."
+xliv,Downloadable full claim report,Verified expansion,"Report now includes evidence hashes, confidence difference and full stored dossier (model probabilities, rules, contradictions and actions), plus reviewer comments."
+xlv,Selected claim/product/warranty/analytics export,Partial,Claims CSV exists; selected filtering and product/warranty/analytics exports remain missing.
+xlvi,Database storage,Partial,"SQLite stores users/products/documents/repairs/claims/dossiers/audit. Explicit warranty, notification and full lifecycle data models missing."
+xlvii,Audit actions,Partial,"Account/product/upload/OCR/inference/status/review actions exist. Failed logins, complete monitoring, all document changes and append-only guarantees incomplete."
+xlviii,Separate immutable model versions,Verified expansion,New dossiers include separate SHA-256 artifact identifiers for Python/GTM in comparison. Legacy claims retain their original records; unavailable GTM has no invented version.
+xlix,Understandable error handling,Partial,Global and claim-submission errors no longer expose exception text. Model absence is explicit; other route errors/CSV handling need a comprehensive review.
+l,Monitoring and administrator anomaly alerts,Partial,Duplicate/disagreement/manual-review helpers exist. Failed uploads/logins/model failures/activity monitoring and a complete administrator alert workflow are absent.

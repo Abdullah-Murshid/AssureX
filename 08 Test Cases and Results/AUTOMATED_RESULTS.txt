@@ -1,0 +1,6 @@
+..........................................                               [100%]
+42 passed in 55.06s
+
+End-to-end missing-model submission / protected card check:
+.                                                                        [100%]
+1 passed in 16.85s

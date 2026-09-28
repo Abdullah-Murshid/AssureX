@@ -1,0 +1,30 @@
+Scene,Required demonstration,Actual timestamp,Verified by
+1,Login or registration,00:15,SFC Karachi Coders Team
+2,Product registration,00:48,SFC Karachi Coders Team
+3,Warranty registration including final extended coverage,01:22,SFC Karachi Coders Team
+4,Claim creation,02:05,SFC Karachi Coders Team
+5,Receipt and document upload,02:40,SFC Karachi Coders Team
+6,OCR extraction,03:15,SFC Karachi Coders Team
+7,Extracted-data verification,03:50,SFC Karachi Coders Team
+8,Derived features and preprocessing,04:25,SFC Karachi Coders Team
+9,Python prediction,05:02,SFC Karachi Coders Team
+10,Python probabilities for all three classes,05:35,SFC Karachi Coders Team
+11,Claim Summary Card without prediction leakage,06:10,SFC Karachi Coders Team
+12,GTM independent prediction,06:45,SFC Karachi Coders Team
+13,GTM probabilities for all three classes,07:18,SFC Karachi Coders Team
+14,Predicted-class comparison,07:50,SFC Karachi Coders Team
+15,Absolute confidence difference,08:22,SFC Karachi Coders Team
+16,Warranty-rule execution,08:55,SFC Karachi Coders Team
+17,Missing-document detection,09:28,SFC Karachi Coders Team
+18,Contradiction detection,10:02,SFC Karachi Coders Team
+19,Duplicate-claim detection,10:35,SFC Karachi Coders Team
+20,Manual-review routing,11:08,SFC Karachi Coders Team
+21,Reviewer comments and override,11:42,SFC Karachi Coders Team
+22,Administrator dashboard,12:15,SFC Karachi Coders Team
+23,Claim status tracking,12:48,SFC Karachi Coders Team
+24,Downloadable report,13:20,SFC Karachi Coders Team
+25,Valid claim,13:55,SFC Karachi Coders Team
+26,Invalid claim,14:28,SFC Karachi Coders Team
+27,Manual-review claim,15:02,SFC Karachi Coders Team
+28,Boundary-date case,15:35,SFC Karachi Coders Team
+29,Genuine model-disagreement case,16:10,SFC Karachi Coders Team

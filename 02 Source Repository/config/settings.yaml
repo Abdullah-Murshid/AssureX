@@ -1,0 +1,9 @@
+model_version: v2
+uncertainty_threshold: 0.6
+strong_match_threshold: 0.1
+acceptable_match_threshold: 0.25
+pdf_render_dpi: 200
+model_ready_timeout_seconds: 15
+warranty_alert_days: 30
+disagreement_alert_rate: 0.2
+manual_review_spike_rate: 0.4

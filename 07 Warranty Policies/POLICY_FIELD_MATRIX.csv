@@ -1,0 +1,4 @@
+file,product_category,coverage_duration_months,warranty_start_conditions,covered_faults,exclusions,reporting_deadline_days,repair_conditions,authorized_service_center_required,replacement_conditions,grace_period_days,mandatory_documents,hard_fail_rules,warning_rules,manual_review_rules
+appliances_policy.json,Present,Present,Team definition needed,Present,Present,Present,Team definition needed,Present,Team definition needed,Present,Present,Present,Present,Present
+automotive_policy.json,Present,Present,Team definition needed,Present,Present,Present,Team definition needed,Present,Team definition needed,Present,Present,Present,Present,Present
+electronics_policy.json,Present,Present,Team definition needed,Present,Present,Present,Team definition needed,Present,Team definition needed,Present,Present,Present,Present,Present

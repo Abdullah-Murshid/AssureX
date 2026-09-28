@@ -1,0 +1,58 @@
+{% if pagination and pagination.total > 0 %}
+<div class="pagination-bar" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; padding: 0.75rem 1.25rem; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px;">
+    <div style="font-size: 0.85rem; color: var(--text-sub);">
+        Showing <strong>{{ pagination.start_idx }}</strong>–<strong>{{ pagination.end_idx }}</strong> of <strong>{{ pagination.total }}</strong> items
+    </div>
+    
+    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <!-- Page size selector -->
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-sub);">
+            <label for="per_page_select_{{ pagination_id|default('default') }}">Per page:</label>
+            <select id="per_page_select_{{ pagination_id|default('default') }}" class="form-select per-page-dropdown" style="padding: 0.25rem 0.6rem; min-height: 32px; font-size: 0.85rem; width: auto;" onchange="changePerPage(this.value)">
+                {% for sz in [10, 15, 20, 25, 50] %}
+                <option value="{{ sz }}" {% if pagination.per_page == sz %}selected{% endif %}>{{ sz }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Page buttons -->
+        <div style="display: flex; gap: 0.35rem; align-items: center;">
+            {% if pagination.has_prev %}
+            <a class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.825rem;" href="javascript:goToPage({{ pagination.prev_page }})">« Prev</a>
+            {% else %}
+            <span class="btn btn-secondary disabled" style="padding: 0.25rem 0.65rem; font-size: 0.825rem; opacity: 0.4; cursor: not-allowed;">« Prev</span>
+            {% endif %}
+
+            {% for p in pagination.page_range %}
+            <a class="btn {% if p == pagination.page %}btn-primary{% else %}btn-secondary{% endif %}" 
+               style="padding: 0.25rem 0.65rem; font-size: 0.825rem; min-width: 32px; text-align: center;" 
+               href="javascript:goToPage({{ p }})">
+               {{ p }}
+            </a>
+            {% endfor %}
+
+            {% if pagination.has_next %}
+            <a class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.825rem;" href="javascript:goToPage({{ pagination.next_page }})">Next »</a>
+            {% else %}
+            <span class="btn btn-secondary disabled" style="padding: 0.25rem 0.65rem; font-size: 0.825rem; opacity: 0.4; cursor: not-allowed;">Next »</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+if (typeof changePerPage !== 'function') {
+    function changePerPage(perPage) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('per_page', perPage);
+        url.searchParams.set('page', '1');
+        window.location.href = url.toString();
+    }
+    function goToPage(page) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('page', page);
+        window.location.href = url.toString();
+    }
+}
+</script>
+{% endif %}

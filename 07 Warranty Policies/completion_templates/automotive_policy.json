@@ -1,0 +1,61 @@
+{
+  "product_category": "automotive",
+  "category_name": "Automotive Parts & Accessories",
+  "coverage_duration_months": 12,
+  "extended_coverage_months": 12,
+  "grace_period_days": 10,
+  "reporting_deadline_days": 14,
+  "covered_faults": [
+    "battery_dead_cell",
+    "alternator_failure",
+    "starter_motor_defect",
+    "gps_module_failure",
+    "infotainment_touchscreen_freeze",
+    "sensor_malfunction"
+  ],
+  "exclusions": [
+    "accident_collision_damage",
+    "racing_track_misuse",
+    "improper_wiring_modifications",
+    "water_submersion",
+    "wear_and_tear_brakepads"
+  ],
+  "authorized_service_center_required": true,
+  "mandatory_documents": [
+    "purchase_receipt",
+    "warranty_card",
+    "product_image",
+    "vehicle_registration"
+  ],
+  "hard_fail_rules": [
+    {
+      "rule_id": "AU_FAIL_01",
+      "rule_type": "warranty_expiry",
+      "name": "Warranty Expiry Hard Fail",
+      "description": "Claim exceeds maximum coverage period.",
+      "condition": "claim_age_days > (warranty_duration_days + grace_period_days)"
+    }
+  ],
+  "warning_rules": [
+    {
+      "rule_id": "AU_WARN_01",
+      "rule_type": "serial_mismatch",
+      "name": "Vehicle VIN / Serial Mismatch",
+      "description": "VIN recorded on receipt does not match vehicle registration document.",
+      "condition": "vin_match == False"
+    }
+  ],
+  "manual_review_rules": [
+    {
+      "rule_id": "AU_REV_01",
+      "rule_type": "custom_wiring",
+      "name": "Custom Wiring Alert",
+      "description": "Diagnostic photos indicate third-party wiring modifications.",
+      "condition": "custom_wiring_flag == True"
+    }
+  ],
+  "warranty_start_conditions": "[[POLICY_AUTOMOTIVE_WARRANTY_START_CONDITIONS]]",
+  "repair_conditions": "[[POLICY_AUTOMOTIVE_REPAIR_CONDITIONS]]",
+  "replacement_conditions": "[[POLICY_AUTOMOTIVE_REPLACEMENT_CONDITIONS]]",
+  "_submission_note": "Review template only. Not an approved or automatically enforced runtime policy."
+}

@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Import CSV Claims - AssureX Claim Engine{% endblock %}
+
+{% block content %}
+
+
+<div class="page-header">
+    <h1 class="page-title"><svg class="icon" style="color: var(--success);" aria-hidden="true"><use href="/static/icons.svg#fa-file-csv"></use></svg> Bulk Import Claims via CSV</h1>
+    <p style="color: var(--text-sub); font-size: 0.875rem;">Upload a CSV file containing claim records for instant dual-model adjudication.</p>
+</div>
+
+<div class="import-container">
+    {% if error %}
+        <div class="alert-danger">
+            <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg> {{ error }}
+        </div>
+    {% endif %}
+
+    <form id="importForm" action="/claims/import-csv" method="POST" enctype="multipart/form-data" onsubmit="showLoadingState(event)">
+        <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+            <div class="drop-icon">
+                <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-cloud-arrow-up"></use></svg>
+            </div>
+            <h3 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.3rem;" id="fileNameText">Choose a CSV file or drag & drop here</h3>
+            <p style="color: var(--text-muted); font-size: 0.825rem;">Supports standard dataset CSV format (e.g. <code>test.csv</code> or <code>train.csv</code>)</p>
+            <input type="file" id="fileInput" name="file" accept=".csv" aria-label="CSV file" class="file-input" required onchange="handleFileSelect(this)">
+        </div>
+
+        <div id="actionButtons" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" class="btn btn-secondary"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-arrow-left"></use></svg> Cancel</a>
+            <button type="submit" id="submitBtn" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-weight: 600;">
+                <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-wand-magic-sparkles"></use></svg> Import & Adjudicate Claims
+            </button>
+        </div>
+
+        <!-- Animated Loading Bar Container -->
+        <div id="loadingBox" class="loading-container">
+            <div class="loading-header">
+                <svg class="icon fa-spin" aria-hidden="true"><use href="/static/icons.svg#fa-circle-notch"></use></svg>
+                <span id="loadingStatusText">Adjudicating Claims with Dual AI Models...</span>
+            </div>
+            <div class="progress-track">
+                <div id="progressBar" class="progress-bar-fill"></div>
+            </div>
+            <div class="loading-steps">
+                <span id="step1"><svg class="icon fa-spin" aria-hidden="true"><use href="/static/icons.svg#fa-spinner"></use></svg> Parsing CSV</span>
+                <span id="step2"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-clock"></use></svg> Tabular ML</span>
+                <span id="step3"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-clock"></use></svg> Vision Classifier</span>
+                <span id="step4"><svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-clock"></use></svg> Saving Dossiers</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.775rem; margin-top: 0.75rem;">
+                Please do not close or refresh this page while processing is underway.
+            </p>
+        </div>
+    </form>
+
+    <div class="info-box">
+        <div style="font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem;">
+            <svg class="icon" style="color: var(--info);" aria-hidden="true"><use href="/static/icons.svg#fa-circle-info"></use></svg> Expected CSV Columns & Format:
+        </div>
+        <p style="margin-bottom: 0.5rem;">
+            Your CSV file can include columns such as:
+            <code>product_name</code>, <code>product_category</code>, <code>brand</code>, <code>purchase_price</code>, <code>fault_category</code>, <code>purchase_date</code>, <code>fault_occurrence_date</code>, <code>claim_submission_date</code>.
+        </p>
+        <p>
+            You can test directly by uploading <a href="file:///c:/Users/hp/Desktop/Techwiz/assurex-claim-engine%20abdullah/data/v2/test.csv" class="link"><code>data/v2/test.csv</code></a> from your project folder!
+        </p>
+    </div>
+</div>
+
+<script>
+    function handleFileSelect(input) {
+        if (input.files && input.files[0]) {
+            document.getElementById('fileNameText').innerHTML = '<svg class="icon" style="color: var(--success);" aria-hidden="true"><use href="/static/icons.svg#fa-file-csv"></use></svg> Selected: <strong>' + input.files[0].name + '</strong> (' + (input.files[0].size / 1024).toFixed(1) + ' KB)';
+        }
+    }
+
+    const dropZone = document.getElementById('dropZone');
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+        }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files && files[0]) {
+            document.getElementById('fileInput').files = files;
+            handleFileSelect(document.getElementById('fileInput'));
+        }
+    });
+
+    function showLoadingState(e) {
+        const fileInput = document.getElementById('fileInput');
+        if (!fileInput.files || !fileInput.files[0]) {
+            return;
+        }
+
+        // Disable submit button and show spinner
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<svg class="icon fa-spin" aria-hidden="true"><use href="/static/icons.svg#fa-circle-notch"></use></svg> Processing...';
+
+        // Reveal animated loading progress box
+        const loadingBox = document.getElementById('loadingBox');
+        loadingBox.style.display = 'block';
+
+        const progressBar = document.getElementById('progressBar');
+        const statusText = document.getElementById('loadingStatusText');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const step4 = document.getElementById('step4');
+
+        let progress = 5;
+        progressBar.style.width = progress + '%';
+
+        const interval = setInterval(() => {
+            if (progress < 25) {
+                progress += 4;
+                step1.innerHTML = '<svg class="icon" style="color: var(--success);" aria-hidden="true"><use href="/static/icons.svg#fa-check"></use></svg> Parsing CSV';
+                step2.innerHTML = '<svg class="icon fa-spin" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-spinner"></use></svg> Tabular ML';
+            } else if (progress < 60) {
+                progress += 2;
+                step2.innerHTML = '<svg class="icon" style="color: var(--success);" aria-hidden="true"><use href="/static/icons.svg#fa-check"></use></svg> Tabular ML';
+                step3.innerHTML = '<svg class="icon fa-spin" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-spinner"></use></svg> Vision Classifier';
+                statusText.innerText = 'Rendering Summary Cards & Running Vision AI...';
+            } else if (progress < 90) {
+                progress += 1;
+                step3.innerHTML = '<svg class="icon" style="color: var(--success);" aria-hidden="true"><use href="/static/icons.svg#fa-check"></use></svg> Vision Classifier';
+                step4.innerHTML = '<svg class="icon fa-spin" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-spinner"></use></svg> Saving Dossiers';
+                statusText.innerText = 'Applying Decision Rules & Finalizing Dossiers...';
+            } else if (progress < 96) {
+                progress += 0.3;
+            }
+            progressBar.style.width = Math.min(progress, 96) + '%';
+        }, 300);
+    }
+</script>
+{% endblock %}
