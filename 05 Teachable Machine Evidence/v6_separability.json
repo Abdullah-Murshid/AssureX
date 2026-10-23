@@ -1,0 +1,130 @@
+{
+  "method": "MobileNetV2(alpha=0.35, frozen) + logistic regression",
+  "train_variations": [
+    1
+  ],
+  "results": [
+    {
+      "design": "v4 (deployed design)",
+      "train_images": 1050,
+      "test_images": 225,
+      "accuracy": 1.0,
+      "per_class": {
+        "Valid Claim": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 75.0
+        },
+        "Invalid Claim": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 75.0
+        },
+        "Manual Review": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 75.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 225.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 225.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          75,
+          0,
+          0
+        ],
+        [
+          0,
+          75,
+          0
+        ],
+        [
+          0,
+          0,
+          75
+        ]
+      ],
+      "class_order": [
+        "Valid Claim",
+        "Invalid Claim",
+        "Manual Review"
+      ]
+    },
+    {
+      "design": "v6 (flags + damage tiles)",
+      "train_images": 1050,
+      "test_images": 225,
+      "accuracy": 1.0,
+      "per_class": {
+        "Valid Claim": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 75.0
+        },
+        "Invalid Claim": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 75.0
+        },
+        "Manual Review": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 75.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 225.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 225.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          75,
+          0,
+          0
+        ],
+        [
+          0,
+          75,
+          0
+        ],
+        [
+          0,
+          0,
+          75
+        ]
+      ],
+      "class_order": [
+        "Valid Claim",
+        "Invalid Claim",
+        "Manual Review"
+      ]
+    }
+  ]
+}

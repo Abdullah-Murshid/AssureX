@@ -1,0 +1,42 @@
+{
+  "records": {
+    "total": 1500,
+    "splits": {
+      "train": 1050,
+      "val": 225,
+      "test": 225
+    },
+    "classes": {
+      "Invalid Claim": 500,
+      "Valid Claim": 500,
+      "Manual Review": 500
+    }
+  },
+  "label_rule_agreement": 1.0,
+  "constant_columns": [
+    "has_warranty_card",
+    "has_product_photo"
+  ],
+  "duplicate_flags": {
+    "flagged": 14,
+    "with_matching_serial_evidence": 0
+  },
+  "impossible_serial_mismatches": 0,
+  "remaining_days_zero": 2,
+  "mapping_rows": 2550,
+  "images": {
+    "missing": 0,
+    "wrong_size": 0,
+    "path_class_mismatch": 0,
+    "bad_labels": 0
+  },
+  "render_parity_failures": 0,
+  "warnings": [
+    "Labels are 100% reproducible from six deterministic conditions.",
+    "Constant columns: ['has_warranty_card', 'has_product_photo']",
+    "14/14 duplicate flags lack a matching serial.",
+    "Only 2 records sit exactly on remaining_warranty_days == 0."
+  ],
+  "failures": [],
+  "passed": true
+}

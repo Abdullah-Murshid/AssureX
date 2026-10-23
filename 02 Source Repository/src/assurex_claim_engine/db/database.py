@@ -198,6 +198,33 @@ class AuditLog(Base):
     timestamp = Column(DateTime, default=_utcnow)
 
 
+class ClaimStatusHistory(Base):
+    __tablename__ = "claim_status_history"
+
+    id = Column(Integer, primary_key=True, index=True)
+    claim_id = Column(String(50), ForeignKey("claims.claim_id"), nullable=False, index=True)
+    from_status = Column(String(50), nullable=True)
+    to_status = Column(String(50), nullable=False)
+    actor_user_id = Column(String(50), ForeignKey("users.user_id"), nullable=True)
+    actor_role = Column(String(50), nullable=True)
+    note = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=_utcnow, index=True)
+
+
+class Notification(Base):
+    __tablename__ = "notifications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(String(50), ForeignKey("users.user_id"), nullable=False, index=True)
+    type = Column(String(50), nullable=False, index=True)
+    title = Column(String(200), nullable=False)
+    message = Column(Text, nullable=False)
+    claim_id = Column(String(50), nullable=True)
+    product_id = Column(String(50), nullable=True)
+    is_read = Column(Boolean, default=False, nullable=False, index=True)
+    created_at = Column(DateTime, default=_utcnow, index=True)
+
+
 def _table_columns(inspector, table_name):
     if table_name not in inspector.get_table_names():
         return {}
@@ -318,6 +345,9 @@ def migrate_schema():
 def init_db():
     Base.metadata.create_all(bind=engine)
     migrate_schema()
+    from assurex_claim_engine.db.status_history import backfill_claim_status_history
+
+    backfill_claim_status_history()
     print("Database tables initialized successfully!")
     seed_users_and_samples()
 

@@ -1,204 +1,461 @@
 """
-AssureX Claim Engine - Claim Summary Card Renderer
-Renders visual Claim Summary Cards (PNG) from structured tabular claim data.
+AssureX Claim Engine - Claim Summary Card Renderer v4
 
-Requirements enforced:
-1. Displays: Product Age, Warranty Period, Fault Category, Repair History, Receipt Availability, Serial Status, Missing Docs.
-2. MUST NOT display Python model prediction, confidence score, or final decision result.
-3. Generates 2 visual variations per training claim record (minimum 2,100 training images).
-4. Validation & Test cards rendered without augmentation into separate splits.
+Renders a clean, square Claim Summary Card (600x600) from structured claim data.
+The same function is used for offline dataset generation and live web inference, so
+the training and deployment distributions cannot drift.
+
+Card contract (SRS 1.6 xx):
+- Four large status tiles: warranty, documents, repairs, serial.
+- Claim details: product, fault/damage, age/warranty, contradiction/duplicate.
+- MUST NOT show the Python prediction, confidence score, or final decision.
+- No class-dependent colours, layout, or text; colours encode claim facts only.
+
+Dataset contract (SRS 1.2 / 1.10.3):
+- 1,050 train claims x 2 visual variations = 2,100 images
+- 225 validation x 1 = 225 images
+- 225 test x 1 = 225 images
+- Validation/test use variation 1, the same style the web application renders.
 """
 
+import argparse
+import hashlib
+import json
 import os
+from datetime import datetime, timezone
+
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
-# Directory Setup
-OUTPUT_DIR = "data/summary_cards"
+# Canonical card size. Square avoids aspect-ratio distortion in the 224x224 GTM input.
+CARD_WIDTH = 600
+CARD_HEIGHT = 600
+CARD_VERSION = "v4"
+RENDERER_NAME = "dataset_generator/generate_summary_cards.py"
+
 SPLITS = ["train", "val", "test"]
 CLASSES = ["Valid Claim", "Invalid Claim", "Manual Review"]
 
-for s in SPLITS:
-    for c in CLASSES:
-        os.makedirs(os.path.join(OUTPUT_DIR, s, c), exist_ok=True)
+DATA_DIR = "data"
+OUTPUT_DIR = "data/summary_cards"
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
 
 def _get_val(row, *keys, default=""):
+    """Read a value from a pandas Series or a plain dict, trying several keys."""
     for k in keys:
-        if hasattr(row, "get"):
-            v = row.get(k)
-            if v is not None and str(v).strip() != "":
-                return v
-        elif hasattr(row, "__getitem__"):
-            try:
+        try:
+            if hasattr(row, "get"):
+                v = row.get(k)
+            else:
                 v = row[k]
-                if v is not None and str(v).strip() != "":
-                    return v
-            except (KeyError, IndexError, TypeError):
-                pass
+        except (KeyError, IndexError, TypeError):
+            continue
+        if v is not None and str(v).strip() != "" and str(v).lower() != "nan":
+            return v
     return default
 
-def render_claim_card(row, variation_id=1):
-    """
-    Renders a visual Claim Summary Card image for a given claim record.
-    Displays purely objective claim specifications with clean typography, balanced spacing,
-    and no watermarks, footer text, or classification labels.
-    """
-    width, height = 840, 500
-    
-    # Visual variation styles
-    if variation_id == 1:
-        bg_color = (245, 247, 250)      # Clean Light Blue-Gray
-        card_bg = (255, 255, 255)       # Pure White Card
-        text_primary = (20, 30, 45)     # Deep Slate
-        text_secondary = (70, 85, 105)  # Muted Blue Gray
-        accent_color = (14, 116, 144)   # Cyan Teal Accent
-        border_color = (226, 232, 240)
-    else:
-        bg_color = (15, 23, 42)         # Modern Dark Slate
-        card_bg = (30, 41, 59)          # Card Dark Gray
-        text_primary = (248, 250, 252)  # Bright Off-White
-        text_secondary = (148, 163, 184)# Soft Silver
-        accent_color = (56, 189, 248)   # Vivid Sky Blue Accent
-        border_color = (51, 65, 85)
 
-    img = Image.new("RGB", (width, height), bg_color)
+def _is_true(value, default=False):
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in ("true", "1", "yes", "y", "t")
+
+
+def _load_font(size, bold=False):
+    names = ["arialbd.ttf", "Arial Bold.ttf"] if bold else ["arial.ttf", "Arial.ttf"]
+    for name in names:
+        try:
+            return ImageFont.truetype(name, size)
+        except OSError:
+            continue
+    try:
+        return ImageFont.load_default(size=size)
+    except TypeError:
+        return ImageFont.load_default()
+
+
+def _truncate(draw, text, font, max_width):
+    text = str(text)
+    if draw.textlength(text, font=font) <= max_width:
+        return text
+    ellipsis = "..."
+    lo, hi = 0, len(text)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        candidate = text[:mid].rstrip() + ellipsis
+        if draw.textlength(candidate, font=font) <= max_width:
+            lo = mid + 1
+        else:
+            hi = mid
+    return text[: max(0, lo - 1)].rstrip() + ellipsis
+
+
+def _wrap(draw, text, font, max_width, max_lines=2):
+    """Wrap text to at most max_lines, truncating the last line with an ellipsis."""
+    text = " ".join(str(text).split())
+    if not text:
+        return [""]
+    if draw.textlength(text, font=font) <= max_width:
+        return [text]
+
+    words = text.split(" ")
+    lines = []
+    current = ""
+    idx = 0
+    while idx < len(words) and len(lines) < max_lines:
+        word = words[idx]
+        candidate = f"{current} {word}".strip()
+        if draw.textlength(candidate, font=font) <= max_width:
+            current = candidate
+            idx += 1
+        else:
+            if current:
+                lines.append(current)
+                current = ""
+            else:
+                lines.append(_truncate(draw, word, font, max_width))
+                idx += 1
+                break
+    if current and len(lines) < max_lines:
+        lines.append(current)
+
+    if idx < len(words) and lines:
+        lines[-1] = _truncate(draw, lines[-1] + "...", font, max_width)
+    return lines[:max_lines]
+
+
+# ---------------------------------------------------------------------------
+# Renderer
+# ---------------------------------------------------------------------------
+
+
+def _theme(variation_id):
+    if variation_id == 1:
+        return {
+            "bg": (238, 242, 247),
+            "card": (255, 255, 255),
+            "tile": (246, 249, 252),
+            "text": (20, 30, 45),
+            "secondary": (70, 85, 105),
+            "accent": (14, 116, 144),
+            "border": (216, 224, 234),
+            "header_text": (255, 255, 255),
+            "good": (21, 128, 61),
+            "warn": (180, 83, 9),
+            "bad": (185, 28, 28),
+        }
+    return {
+        "bg": (10, 16, 28),
+        "card": (30, 41, 59),
+        "tile": (24, 34, 52),
+        "text": (248, 250, 252),
+        "secondary": (168, 184, 204),
+        "accent": (56, 189, 248),
+        "border": (51, 65, 85),
+        "header_text": (8, 18, 30),
+        "good": (74, 222, 128),
+        "warn": (251, 191, 36),
+        "bad": (248, 113, 113),
+    }
+
+
+def _to_int(value, default=0):
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return default
+
+
+def _fit_font(draw, text, max_width, max_size=40, min_size=22):
+    text = str(text)
+    for size in range(max_size, min_size - 1, -2):
+        font = _load_font(size, bold=True)
+        if draw.textlength(text, font=font) <= max_width:
+            return font
+    return _load_font(min_size, bold=True)
+
+
+def render_claim_card(row, variation_id=1):
+    """Render a 600x600 status-tile claim card as a PIL Image.
+
+    ``row`` may be a pandas Series (dataset path) or a dict (web path).
+    """
+    variation_id = 2 if int(variation_id) == 2 else 1
+    theme = _theme(variation_id)
+
+    img = Image.new("RGB", (CARD_WIDTH, CARD_HEIGHT), theme["bg"])
     draw = ImageDraw.Draw(img)
-    
-    # Outer Card Container
-    card_rect = [20, 20, width - 20, height - 20]
-    draw.rounded_rectangle(card_rect, radius=12, fill=card_bg, outline=border_color, width=2)
-    
-    # Card Header Banner
-    draw.rounded_rectangle([32, 32, width - 32, 90], radius=8, fill=accent_color)
-    
-    # Try loading default PIL fonts (fallback to basic font if TTF unavailable)
-    try:
-        font_title = ImageFont.truetype("arial.ttf", 20)
-        font_header = ImageFont.truetype("arialbd.ttf", 14)
-        font_body = ImageFont.truetype("arial.ttf", 14)
-        font_bold = ImageFont.truetype("arialbd.ttf", 14)
-    except IOError:
-        font_title = ImageFont.load_default()
-        font_header = ImageFont.load_default()
-        font_body = ImageFont.load_default()
-        font_bold = ImageFont.load_default()
-        
-    claim_id_val = _get_val(row, "claim_id", default="CLM-SPEC")
-    # Title Text inside Header
-    draw.text((45, 48), f"CLAIM SUMMARY CARD  •  {claim_id_val}", fill=(255, 255, 255), font=font_title)
-    
-    # Column 1: Product & Purchase Summary
-    col1_x = 42
-    col1_val_x = 180
-    y_curr = 115
-    
-    draw.text((col1_x, y_curr), "PRODUCT & WARRANTY SPECIFICATIONS", fill=accent_color, font=font_header)
-    y_curr += 28
-    
-    prod_name = _get_val(row, "product_name", default="N/A")
-    cat_val = _get_val(row, "product_category", "category", default="General")
-    brand_val = _get_val(row, "brand", default="")
-    model_val = _get_val(row, "model_number", default="N/A")
-    serial_val = _get_val(row, "user_serial_number", "serial_number", default="N/A")
-    purch_date = _get_val(row, "purchase_date", default="N/A")
-    retailer_val = _get_val(row, "retailer", default="Authorized Dealer")
-    warranty_months = _get_val(row, "warranty_duration_months", "warranty_duration", default="12")
-    expiry_val = str(_get_val(row, "warranty_expiry_date", default="N/A"))[:10]
-    
-    age_days = _get_val(row, "product_age_days", default=0)
-    try:
-        age_days_int = int(age_days)
-        age_str = f"{age_days_int} Days ({round(age_days_int/365, 1)} Yrs)"
-    except (ValueError, TypeError):
-        age_str = f"{age_days} Days"
-        
-    rem_days = _get_val(row, "remaining_warranty_days", default="0")
-    
-    items_col1 = [
-        ("Product Name:", str(prod_name)),
-        ("Category & Brand:", f"{str(cat_val).title()} ({brand_val})"),
-        ("Model / Serial:", f"{model_val} / {serial_val}"),
-        ("Purchase Date:", str(purch_date)),
-        ("Retailer:", str(retailer_val)),
-        ("Warranty Duration:", f"{warranty_months} Months (Exp: {expiry_val})"),
-        ("Product Age:", age_str),
-        ("Remaining Coverage:", f"{rem_days} Days")
-    ]
-    
-    for label, val in items_col1:
-        draw.text((col1_x, y_curr), label, fill=text_secondary, font=font_bold)
-        draw.text((col1_val_x, y_curr), val, fill=text_primary, font=font_body)
-        y_curr += 25
-        
-    # Divider Line (Spacious centered position)
-    draw.line([415, 110, 415, height - 35], fill=border_color, width=2)
-    
-    # Column 2: Claim Fault & Evidence Audit
-    col2_x = 435
-    col2_val_x = 590
-    y_curr = 115
-    
-    draw.text((col2_x, y_curr), "FAULT REPORT & EVIDENCE AUDIT", fill=accent_color, font=font_header)
-    y_curr += 28
-    
-    has_rcpt = _get_val(row, "has_receipt", default=False)
-    receipt_str = "Verified Uploaded" if str(has_rcpt).lower() in ("true", "1", "yes") else "MISSING RECEIPT"
-    
-    serial_match = _get_val(row, "serial_match_status", default="Unverified")
-    ocr_serial = _get_val(row, "ocr_serial_number", default="N/A")
-    serial_match_str = f"{serial_match} ({ocr_serial})"
-    
-    repairs_cnt = _get_val(row, "previous_repairs_count", default=0)
-    has_unauth = _get_val(row, "has_unauthorized_repairs", default=False)
-    unauth_str = " [UNAUTHORIZED]" if str(has_unauth).lower() in ("true", "1", "yes") else " [Authorized]"
-    repair_hist_str = f"{repairs_cnt} Prior Repair(s){unauth_str}"
-    
-    missing_cnt = _get_val(row, "missing_documents_count", default=0)
-    contra_flag = _get_val(row, "contradiction_flag", default=False)
-    contra_str = "YES (Timeline Issue)" if str(contra_flag).lower() in ("true", "1", "yes") else "None Detected"
-    
-    items_col2 = [
-        ("Fault Category:", str(_get_val(row, "fault_category", default="Defect")).replace("_", " ").title()),
-        ("Damage Type:", str(_get_val(row, "damage_type", default="None")).replace("_", " ").title()),
-        ("Fault Date:", str(_get_val(row, "fault_occurrence_date", default="N/A"))),
-        ("Claim Date:", str(_get_val(row, "claim_submission_date", default="N/A"))),
-        ("Receipt Status:", receipt_str),
-        ("Serial OCR Match:", serial_match_str),
-        ("Repair History:", repair_hist_str),
-        ("Missing Docs Count:", f"{missing_cnt} Mandatory Doc(s) Missing"),
-        ("Contradiction Flag:", contra_str)
-    ]
-    
-    for label, val in items_col2:
-        draw.text((col2_x, y_curr), label, fill=text_secondary, font=font_bold)
-        draw.text((col2_val_x, y_curr), val, fill=text_primary, font=font_body)
-        y_curr += 25
-        
+
+    font_title = _load_font(22, bold=True)
+    font_section = _load_font(13, bold=True)
+    font_tile_label = _load_font(13, bold=True)
+    font_tile_sub = _load_font(14)
+    font_detail_label = _load_font(15, bold=True)
+    font_detail = _load_font(20)
+
+    # Card and header
+    draw.rounded_rectangle([16, 16, 584, 584], radius=14, fill=theme["card"], outline=theme["border"], width=2)
+    draw.rounded_rectangle([30, 28, 570, 82], radius=8, fill=theme["accent"])
+
+    claim_id = str(_get_val(row, "claim_id", default="CLM-UNKNOWN"))
+    title = f"CLAIM SUMMARY CARD  |  {claim_id}"
+    draw.text((44, 42), _truncate(draw, title, font_title, 512), fill=theme["header_text"], font=font_title)
+
+    def tile(x, y, w, h, label, value, sub, color):
+        draw.rounded_rectangle([x, y, x + w, y + h], radius=10, fill=theme["tile"], outline=theme["border"], width=1)
+        draw.text((x + 14, y + 9), label, fill=theme["secondary"], font=font_tile_label)
+        value_font = _fit_font(draw, value, w - 28, 40, 22)
+        draw.text((x + 14, y + 31), value, fill=color, font=value_font)
+        draw.text(
+            (x + 14, y + h - 24),
+            _truncate(draw, sub, font_tile_sub, w - 28),
+            fill=theme["secondary"],
+            font=font_tile_sub,
+        )
+
+    product_name = _get_val(row, "product_name", default="Unknown product")
+    fault = str(_get_val(row, "fault_category", default="unspecified defect")).replace("_", " ").replace("-", " ").title()
+    damage = str(_get_val(row, "damage_type", default="none")).replace("_", " ").replace("-", " ").title()
+    warranty_months = _get_val(row, "warranty_duration_months", "warranty_months", default="N/A")
+    expiry = _get_val(row, "warranty_expiry_date", default="N/A")
+    age_days = _get_val(row, "product_age_days", default="N/A")
+    remaining = _to_int(_get_val(row, "remaining_warranty_days", default=0))
+    repairs = _to_int(_get_val(row, "previous_repairs_count", "previous_repair_count", default=0))
+    unauthorized = _is_true(_get_val(row, "has_unauthorized_repairs", "has_previous_unauthorized_repair", default=False))
+    serial_raw = str(_get_val(row, "serial_match_status", default="Unverified")).strip().lower()
+    missing = _to_int(_get_val(row, "missing_documents_count", default=0))
+    contradiction = _is_true(_get_val(row, "contradiction_flag", default=False))
+    duplicate_flag = _is_true(_get_val(row, "duplicate_claim_flag", default=False))
+
+    if not expiry or str(expiry).lower() == "nan":
+        expiry = "N/A"
+    expiry = str(expiry)[:10]
+
+    # Warranty tile
+    if remaining < 0:
+        warranty_value, warranty_color = "EXPIRED", theme["bad"]
+        warranty_sub = f"{abs(remaining)} days past | ended {expiry}"
+    elif remaining <= 30:
+        warranty_value, warranty_color = "EXPIRING", theme["warn"]
+        warranty_sub = f"{remaining} days left | ends {expiry}"
+    else:
+        warranty_value, warranty_color = "ACTIVE", theme["good"]
+        warranty_sub = f"{remaining} days left | ends {expiry}"
+
+    # Documents tile
+    if missing > 0:
+        documents_value = "MISSING" if missing == 1 else f"MISSING {missing}"
+        documents_color, documents_sub = theme["bad"], f"{missing} mandatory doc(s)"
+    else:
+        documents_value, documents_color, documents_sub = "COMPLETE", theme["good"], "all documents"
+
+    # Repairs tile
+    if unauthorized:
+        repairs_value, repairs_color, repairs_sub = "UNAUTHORIZED", theme["bad"], f"{repairs} prior repair(s)"
+    elif repairs >= 2:
+        repairs_value, repairs_color, repairs_sub = "2+ REPAIRS", theme["warn"], f"{repairs} prior, authorized"
+    else:
+        repairs_value, repairs_color, repairs_sub = "AUTHORIZED", theme["good"], f"{repairs} prior repair(s)"
+
+    # Serial tile
+    if serial_raw == "mismatch":
+        serial_value, serial_color, serial_sub = "MISMATCH", theme["bad"], "serial number check"
+    elif serial_raw == "partial":
+        serial_value, serial_color, serial_sub = "PARTIAL", theme["warn"], "serial number check"
+    elif serial_raw == "exact":
+        serial_value, serial_color, serial_sub = "MATCH", theme["good"], "serial number check"
+    else:
+        serial_value, serial_color, serial_sub = "UNVERIFIED", theme["warn"], "serial number check"
+
+    tile(28, 92, 266, 112, "WARRANTY", warranty_value, warranty_sub, warranty_color)
+    tile(306, 92, 266, 112, "DOCUMENTS", documents_value, documents_sub, documents_color)
+    tile(28, 216, 266, 112, "REPAIRS", repairs_value, repairs_sub, repairs_color)
+    tile(306, 216, 266, 112, "SERIAL", serial_value, serial_sub, serial_color)
+
+    # Details below the tiles: secondary facts only.
+    label_x = 34
+    value_x = 178
+    value_width = 390
+
+    draw.text((label_x, 342), "CLAIM DETAILS", fill=theme["accent"], font=font_section)
+
+    def field(y, label, value):
+        draw.text((label_x, y + 2), label, fill=theme["secondary"], font=font_detail_label)
+        lines = _wrap(draw, value, font_detail, value_width, max_lines=2)
+        for line_idx, line in enumerate(lines):
+            draw.text((value_x, y + line_idx * 22), line, fill=theme["text"], font=font_detail)
+
+    field(362, "Product", product_name)
+    field(406, "Fault / Damage", f"{fault}  |  {damage}")
+    field(450, "Age / Warranty", f"{age_days} days old  |  {warranty_months} months")
+    field(494, "Flags", f"contradiction {'Yes' if contradiction else 'No'}  |  duplicate {'Yes' if duplicate_flag else 'No'}")
+
     return img
 
-def generate_all_cards():
-    print("Generating visual Claim Summary Cards...")
-    
-    for split in ["train", "val", "test"]:
-        df = pd.read_csv(f"data/{split}.csv")
-        count = 0
-        
-        # Train gets 2 visual variations per claim (min 2,100 train images)
+
+# ---------------------------------------------------------------------------
+# Dataset generation
+# ---------------------------------------------------------------------------
+
+
+def _sha256_file(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _combined_digest(paths):
+    digest = hashlib.sha256()
+    for path in sorted(paths):
+        digest.update(os.path.basename(path).encode("utf-8"))
+        digest.update(_sha256_file(path).encode("ascii"))
+    return digest.hexdigest()
+
+
+def generate_all_cards(data_dir=None, output_dir=None, metadata_dir=None, write_metadata=True):
+    data_dir = os.path.abspath(data_dir or DATA_DIR)
+    output_dir = os.path.abspath(output_dir or OUTPUT_DIR)
+    metadata_dir = os.path.abspath(metadata_dir or output_dir)
+
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(metadata_dir, exist_ok=True)
+
+    mapping_rows = []
+    image_paths = []
+    record_frames = {}
+    split_counts = {}
+    class_distribution = {}
+
+    for split in SPLITS:
+        csv_path = os.path.join(data_dir, f"{split}.csv")
+        df = pd.read_csv(csv_path)
+        record_frames[split] = df
+        split_counts[split] = int(len(df))
         variations = [1, 2] if split == "train" else [1]
-        
-        for idx, row in df.iterrows():
-            claim_id = row["claim_id"]
-            cls_name = row["actual_class"]
-            
-            for var_id in variations:
-                filename = f"{claim_id}_v{var_id}.png"
-                filepath = os.path.join(OUTPUT_DIR, split, cls_name, filename)
-                
-                img = render_claim_card(row, variation_id=var_id)
-                img.save(filepath)
-                count += 1
-                
-        print(f"Generated {count} images for split: {split}")
+
+        for _, row in df.iterrows():
+            claim_id = str(row["claim_id"])
+            actual_class = str(row["actual_class"])
+            if actual_class not in CLASSES:
+                raise ValueError(f"Unexpected class '{actual_class}' in {csv_path}")
+            for variation_id in variations:
+                relative_path = os.path.join(split, actual_class, f"{claim_id}_v{variation_id}.png")
+                image_path = os.path.join(output_dir, relative_path)
+                os.makedirs(os.path.dirname(image_path), exist_ok=True)
+                render_claim_card(row, variation_id=variation_id).save(image_path, "PNG")
+                image_paths.append(image_path)
+                mapping_rows.append(
+                    {
+                        "claim_id": claim_id,
+                        "split": split,
+                        "actual_class": actual_class,
+                        "variation_id": variation_id,
+                        "image_filename": os.path.basename(relative_path),
+                        "image_relative_path": relative_path.replace(os.sep, "/"),
+                    }
+                )
+                class_distribution[actual_class] = class_distribution.get(actual_class, 0) + 1
+
+        print(f"Generated {len(df) * len(variations)} cards for split: {split}", flush=True)
+
+    if not write_metadata:
+        return None
+
+    mapping_path = os.path.join(metadata_dir, f"claim_id_to_image_mapping_{CARD_VERSION}.csv")
+    mapping_df = pd.DataFrame(mapping_rows)
+    mapping_df.to_csv(mapping_path, index=False)
+
+    all_records = pd.concat(record_frames.values(), ignore_index=True)
+    statistics = {
+        "dataset_version": CARD_VERSION,
+        "card_size_px": [CARD_WIDTH, CARD_HEIGHT],
+        "total_unique_claim_records": int(len(all_records)),
+        "split_counts": split_counts,
+        "class_distribution_records": {c: int((all_records["actual_class"] == c).sum()) for c in CLASSES},
+        "class_distribution_images": class_distribution,
+        "total_summary_card_images": int(len(mapping_rows)),
+        "train_card_images": class_distribution.get("train", None),
+        "images_per_split": {
+            split: int(sum(1 for r in mapping_rows if r["split"] == split)) for split in SPLITS
+        },
+        "average_product_age_days": round(float(all_records["product_age_days"].mean()), 2),
+        "average_remaining_warranty_days": round(float(all_records["remaining_warranty_days"].mean()), 2),
+        "contradiction_claims_count": int(all_records["contradiction_flag"].sum()),
+        "duplicate_claims_count": int(all_records["duplicate_claim_flag"].sum()),
+        "renderer": RENDERER_NAME,
+        "created_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    }
+    # `train_card_images` is the number of images whose split is train (2,100).
+    statistics["train_card_images"] = statistics["images_per_split"]["train"]
+    stats_path = os.path.join(metadata_dir, f"dataset_statistics_{CARD_VERSION}.json")
+    with open(stats_path, "w", encoding="utf-8") as f:
+        json.dump(statistics, f, indent=2)
+
+    csv_hashes = {split: _sha256_file(os.path.join(data_dir, f"{split}.csv")) for split in SPLITS}
+    manifest = {
+        "dataset_version": CARD_VERSION,
+        "renderer": RENDERER_NAME,
+        "card_size_px": [CARD_WIDTH, CARD_HEIGHT],
+        "created_utc": statistics["created_utc"],
+        "counts": {
+            "records": statistics["total_unique_claim_records"],
+            "images": statistics["total_summary_card_images"],
+            "per_split_records": split_counts,
+            "per_split_images": statistics["images_per_split"],
+            "per_class_images": class_distribution,
+        },
+        "csv_sha256": csv_hashes,
+        "mapping_sha256": _sha256_file(mapping_path),
+        "image_set_sha256": _combined_digest(image_paths),
+        "contract": {
+            "card_shows": [
+                "claim_id",
+                "warranty status (active/expiring/expired)",
+                "remaining warranty days and expiry",
+                "document status and missing count",
+                "repair count and authorization",
+                "serial match status",
+                "product name",
+                "fault category",
+                "damage type",
+                "product age",
+                "warranty duration",
+                "contradiction flag",
+                "duplicate flag",
+            ],
+            "card_does_not_show": ["python prediction", "python confidence", "final decision", "actual_class"],
+            "variations": {"train": 2, "val": 1, "test": 1},
+        },
+    }
+    manifest_path = os.path.join(metadata_dir, f"dataset_manifest_{CARD_VERSION}.json")
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+
+    print(f"Mapping:  {mapping_path}", flush=True)
+    print(f"Stats:    {stats_path}", flush=True)
+    print(f"Manifest: {manifest_path}", flush=True)
+    print(json.dumps(statistics, indent=2), flush=True)
+    return manifest
+
 
 if __name__ == "__main__":
-    generate_all_cards()
+    parser = argparse.ArgumentParser(description="Generate Claim Summary Cards from structured CSVs.")
+    parser.add_argument("--data-dir", default=DATA_DIR, help="Directory containing train.csv/val.csv/test.csv")
+    parser.add_argument("--output-dir", default=OUTPUT_DIR, help="Directory for generated card images")
+    parser.add_argument("--metadata-dir", default=None, help="Directory for mapping/statistics/manifest")
+    parser.add_argument("--no-metadata", action="store_true", help="Only render images")
+    args = parser.parse_args()
+    generate_all_cards(
+        data_dir=args.data_dir,
+        output_dir=args.output_dir,
+        metadata_dir=args.metadata_dir,
+        write_metadata=not args.no_metadata,
+    )

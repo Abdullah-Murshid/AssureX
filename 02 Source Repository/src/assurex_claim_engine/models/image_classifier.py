@@ -6,6 +6,11 @@ Provides single-image inference for Claim Summary Cards:
 """
 
 import os
+
+# The exported H5 is a Keras 2.x model. TensorFlow 2.16+ defaults to Keras 3,
+# which cannot deserialize it; route tf.keras through the tf-keras bridge.
+os.environ.setdefault("TF_USE_LEGACY_KERAS", "1")
+
 import numpy as np
 from PIL import Image
 

@@ -1,7 +1,7 @@
 {
   "dataset_name": "AssureX Claim Engine Common Warranty Dataset",
-  "version": "1.0",
-  "description": "Structured tabular claims and visual summary cards for dual-model adjudication.",
+  "version": "1.1",
+  "description": "Structured claims and v4 status-tile summary cards for dual-model adjudication.",
   "features": [
     {
       "name": "claim_id",
@@ -82,6 +82,11 @@
       "name": "warranty_duration_months",
       "type": "integer",
       "description": "Total warranty coverage period in months."
+    },
+    {
+      "name": "warranty_start_date",
+      "type": "date",
+      "description": "Date warranty coverage starts. In this dataset it equals the purchase date."
     },
     {
       "name": "warranty_expiry_date",
@@ -178,5 +183,10 @@
       ],
       "description": "Ground truth adjudication label."
     }
+  ],
+  "card_version": "v4",
+  "card_size_px": [
+    600,
+    600
   ]
 }

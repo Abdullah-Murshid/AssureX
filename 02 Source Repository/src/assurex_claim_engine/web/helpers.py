@@ -53,28 +53,28 @@ FILE_TYPE_MAP = {
 
 def scoped_products(db: Session, user: User):
     q = db.query(Product)
-    if user.role == "customer":
+    if user.role in ("customer", "service_center"):
         q = q.filter(Product.user_id == user.user_id)
     return q
 
 
 def scoped_claims(db: Session, user: User):
     q = db.query(Claim)
-    if user.role == "customer":
+    if user.role in ("customer", "service_center"):
         q = q.filter(Claim.user_id == user.user_id)
     return q
 
 
 def scoped_documents(db: Session, user: User):
     q = db.query(Document)
-    if user.role == "customer":
+    if user.role in ("customer", "service_center"):
         q = q.filter(Document.user_id == user.user_id)
     return q
 
 
 def scoped_repairs(db: Session, user: User):
     q = db.query(Repair)
-    if user.role == "customer":
+    if user.role in ("customer", "service_center"):
         q = q.filter(Repair.user_id == user.user_id)
     return q
 

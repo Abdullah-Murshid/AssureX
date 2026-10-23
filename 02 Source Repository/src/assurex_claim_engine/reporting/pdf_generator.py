@@ -11,7 +11,10 @@ from typing import Dict, Any, List, Optional
 try:
     import pymupdf
 except ImportError:
-    import fitz as pymupdf
+    try:
+        import fitz as pymupdf
+    except ImportError:
+        pymupdf = None
 
 
 def _draw_header_and_footer(page, page_num: int, total_pages: int, claim_id: str):
@@ -74,6 +77,8 @@ def generate_claim_pdf_report(
     claim_id = getattr(claim, "claim_id", "CLM-UNKNOWN")
     final_dec = getattr(claim, "final_decision", "Pending Evaluation") or "Pending Evaluation"
     status = getattr(claim, "status", "Submitted") or "Submitted"
+    if pymupdf is None:
+        raise RuntimeError("PyMuPDF is not installed. PDF export is unavailable.")
     
     doc = pymupdf.open()
     total_pages = 2

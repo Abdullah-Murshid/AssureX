@@ -1,0 +1,3257 @@
+{
+  "model": "keras_model.h5",
+  "model_sha256": "5db4006a8b6316ba58b71bb882307b493fc122955358b6ac71b62794548e6be7",
+  "labels_file": "labels.txt",
+  "labels": [
+    "Valid Claim",
+    "Invalid Claim",
+    "Manual Review"
+  ],
+  "test": {
+    "count": 225,
+    "accuracy": 0.3333,
+    "passes_85_percent": false,
+    "per_class": {
+      "Valid Claim": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 75
+      },
+      "Invalid Claim": {
+        "precision": 0.3333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "support": 75
+      },
+      "Manual Review": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 75
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        75,
+        0
+      ],
+      [
+        0,
+        75,
+        0
+      ],
+      [
+        0,
+        75,
+        0
+      ]
+    ],
+    "class_order": [
+      "Valid Claim",
+      "Invalid Claim",
+      "Manual Review"
+    ],
+    "predicted_distribution": {
+      "Invalid Claim": 225
+    }
+  },
+  "live_render": {
+    "count": 30,
+    "accuracy": 0.2667,
+    "passes_85_percent": false,
+    "predicted_distribution": {
+      "Invalid Claim": 30
+    }
+  },
+  "misclassified_count": 150,
+  "misclassified_examples": [
+    {
+      "claim_id": "CLM-2026-0137",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0137_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0537",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0537_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1111",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9485,
+      "probabilities": {
+        "Valid Claim": 0.0512,
+        "Invalid Claim": 0.9485,
+        "Manual Review": 0.0003
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1111_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1409",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1409_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0541",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0541_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0152",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0152_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0728",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0728_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0575",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0575_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0226",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0226_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1262",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1262_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0738",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0738_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0529",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0529_v1.png"
+    }
+  ],
+  "cases": [
+    {
+      "claim_id": "CLM-2026-0137",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0137_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0537",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0537_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0829",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0829_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1111",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9485,
+      "probabilities": {
+        "Valid Claim": 0.0512,
+        "Invalid Claim": 0.9485,
+        "Manual Review": 0.0003
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1111_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1309",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1309_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1409",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1409_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0541",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0541_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0790",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0790_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0152",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0152_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0728",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0728_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0575",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0575_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0226",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0226_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1262",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1262_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0738",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0738_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0529",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0529_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0820",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0820_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0225",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0225_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0163",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0163_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0197",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0197_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0255",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9799,
+      "probabilities": {
+        "Valid Claim": 0.0201,
+        "Invalid Claim": 0.9799,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0255_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1281",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.993,
+      "probabilities": {
+        "Valid Claim": 0.007,
+        "Invalid Claim": 0.993,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1281_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0504",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0504_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0834",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9996,
+      "probabilities": {
+        "Valid Claim": 0.0004,
+        "Invalid Claim": 0.9996,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0834_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0103",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0103_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0427",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0427_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1035",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1035_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1386",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1386_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0932",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0932_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0298",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9992,
+      "probabilities": {
+        "Valid Claim": 0.0008,
+        "Invalid Claim": 0.9992,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0298_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1362",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9967,
+      "probabilities": {
+        "Valid Claim": 0.0033,
+        "Invalid Claim": 0.9967,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1362_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1369",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1369_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0284",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0284_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1134",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1134_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1203",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1203_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1069",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1069_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0956",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9981,
+      "probabilities": {
+        "Valid Claim": 0.0019,
+        "Invalid Claim": 0.9981,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0956_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0843",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0843_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0695",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9945,
+      "probabilities": {
+        "Valid Claim": 0.0055,
+        "Invalid Claim": 0.9945,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0695_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0206",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0206_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0254",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0254_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1498",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9879,
+      "probabilities": {
+        "Valid Claim": 0.0121,
+        "Invalid Claim": 0.9879,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1498_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0623",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0623_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0580",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9906,
+      "probabilities": {
+        "Valid Claim": 0.0094,
+        "Invalid Claim": 0.9906,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0580_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1080",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1080_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0077",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0077_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0027",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0027_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0063",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0063_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0402",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0402_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0883",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0883_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0775",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0775_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1165",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1165_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0192",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0192_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0525",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0525_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0923",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0923_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0745",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0745_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0997",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0997_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0940",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0940_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0496",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9941,
+      "probabilities": {
+        "Valid Claim": 0.0059,
+        "Invalid Claim": 0.9941,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0496_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1496",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1496_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0458",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0458_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1000",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1000_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0181",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0181_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1382",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.999,
+      "probabilities": {
+        "Valid Claim": 0.001,
+        "Invalid Claim": 0.999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1382_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0960",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0960_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1479",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1479_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1493",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9994,
+      "probabilities": {
+        "Valid Claim": 0.0006,
+        "Invalid Claim": 0.9994,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1493_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1287",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1287_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1056",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1056_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0460",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0460_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0182",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0182_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1002",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9952,
+      "probabilities": {
+        "Valid Claim": 0.0048,
+        "Invalid Claim": 0.9952,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1002_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0302",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9981,
+      "probabilities": {
+        "Valid Claim": 0.0019,
+        "Invalid Claim": 0.9981,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0302_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0353",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0353_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0392",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0392_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0762",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0762_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1322",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1322_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1310",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9887,
+      "probabilities": {
+        "Valid Claim": 0.0112,
+        "Invalid Claim": 0.9887,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1310_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0736",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0736_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0509",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0509_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0132",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9991,
+      "probabilities": {
+        "Valid Claim": 0.0009,
+        "Invalid Claim": 0.9991,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0132_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0928",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0928_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1231",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1231_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1043",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1043_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0801",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0801_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0996",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0996_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1343",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1343_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0506",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0506_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0625",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0625_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0064",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0064_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1465",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9976,
+      "probabilities": {
+        "Valid Claim": 0.0024,
+        "Invalid Claim": 0.9976,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1465_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0642",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0642_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0787",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9875,
+      "probabilities": {
+        "Valid Claim": 0.0124,
+        "Invalid Claim": 0.9875,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0787_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0265",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0265_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0140",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0140_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0373",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0373_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0697",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9833,
+      "probabilities": {
+        "Valid Claim": 0.0166,
+        "Invalid Claim": 0.9833,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0697_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1042",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9543,
+      "probabilities": {
+        "Valid Claim": 0.0455,
+        "Invalid Claim": 0.9543,
+        "Manual Review": 0.0002
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1042_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0207",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0207_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0097",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9996,
+      "probabilities": {
+        "Valid Claim": 0.0004,
+        "Invalid Claim": 0.9996,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0097_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0121",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0121_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1304",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9663,
+      "probabilities": {
+        "Valid Claim": 0.0336,
+        "Invalid Claim": 0.9663,
+        "Manual Review": 0.0001
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1304_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0712",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9986,
+      "probabilities": {
+        "Valid Claim": 0.0014,
+        "Invalid Claim": 0.9986,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0712_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0576",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0576_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1365",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1365_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0723",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9852,
+      "probabilities": {
+        "Valid Claim": 0.0148,
+        "Invalid Claim": 0.9852,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0723_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0309",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0309_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1047",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9995,
+      "probabilities": {
+        "Valid Claim": 0.0005,
+        "Invalid Claim": 0.9995,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1047_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0156",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0156_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0239",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0239_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1441",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1441_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0158",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0158_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1093",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1093_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1385",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1385_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0913",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0913_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1054",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9934,
+      "probabilities": {
+        "Valid Claim": 0.0066,
+        "Invalid Claim": 0.9934,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1054_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1430",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1430_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1488",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1488_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0784",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0784_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0221",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9991,
+      "probabilities": {
+        "Valid Claim": 0.0009,
+        "Invalid Claim": 0.9991,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0221_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1130",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1130_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0232",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0232_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1045",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1045_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1381",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.999,
+      "probabilities": {
+        "Valid Claim": 0.001,
+        "Invalid Claim": 0.999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1381_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0344",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0344_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1500",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1500_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1305",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1305_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1266",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1266_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0586",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0586_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0577",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0577_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0808",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0808_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0968",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0968_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0929",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0929_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1023",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9899,
+      "probabilities": {
+        "Valid Claim": 0.0101,
+        "Invalid Claim": 0.9899,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1023_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1489",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9996,
+      "probabilities": {
+        "Valid Claim": 0.0004,
+        "Invalid Claim": 0.9996,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1489_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0305",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0305_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1450",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1450_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1403",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1403_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0479",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0479_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0803",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0803_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0759",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0759_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1150",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1150_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1439",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1439_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0488",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0488_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0958",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0958_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0317",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9521,
+      "probabilities": {
+        "Valid Claim": 0.0476,
+        "Invalid Claim": 0.9521,
+        "Manual Review": 0.0003
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0317_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0726",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0726_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0538",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0538_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0579",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0579_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0998",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0998_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0379",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0379_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1387",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1387_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0352",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9992,
+      "probabilities": {
+        "Valid Claim": 0.0008,
+        "Invalid Claim": 0.9992,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0352_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1136",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1136_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0783",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9989,
+      "probabilities": {
+        "Valid Claim": 0.0011,
+        "Invalid Claim": 0.9989,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0783_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0544",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0544_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0915",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0915_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0335",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9996,
+      "probabilities": {
+        "Valid Claim": 0.0004,
+        "Invalid Claim": 0.9996,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0335_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0935",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0935_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0172",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0172_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0281",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0281_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0881",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0881_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1105",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9992,
+      "probabilities": {
+        "Valid Claim": 0.0008,
+        "Invalid Claim": 0.9992,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1105_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0572",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0572_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0986",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0986_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0528",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0528_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1153",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9904,
+      "probabilities": {
+        "Valid Claim": 0.0096,
+        "Invalid Claim": 0.9904,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1153_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1412",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1412_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0879",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0879_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0418",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0418_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0961",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0961_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1419",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1419_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0042",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0042_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1078",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1078_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0951",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0951_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0469",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0469_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0813",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0813_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1205",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1205_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1006",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1006_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1338",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1338_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1118",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1118_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0494",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0494_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0426",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0426_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0671",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0671_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0451",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0451_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0582",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0582_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1212",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1212_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0984",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0984_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0827",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0827_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0545",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.957,
+      "probabilities": {
+        "Valid Claim": 0.0429,
+        "Invalid Claim": 0.957,
+        "Manual Review": 0.0002
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0545_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1017",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1017_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0273",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0273_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1122",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1122_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0060",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.996,
+      "probabilities": {
+        "Valid Claim": 0.004,
+        "Invalid Claim": 0.996,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0060_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0409",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0409_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1034",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1034_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1072",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1072_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0039",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0039_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0146",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0146_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0041",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0041_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0466",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0466_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0125",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0125_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1053",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1053_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1384",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1384_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0630",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0630_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0768",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0768_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0340",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0340_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0419",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0419_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0596",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0596_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0187",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9993,
+      "probabilities": {
+        "Valid Claim": 0.0007,
+        "Invalid Claim": 0.9993,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0187_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0967",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0967_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0078",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0078_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0710",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0710_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0779",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0779_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0287",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0287_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0253",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0253_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1330",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1330_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0288",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-0288_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1475",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9909,
+      "probabilities": {
+        "Valid Claim": 0.0091,
+        "Invalid Claim": 0.9909,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-1475_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1070",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9995,
+      "probabilities": {
+        "Valid Claim": 0.0005,
+        "Invalid Claim": 0.9995,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1070_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0809",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0809_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1337",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1337_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0931",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Valid Claim\\CLM-2026-0931_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-0822",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9974,
+      "probabilities": {
+        "Valid Claim": 0.0026,
+        "Invalid Claim": 0.9974,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-0822_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1378",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Manual Review\\CLM-2026-1378_v1.png"
+    },
+    {
+      "claim_id": "CLM-2026-1102",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9979,
+      "probabilities": {
+        "Valid Claim": 0.0021,
+        "Invalid Claim": 0.9979,
+        "Manual Review": 0.0
+      },
+      "card": "summary_cards_v3\\test\\Invalid Claim\\CLM-2026-1102_v1.png"
+    }
+  ],
+  "live_cases": [
+    {
+      "claim_id": "CLM-2026-0137",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0537",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0829",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1111",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9485,
+      "probabilities": {
+        "Valid Claim": 0.0512,
+        "Invalid Claim": 0.9485,
+        "Manual Review": 0.0003
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1309",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1409",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9998,
+      "probabilities": {
+        "Valid Claim": 0.0002,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0541",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0790",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0152",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0728",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0575",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9997,
+      "probabilities": {
+        "Valid Claim": 0.0003,
+        "Invalid Claim": 0.9997,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0226",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1262",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0738",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0529",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0820",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0225",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0163",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0197",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0255",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9799,
+      "probabilities": {
+        "Valid Claim": 0.0201,
+        "Invalid Claim": 0.9799,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1281",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.993,
+      "probabilities": {
+        "Valid Claim": 0.007,
+        "Invalid Claim": 0.993,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0504",
+      "actual_class": "Valid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0834",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9996,
+      "probabilities": {
+        "Valid Claim": 0.0004,
+        "Invalid Claim": 0.9996,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0103",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0427",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1035",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1386",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9999,
+      "probabilities": {
+        "Valid Claim": 0.0001,
+        "Invalid Claim": 0.9999,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0932",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 1.0,
+      "probabilities": {
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-0298",
+      "actual_class": "Manual Review",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9992,
+      "probabilities": {
+        "Valid Claim": 0.0008,
+        "Invalid Claim": 0.9992,
+        "Manual Review": 0.0
+      }
+    },
+    {
+      "claim_id": "CLM-2026-1362",
+      "actual_class": "Invalid Claim",
+      "predicted_class": "Invalid Claim",
+      "top_confidence": 0.9967,
+      "probabilities": {
+        "Valid Claim": 0.0033,
+        "Invalid Claim": 0.9967,
+        "Manual Review": 0.0
+      }
+    }
+  ],
+  "dataset": {
+    "version": "v3",
+    "card_size_px": [
+      600,
+      600
+    ],
+    "test_cards": "summary_cards_v3"
+  }
+}

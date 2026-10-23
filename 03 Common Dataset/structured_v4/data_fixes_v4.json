@@ -1,0 +1,30 @@
+{
+  "dataset_version": "v4",
+  "created_utc": "2026-10-22T12:39:18+00:00",
+  "source": "structured_v3 (1,500 records, labels unchanged)",
+  "card_renderer": "dataset_generator/generate_summary_cards.py (v4 status tiles)",
+  "changes": [
+    "Replaced the 7-row text card with four large status tiles (warranty, documents, repairs, serial).",
+    "Kept claim details below the tiles (product, fault/damage, age/warranty, contradiction/duplicate).",
+    "Inherited the single serial-mismatch correction from v3."
+  ],
+  "preserved": {
+    "records": 1500,
+    "splits": {
+      "train": 1050,
+      "val": 225,
+      "test": 225
+    },
+    "class_distribution": {
+      "Valid Claim": 500,
+      "Invalid Claim": 500,
+      "Manual Review": 500
+    }
+  },
+  "known_limitations": [
+    "Labels remain deterministic from the generator conditions.",
+    "has_warranty_card and has_product_photo are constant True.",
+    "14 duplicate flags lack matching serial/invoice evidence.",
+    "Only two records sit exactly on remaining_warranty_days == 0."
+  ]
+}

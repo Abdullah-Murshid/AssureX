@@ -1,0 +1,39 @@
+{
+  "dataset_version": "v3",
+  "created_utc": "2026-10-22T08:26:51+00:00",
+  "source": "../structured",
+  "fixes": [
+    {
+      "claim_id": "CLM-2026-0874",
+      "split": "train",
+      "field": "ocr_serial_number",
+      "old": "APP239399",
+      "new": "APP239398",
+      "reason": "Mismatch label had identical user and OCR serials."
+    }
+  ],
+  "preserved": {
+    "records": 1500,
+    "class_distribution": {
+      "Invalid Claim": 500,
+      "Valid Claim": 500,
+      "Manual Review": 500
+    },
+    "split_counts": {
+      "train": 1050,
+      "val": 225,
+      "test": 225
+    }
+  },
+  "known_limitations_not_changed": [
+    "Labels remain deterministic from the generator's six conditions.",
+    "has_warranty_card and has_product_photo are constant True.",
+    "duplicate_claim_flag rows do not yet have matching serial/invoice evidence.",
+    "Only two records sit exactly on remaining_warranty_days == 0."
+  ],
+  "csv_sha256": {
+    "train": "7c6211d782f6450efcad07a0508efe095b031cb694cb3a9d60b4e45412741470",
+    "val": "1b03c1385b70f731d07623075555582a620d4441655419d6a3d26e9b2893d700",
+    "test": "b67be2830981d611863f0e19bd5a3334dfcdb23da9e980e40f53de76ea2a9db7"
+  }
+}

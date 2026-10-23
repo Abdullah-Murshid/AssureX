@@ -1,55 +1,60 @@
 {% extends "base.html" %}
 
-{% block title %}Create Account - AssureX Claim Engine{% endblock %}
+{% block title %}Create Account — AssureX Claim Engine{% endblock %}
 
 {% block content %}
 <div class="auth-card">
     <div class="panel">
-        <div class="panel-header" style="text-align: center; justify-content: center; padding: 1.25rem;">
-            <h1 class="panel-title" style="font-size: 1.15rem;">
-                <svg class="icon" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-user-plus"></use></svg> Create New Account
-            </h1>
+        <div class="panel-header" style="justify-content: center; padding: 22px 28px;">
+            <h2 class="panel-title" style="font-size: 15px;">
+                <svg class="icon" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-user-plus"></use></svg>
+                Create account
+            </h2>
         </div>
-        <div class="panel-body" style="padding: 1.5rem;">
+        <div class="panel-body" style="padding: 28px;">
             {% if error %}
-            <div style="background-color: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1.25rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div class="flash flash-error" role="alert">
                 <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg>
                 <span>{{ error }}</span>
             </div>
             {% endif %}
 
             <form action="/register" method="POST">
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Full Name</label>
-                    <input type="text" name="full_name" class="form-input" style="width: 100%;" placeholder="e.g. Jane Doe" value="{{ full_name or '' }}" required autofocus>
+                <div class="form-group" style="margin-bottom: 14px;">
+                    <label class="form-label" for="reg-name">Full name</label>
+                    <input id="reg-name" type="text" name="full_name" class="form-input"
+                           placeholder="e.g. Jane Doe" value="{{ full_name or '' }}" required autofocus>
                 </div>
 
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Email Address</label>
-                    <input type="email" name="email" class="form-input" style="width: 100%;" placeholder="e.g. jane@example.com" value="{{ email or '' }}" required>
+                <div class="form-group" style="margin-bottom: 14px;">
+                    <label class="form-label" for="reg-email">Email address</label>
+                    <input id="reg-email" type="email" name="email" class="form-input"
+                           placeholder="e.g. jane@example.com" value="{{ email or '' }}" required>
                 </div>
 
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Password</label>
-                    <input type="password" name="password" class="form-input" style="width: 100%;" placeholder="Minimum 6 characters" minlength="6" required>
+                <div class="form-group" style="margin-bottom: 14px;">
+                    <label class="form-label" for="reg-password">Password</label>
+                    <input id="reg-password" type="password" name="password" class="form-input"
+                           placeholder="Minimum 6 characters" minlength="6" required>
                 </div>
 
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Account Role</label>
-                    <select name="role" class="form-select" style="width: 100%;" required>
-                        <option value="customer" {% if role == 'customer' %}selected{% endif %}>Customer (Product Owner & Claimant)</option>
-                        <option value="service_center" {% if role == 'service_center' %}selected{% endif %}>Authorized Service Center Staff</option>
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <label class="form-label" for="reg-role">Account role</label>
+                    <select id="reg-role" name="role" class="form-select" required>
+                        <option value="customer" {% if role == 'customer' %}selected{% endif %}>Customer (Product owner &amp; claimant)</option>
+                        <option value="service_center" {% if role == 'service_center' %}selected{% endif %}>Authorized service center staff</option>
                     </select>
-                    <div style="font-size: 0.725rem; color: var(--text-muted); margin-top: 0.25rem;">Note: Reviewer and Admin accounts are assigned internally.</div>
+                    <span style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">Reviewer and Admin roles are assigned internally.</span>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.65rem; font-size: 0.9rem;">
-                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-user-check"></use></svg> Register Account
+                <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 42px; font-size: 13.5px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-user-check"></use></svg>
+                    Create account
                 </button>
             </form>
 
-            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.825rem; color: var(--text-sub); text-align: center;">
-                Already have an account? <a href="/login" class="link">Sign in here</a>
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-sub); text-align: center;">
+                Already have an account? <a href="/login" class="link">Sign in</a>
             </div>
         </div>
     </div>

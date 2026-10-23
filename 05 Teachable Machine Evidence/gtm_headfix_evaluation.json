@@ -1,0 +1,62 @@
+{
+  "candidate": "GTM Models/keras_model_headfix.h5",
+  "base": "deployed MobileNetV2 (frozen)",
+  "head": "Dense(100) + Dense(3), retrained on 2,100 v4 train cards",
+  "test_accuracy": 1.0,
+  "confusion_matrix": [
+    [
+      75,
+      0,
+      0
+    ],
+    [
+      0,
+      75,
+      0
+    ],
+    [
+      0,
+      0,
+      75
+    ]
+  ],
+  "per_class": {
+    "Valid Claim": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 75.0
+    },
+    "Invalid Claim": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 75.0
+    },
+    "Manual Review": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 75.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 225.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 225.0
+    }
+  },
+  "class_order": [
+    "Valid Claim",
+    "Invalid Claim",
+    "Manual Review"
+  ],
+  "candidate_reload_accuracy": 1.0
+}

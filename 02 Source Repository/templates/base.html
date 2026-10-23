@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#14283f">
-    <title>{% block title %}AssureX Claim Engine{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/dashboard.css?v=20261021_v5">
     <script>
     (function() {
       try {
@@ -45,28 +47,28 @@ if (document.documentElement.classList.contains('sidebar-collapsed')) {
         {{ nav('/', 'Overview', 'fa-chart-line') }}
         {{ nav('/products', 'Products', 'fa-box', true) }}
         {{ nav('/warranties', 'Warranties', 'fa-shield', true) }}
-        {{ nav('/documents', 'Document vault', 'fa-folder-open', true) }}
-        {{ nav('/repairs', 'Repair history', 'fa-wrench', true) }}
-        {{ nav('/alerts', 'Expiry alerts', 'fa-bell') }}
+        {{ nav('/documents', 'Document Vault', 'fa-folder-open', true) }}
+        {{ nav('/repairs', 'Repair History', 'fa-wrench', true) }}
+        {{ nav('/alerts', 'Expiry Alerts', 'fa-bell') }}
         {% if active_role in ['customer', 'service_center', 'admin'] %}
         <div class="nav-section-label">Claims</div>
-        {{ nav('/claims/new', 'New claim', 'fa-plus') }}
-        {{ nav('/claims/import-csv', 'Batch import', 'fa-file-csv') }}
+        {{ nav('/claims/new', 'New Claim', 'fa-plus') }}
+        {{ nav('/claims/import-csv', 'Batch Import', 'fa-file-csv') }}
         {% endif %}
         {% if active_role in ['reviewer', 'admin'] %}
-        <div class="nav-section-label">Review & governance</div>
-        {{ nav('/reviewer/queue', 'Review queue', 'fa-list-check') }}
-        {{ nav('/audit-logs', 'Audit trail', 'fa-clock-rotate-left') }}
+        <div class="nav-section-label">Review & Governance</div>
+        {{ nav('/reviewer/queue', 'Review Queue', 'fa-list-check') }}
+        {{ nav('/audit-logs', 'Audit Trail', 'fa-clock-rotate-left') }}
         {% endif %}
         {% if active_role == 'admin' %}
         <div class="nav-section-label">Administration</div>
         {{ nav('/admin/analytics', 'Analytics', 'fa-chart-bar') }}
-        {{ nav('/admin/policies', 'Policy rules', 'fa-scroll') }}
-        {{ nav('/admin/export-csv', 'Export claims', 'fa-file-export') }}
+        {{ nav('/admin/policies', 'Policy Rules', 'fa-scroll') }}
+        {{ nav('/admin/export-csv', 'Export Claims', 'fa-file-export') }}
         {% endif %}
     </nav>
     <div class="sidebar-bottom">
-        {{ nav('/profile', 'My account', 'fa-user-circle') }}
+        {{ nav('/profile', 'My Account', 'fa-user-circle') }}
         {{ nav('/logout', 'Sign out', 'fa-right-from-bracket') }}
     </div>
 </aside>

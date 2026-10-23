@@ -1,0 +1,36 @@
+{
+  "dataset_version": "v3",
+  "card_size_px": [
+    600,
+    600
+  ],
+  "total_unique_claim_records": 1500,
+  "split_counts": {
+    "train": 1050,
+    "val": 225,
+    "test": 225
+  },
+  "class_distribution_records": {
+    "Valid Claim": 500,
+    "Invalid Claim": 500,
+    "Manual Review": 500
+  },
+  "class_distribution_images": {
+    "Invalid Claim": 850,
+    "Valid Claim": 850,
+    "Manual Review": 850
+  },
+  "total_summary_card_images": 2550,
+  "train_card_images": 2100,
+  "images_per_split": {
+    "train": 2100,
+    "val": 225,
+    "test": 225
+  },
+  "average_product_age_days": 427.22,
+  "average_remaining_warranty_days": 285.1,
+  "contradiction_claims_count": 202,
+  "duplicate_claims_count": 14,
+  "renderer": "dataset_generator/generate_summary_cards.py",
+  "created_utc": "2026-10-22T08:52:27+00:00"
+}

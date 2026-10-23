@@ -1,0 +1,24 @@
+{
+  "dataset_version": "v5",
+  "created_utc": "2026-10-22T13:24:24+00:00",
+  "source": "structured_v4 / v3 records (labels unchanged)",
+  "card_renderer": "dataset_generator/generate_summary_cards.py (v5 flags banner)",
+  "changes": [
+    "Added a full-width FLAGS banner (NONE / CONTRADICTION / DUPLICATE / BOTH FLAGS).",
+    "Moved the four status tiles down; details reduced to product, fault/damage, age/warranty.",
+    "Records, labels and splits unchanged from v4."
+  ],
+  "preserved": {
+    "records": 1500,
+    "splits": {
+      "train": 1050,
+      "val": 225,
+      "test": 225
+    },
+    "class_distribution": {
+      "Valid Claim": 500,
+      "Invalid Claim": 500,
+      "Manual Review": 500
+    }
+  }
+}

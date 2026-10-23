@@ -45,12 +45,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8742,
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9449,
       "probabilities": {
-        "Valid Claim": 0.0697,
-        "Invalid Claim": 0.8742,
-        "Manual Review": 0.0561
+        "Valid Claim": 0.0551,
+        "Invalid Claim": 0.0,
+        "Manual Review": 0.9449
       }
     },
     "dossier": {
@@ -65,16 +65,16 @@
           "Manual Review": 0.1818999946117401,
           "Valid Claim": 0.7973999977111816
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8742,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 0.9449,
         "vision_probabilities": {
-          "Valid Claim": 0.0697,
-          "Invalid Claim": 0.8742,
-          "Manual Review": 0.0561
+          "Valid Claim": 0.0551,
+          "Invalid Claim": 0.0,
+          "Manual Review": 0.9449
         },
-        "confidence_difference": 0.0768,
+        "confidence_difference": 0.1475,
         "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -142,7 +142,7 @@
       "explanation": {
         "supporting_factors": [],
         "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
         ],
         "required_actions": [
           "Manual reviewer audit required due to model confidence discrepancy."
@@ -150,7 +150,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0137 was initiated for Bose MacBook-Air-M2 regarding Screen Flicker Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0137_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0137_v1.png"
   },
   {
     "record": {
@@ -198,12 +198,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.5549,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.2819,
-        "Invalid Claim": 0.5549,
-        "Manual Review": 0.1632
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
@@ -218,16 +218,16 @@
           "Manual Review": 0.17159999907016754,
           "Valid Claim": 0.8062999844551086
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.5549,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.2819,
-          "Invalid Claim": 0.5549,
-          "Manual Review": 0.1632
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.2514,
-        "consistency_status": "Uncertain Result",
-        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+        "confidence_difference": 0.1937,
+        "consistency_status": "Model Disagreement",
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
       },
       "rule_evaluation": {
         "category_policy": "Home Appliances",
@@ -299,7 +299,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0537 was initiated for Panasonic EcoSilence-Drive regarding Control Board Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0537_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0537_v1.png"
   },
   {
     "record": {
@@ -348,11 +348,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.863,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1005,
-        "Invalid Claim": 0.863,
-        "Manual Review": 0.0365
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
       }
     },
     "dossier": {
@@ -368,13 +368,13 @@
           "Valid Claim": 0.15960000455379486
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.863,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1005,
-          "Invalid Claim": 0.863,
-          "Manual Review": 0.0365
+          "Valid Claim": 0.0,
+          "Invalid Claim": 1.0,
+          "Manual Review": 0.0
         },
-        "confidence_difference": 0.2052,
+        "confidence_difference": 0.3422,
         "consistency_status": "Model Disagreement",
         "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
       },
@@ -454,7 +454,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0829 was initiated for Dell QuietComfort-45 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-0829_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-0829_v1.png"
   },
   {
     "record": {
@@ -502,19 +502,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.7706,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1401,
-        "Invalid Claim": 0.7706,
-        "Manual Review": 0.0893
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-1111",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.5652999877929688,
         "python_probabilities": {
@@ -522,14 +522,14 @@
           "Manual Review": 0.5652999877929688,
           "Valid Claim": 0.06560000032186508
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.7706,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1401,
-          "Invalid Claim": 0.7706,
-          "Manual Review": 0.0893
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.2053,
+        "confidence_difference": 0.4347,
         "consistency_status": "Uncertain Result",
         "status_description": "One or both models produced low-confidence predictions (< 0.6)."
       },
@@ -611,7 +611,7 @@
       },
       "narrative_summary": "Claim CLM-2026-1111 was initiated for Apple OLED-C2 regarding Audio Speaker Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1111_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-1111_v1.png"
   },
   {
     "record": {
@@ -660,11 +660,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8903,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.0927,
-        "Invalid Claim": 0.8903,
-        "Manual Review": 0.017
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
       }
     },
     "dossier": {
@@ -680,15 +680,15 @@
           "Valid Claim": 0.030799999833106995
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8903,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.0927,
-          "Invalid Claim": 0.8903,
-          "Manual Review": 0.017
+          "Valid Claim": 0.0,
+          "Invalid Claim": 1.0,
+          "Manual Review": 0.0
         },
-        "confidence_difference": 0.0841,
-        "consistency_status": "Strong Match",
-        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
+        "confidence_difference": 0.1938,
+        "consistency_status": "Acceptable Match",
+        "status_description": "Both models agree on the class with acceptable confidence alignment (diff 0.1 - 0.25)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -766,7 +766,7 @@
       },
       "narrative_summary": "Claim CLM-2026-1309 was initiated for Samsung OLED-C2 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-1309_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-1309_v1.png"
   },
   {
     "record": {
@@ -814,19 +814,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.6483,
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9986,
       "probabilities": {
-        "Valid Claim": 0.0896,
-        "Invalid Claim": 0.6483,
-        "Manual Review": 0.2621
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0013,
+        "Manual Review": 0.9986
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-1409",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.9376999735832214,
         "python_probabilities": {
@@ -834,16 +834,16 @@
           "Manual Review": 0.9376999735832214,
           "Valid Claim": 0.02290000021457672
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.6483,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 0.9986,
         "vision_probabilities": {
-          "Valid Claim": 0.0896,
-          "Invalid Claim": 0.6483,
-          "Manual Review": 0.2621
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0013,
+          "Manual Review": 0.9986
         },
-        "confidence_difference": 0.2894,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.0609,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Automotive Parts & Accessories",
@@ -917,7 +917,7 @@
       },
       "narrative_summary": "Claim CLM-2026-1409 was initiated for Garmin AVH-Z5200BT-Infotainment regarding Alternator Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1409_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-1409_v1.png"
   },
   {
     "record": {
@@ -965,19 +965,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.4955,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1298,
-        "Invalid Claim": 0.4955,
-        "Manual Review": 0.3747
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0541",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.9376999735832214,
         "python_probabilities": {
@@ -985,16 +985,16 @@
           "Manual Review": 0.9376999735832214,
           "Valid Claim": 0.02290000021457672
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.4955,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1298,
-          "Invalid Claim": 0.4955,
-          "Manual Review": 0.3747
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.4422,
-        "consistency_status": "Uncertain Result",
-        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+        "confidence_difference": 0.0623,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Automotive Parts & Accessories",
@@ -1068,7 +1068,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0541 was initiated for Varta Matrix-Battery-12V regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0541_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0541_v1.png"
   },
   {
     "record": {
@@ -1117,11 +1117,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.4632,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.2099,
-        "Invalid Claim": 0.4632,
-        "Manual Review": 0.3269
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
       }
     },
     "dossier": {
@@ -1137,15 +1137,15 @@
           "Valid Claim": 0.017500000074505806
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.4632,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.2099,
-          "Invalid Claim": 0.4632,
-          "Manual Review": 0.3269
+          "Valid Claim": 0.0,
+          "Invalid Claim": 1.0,
+          "Manual Review": 0.0
         },
-        "confidence_difference": 0.4394,
-        "consistency_status": "Uncertain Result",
-        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+        "confidence_difference": 0.0974,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Home Appliances",
@@ -1219,7 +1219,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0790 was initiated for Samsung Inverter-AC-1.5T regarding Compressor Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-0790_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-0790_v1.png"
   },
   {
     "record": {
@@ -1267,19 +1267,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.3998,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.2336,
-        "Invalid Claim": 0.3998,
-        "Manual Review": 0.3666
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0152",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.5965999960899353,
         "python_probabilities": {
@@ -1287,14 +1287,14 @@
           "Manual Review": 0.5965999960899353,
           "Valid Claim": 0.07020000368356705
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.3998,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.2336,
-          "Invalid Claim": 0.3998,
-          "Manual Review": 0.3666
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.1968,
+        "confidence_difference": 0.4034,
         "consistency_status": "Uncertain Result",
         "status_description": "One or both models produced low-confidence predictions (< 0.6)."
       },
@@ -1371,7 +1371,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0152 was initiated for GE Appliances Inverter-AC-1.5T regarding Thermostat Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0152_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0152_v1.png"
   },
   {
     "record": {
@@ -1419,19 +1419,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8302,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1158,
-        "Invalid Claim": 0.8302,
-        "Manual Review": 0.054
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0728",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.5831999778747559,
         "python_probabilities": {
@@ -1439,14 +1439,14 @@
           "Manual Review": 0.5831999778747559,
           "Valid Claim": 0.06759999692440033
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8302,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1158,
-          "Invalid Claim": 0.8302,
-          "Manual Review": 0.054
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.247,
+        "confidence_difference": 0.4168,
         "consistency_status": "Uncertain Result",
         "status_description": "One or both models produced low-confidence predictions (< 0.6)."
       },
@@ -1523,7 +1523,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0728 was initiated for Garmin Matrix-Battery-12V regarding Sensor Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0728_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0728_v1.png"
   },
   {
     "record": {
@@ -1571,19 +1571,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8151,
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.827,
       "probabilities": {
-        "Valid Claim": 0.0887,
-        "Invalid Claim": 0.8151,
-        "Manual Review": 0.0962
+        "Valid Claim": 0.827,
+        "Invalid Claim": 0.0012,
+        "Manual Review": 0.1717
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0575",
-      "final_decision": "Manual Review Required",
+      "final_decision": "Likely Valid",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Valid Claim",
         "python_top_confidence": 0.8137999773025513,
         "python_probabilities": {
@@ -1591,16 +1591,16 @@
           "Manual Review": 0.16599999368190765,
           "Valid Claim": 0.8137999773025513
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8151,
+        "vision_predicted_class": "Valid Claim",
+        "vision_top_confidence": 0.827,
         "vision_probabilities": {
-          "Valid Claim": 0.0887,
-          "Invalid Claim": 0.8151,
-          "Manual Review": 0.0962
+          "Valid Claim": 0.827,
+          "Invalid Claim": 0.0012,
+          "Manual Review": 0.1717
         },
-        "confidence_difference": 0.0013,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.0132,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Automotive Parts & Accessories",
@@ -1662,17 +1662,21 @@
         "actual_class": "Valid Claim"
       },
       "explanation": {
-        "supporting_factors": [],
-        "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "supporting_factors": [
+          "Python ML model & Vision Classifier both predict 'Valid Claim' with strong confidence.",
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
         ],
+        "opposing_factors": [],
         "required_actions": [
-          "Manual reviewer audit required due to model confidence discrepancy."
+          "Proceed with claim approval and service authorization."
         ]
       },
       "narrative_summary": "Claim CLM-2026-0575 was initiated for Exide AVH-Z5200BT-Infotainment regarding Sensor Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0575_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0575_v1.png"
   },
   {
     "record": {
@@ -1720,12 +1724,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8048,
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.5764,
       "probabilities": {
-        "Valid Claim": 0.1215,
-        "Invalid Claim": 0.8048,
-        "Manual Review": 0.0737
+        "Valid Claim": 0.4227,
+        "Invalid Claim": 0.0009,
+        "Manual Review": 0.5764
       }
     },
     "dossier": {
@@ -1740,16 +1744,16 @@
           "Manual Review": 0.17710000276565552,
           "Valid Claim": 0.8015000224113464
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8048,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 0.5764,
         "vision_probabilities": {
-          "Valid Claim": 0.1215,
-          "Invalid Claim": 0.8048,
-          "Manual Review": 0.0737
+          "Valid Claim": 0.4227,
+          "Invalid Claim": 0.0009,
+          "Manual Review": 0.5764
         },
-        "confidence_difference": 0.0033,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.2251,
+        "consistency_status": "Uncertain Result",
+        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -1817,7 +1821,7 @@
       "explanation": {
         "supporting_factors": [],
         "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+          "AI Disagreement / Uncertainty (Uncertain Result): One or both models produced low-confidence predictions (< 0.6)."
         ],
         "required_actions": [
           "Manual reviewer audit required due to model confidence discrepancy."
@@ -1825,7 +1829,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0226 was initiated for Samsung OLED-C2 regarding Motherboard Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0226_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0226_v1.png"
   },
   {
     "record": {
@@ -1873,19 +1877,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.9599,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.0336,
-        "Invalid Claim": 0.9599,
-        "Manual Review": 0.0065
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-1262",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.9358000159263611,
         "python_probabilities": {
@@ -1893,16 +1897,16 @@
           "Manual Review": 0.9358000159263611,
           "Valid Claim": 0.02280000038444996
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.9599,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.0336,
-          "Invalid Claim": 0.9599,
-          "Manual Review": 0.0065
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.0241,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.0642,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -1982,7 +1986,7 @@
       },
       "narrative_summary": "Claim CLM-2026-1262 was initiated for Sony MacBook-Air-M2 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1262_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-1262_v1.png"
   },
   {
     "record": {
@@ -2030,19 +2034,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.6265,
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.8354,
       "probabilities": {
-        "Valid Claim": 0.1734,
-        "Invalid Claim": 0.6265,
-        "Manual Review": 0.2001
+        "Valid Claim": 0.8354,
+        "Invalid Claim": 0.0018,
+        "Manual Review": 0.1627
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0738",
-      "final_decision": "Manual Review Required",
+      "final_decision": "Likely Valid",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Valid Claim",
         "python_top_confidence": 0.8021000027656555,
         "python_probabilities": {
@@ -2050,16 +2054,16 @@
           "Manual Review": 0.1768999993801117,
           "Valid Claim": 0.8021000027656555
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.6265,
+        "vision_predicted_class": "Valid Claim",
+        "vision_top_confidence": 0.8354,
         "vision_probabilities": {
-          "Valid Claim": 0.1734,
-          "Invalid Claim": 0.6265,
-          "Manual Review": 0.2001
+          "Valid Claim": 0.8354,
+          "Invalid Claim": 0.0018,
+          "Manual Review": 0.1627
         },
-        "confidence_difference": 0.1756,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.0333,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Automotive Parts & Accessories",
@@ -2121,17 +2125,21 @@
         "actual_class": "Valid Claim"
       },
       "explanation": {
-        "supporting_factors": [],
-        "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "supporting_factors": [
+          "Python ML model & Vision Classifier both predict 'Valid Claim' with strong confidence.",
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
         ],
+        "opposing_factors": [],
         "required_actions": [
-          "Manual reviewer audit required due to model confidence discrepancy."
+          "Proceed with claim approval and service authorization."
         ]
       },
       "narrative_summary": "Claim CLM-2026-0738 was initiated for Garmin Matrix-Battery-12V regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0738_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0738_v1.png"
   },
   {
     "record": {
@@ -2179,19 +2187,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.7211,
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.9516,
       "probabilities": {
-        "Valid Claim": 0.1265,
-        "Invalid Claim": 0.7211,
-        "Manual Review": 0.1524
+        "Valid Claim": 0.9516,
+        "Invalid Claim": 0.0003,
+        "Manual Review": 0.0482
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0529",
-      "final_decision": "Manual Review Required",
+      "final_decision": "Likely Valid",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Valid Claim",
         "python_top_confidence": 0.8011000156402588,
         "python_probabilities": {
@@ -2199,16 +2207,16 @@
           "Manual Review": 0.17669999599456787,
           "Valid Claim": 0.8011000156402588
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.7211,
+        "vision_predicted_class": "Valid Claim",
+        "vision_top_confidence": 0.9516,
         "vision_probabilities": {
-          "Valid Claim": 0.1265,
-          "Invalid Claim": 0.7211,
-          "Manual Review": 0.1524
+          "Valid Claim": 0.9516,
+          "Invalid Claim": 0.0003,
+          "Manual Review": 0.0482
         },
-        "confidence_difference": 0.08,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.1505,
+        "consistency_status": "Acceptable Match",
+        "status_description": "Both models agree on the class with acceptable confidence alignment (diff 0.1 - 0.25)."
       },
       "rule_evaluation": {
         "category_policy": "Automotive Parts & Accessories",
@@ -2270,17 +2278,21 @@
         "actual_class": "Valid Claim"
       },
       "explanation": {
-        "supporting_factors": [],
-        "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "supporting_factors": [
+          "Python ML model & Vision Classifier both predict 'Valid Claim' with strong confidence.",
+          "Warranty Coverage Active / Within Grace Period",
+          "Serial Number Match Verified",
+          "Wiring Certified OEM",
+          "Fault Category Covered"
         ],
+        "opposing_factors": [],
         "required_actions": [
-          "Manual reviewer audit required due to model confidence discrepancy."
+          "Proceed with claim approval and service authorization."
         ]
       },
       "narrative_summary": "Claim CLM-2026-0529 was initiated for Bosch ProStarter-80A regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0529_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0529_v1.png"
   },
   {
     "record": {
@@ -2328,19 +2340,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.6798,
+      "predicted_class": "Valid Claim",
+      "top_confidence": 0.7984,
       "probabilities": {
-        "Valid Claim": 0.1743,
-        "Invalid Claim": 0.6798,
-        "Manual Review": 0.1459
+        "Valid Claim": 0.7984,
+        "Invalid Claim": 0.0011,
+        "Manual Review": 0.2005
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0820",
-      "final_decision": "Manual Review Required",
+      "final_decision": "Likely Valid",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Valid Claim",
         "python_top_confidence": 0.828499972820282,
         "python_probabilities": {
@@ -2348,16 +2360,16 @@
           "Manual Review": 0.15119999647140503,
           "Valid Claim": 0.828499972820282
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.6798,
+        "vision_predicted_class": "Valid Claim",
+        "vision_top_confidence": 0.7984,
         "vision_probabilities": {
-          "Valid Claim": 0.1743,
-          "Invalid Claim": 0.6798,
-          "Manual Review": 0.1459
+          "Valid Claim": 0.7984,
+          "Invalid Claim": 0.0011,
+          "Manual Review": 0.2005
         },
-        "confidence_difference": 0.1487,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.0301,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Home Appliances",
@@ -2420,17 +2432,22 @@
         "actual_class": "Valid Claim"
       },
       "explanation": {
-        "supporting_factors": [],
-        "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "supporting_factors": [
+          "Python ML model & Vision Classifier both predict 'Valid Claim' with strong confidence.",
+          "Warranty Coverage Active / Within Grace Period",
+          "Usage Type Eligible",
+          "Repair Frequency Normal",
+          "Mandatory Documents Complete",
+          "Fault Category Covered"
         ],
+        "opposing_factors": [],
         "required_actions": [
-          "Manual reviewer audit required due to model confidence discrepancy."
+          "Proceed with claim approval and service authorization."
         ]
       },
       "narrative_summary": "Claim CLM-2026-0820 was initiated for GE Appliances FrostFree-500L regarding Cooling Leakage. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0820_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0820_v1.png"
   },
   {
     "record": {
@@ -2478,12 +2495,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.7154,
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.9418,
       "probabilities": {
-        "Valid Claim": 0.1539,
-        "Invalid Claim": 0.7154,
-        "Manual Review": 0.1307
+        "Valid Claim": 0.0582,
+        "Invalid Claim": 0.0,
+        "Manual Review": 0.9418
       }
     },
     "dossier": {
@@ -2498,16 +2515,16 @@
           "Manual Review": 0.17720000445842743,
           "Valid Claim": 0.8019000291824341
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.7154,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 0.9418,
         "vision_probabilities": {
-          "Valid Claim": 0.1539,
-          "Invalid Claim": 0.7154,
-          "Manual Review": 0.1307
+          "Valid Claim": 0.0582,
+          "Invalid Claim": 0.0,
+          "Manual Review": 0.9418
         },
-        "confidence_difference": 0.0865,
+        "confidence_difference": 0.1399,
         "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
       },
       "rule_evaluation": {
         "category_policy": "Automotive Parts & Accessories",
@@ -2571,7 +2588,7 @@
       "explanation": {
         "supporting_factors": [],
         "opposing_factors": [
-          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+          "AI Disagreement / Uncertainty (Model Disagreement): Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
         ],
         "required_actions": [
           "Manual reviewer audit required due to model confidence discrepancy."
@@ -2579,7 +2596,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0225 was initiated for Pioneer GPS-DriveSmart-65 regarding Alternator Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0225_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0225_v1.png"
   },
   {
     "record": {
@@ -2628,11 +2645,11 @@
     },
     "gtm": {
       "predicted_class": "Manual Review",
-      "top_confidence": 0.7376,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.0961,
-        "Invalid Claim": 0.1663,
-        "Manual Review": 0.7376
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
@@ -2648,15 +2665,15 @@
           "Valid Claim": 0.02239999920129776
         },
         "vision_predicted_class": "Manual Review",
-        "vision_top_confidence": 0.7376,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.0961,
-          "Invalid Claim": 0.1663,
-          "Manual Review": 0.7376
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.2006,
-        "consistency_status": "Acceptable Match",
-        "status_description": "Both models agree on the class with acceptable confidence alignment (diff 0.1 - 0.25)."
+        "confidence_difference": 0.0618,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -2735,7 +2752,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0163 was initiated for Asus XPS-15 regarding Screen Flicker Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0163_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0163_v1.png"
   },
   {
     "record": {
@@ -2784,11 +2801,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.9847,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.0139,
-        "Invalid Claim": 0.9847,
-        "Manual Review": 0.0014
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
       }
     },
     "dossier": {
@@ -2804,13 +2821,13 @@
           "Valid Claim": 0.01850000023841858
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.9847,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.0139,
-          "Invalid Claim": 0.9847,
-          "Manual Review": 0.0014
+          "Valid Claim": 0.0,
+          "Invalid Claim": 1.0,
+          "Manual Review": 0.0
         },
-        "confidence_difference": 0.0215,
+        "confidence_difference": 0.0368,
         "consistency_status": "Strong Match",
         "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
@@ -2884,7 +2901,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0197 was initiated for Garmin Matrix-Battery-12V regarding Gps Module Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-0197_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-0197_v1.png"
   },
   {
     "record": {
@@ -2932,19 +2949,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.888,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.0892,
-        "Invalid Claim": 0.888,
-        "Manual Review": 0.0227
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0255",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.9318000078201294,
         "python_probabilities": {
@@ -2952,16 +2969,16 @@
           "Manual Review": 0.9318000078201294,
           "Valid Claim": 0.023600000888109207
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.888,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.0892,
-          "Invalid Claim": 0.888,
-          "Manual Review": 0.0227
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.0438,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.0682,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -3041,7 +3058,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0255 was initiated for Apple UltraView-55 regarding Audio Speaker Malfunction. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0255_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0255_v1.png"
   },
   {
     "record": {
@@ -3090,16 +3107,16 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.4182,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1662,
-        "Invalid Claim": 0.4182,
-        "Manual Review": 0.4155
+        "Valid Claim": 0.0,
+        "Invalid Claim": 1.0,
+        "Manual Review": 0.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-1281",
-      "final_decision": "Manual Review Required",
+      "final_decision": "Likely Invalid",
       "comparison": {
         "classes_match": true,
         "python_predicted_class": "Invalid Claim",
@@ -3110,15 +3127,15 @@
           "Valid Claim": 0.01720000058412552
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.4182,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1662,
-          "Invalid Claim": 0.4182,
-          "Manual Review": 0.4155
+          "Valid Claim": 0.0,
+          "Invalid Claim": 1.0,
+          "Manual Review": 0.0
         },
-        "confidence_difference": 0.5464,
-        "consistency_status": "Uncertain Result",
-        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+        "confidence_difference": 0.0354,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -3186,15 +3203,15 @@
       "explanation": {
         "supporting_factors": [],
         "opposing_factors": [
-          "AI Disagreement / Uncertainty (Uncertain Result): One or both models produced low-confidence predictions (< 0.6)."
+          "Python ML model & Vision Classifier both predict 'Invalid Claim'."
         ],
         "required_actions": [
-          "Manual reviewer audit required due to model confidence discrepancy."
+          "Issue rejection notice specifying non-compliance reasons."
         ]
       },
       "narrative_summary": "Claim CLM-2026-1281 was initiated for Asus XPS-15 regarding Screen Flicker Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-1281_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-1281_v1.png"
   },
   {
     "record": {
@@ -3242,12 +3259,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.6668,
+      "predicted_class": "Manual Review",
+      "top_confidence": 0.998,
       "probabilities": {
-        "Valid Claim": 0.1638,
-        "Invalid Claim": 0.6668,
-        "Manual Review": 0.1694
+        "Valid Claim": 0.002,
+        "Invalid Claim": 0.0,
+        "Manual Review": 0.998
       }
     },
     "dossier": {
@@ -3262,16 +3279,16 @@
           "Manual Review": 0.1770000010728836,
           "Valid Claim": 0.8011000156402588
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.6668,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 0.998,
         "vision_probabilities": {
-          "Valid Claim": 0.1638,
-          "Invalid Claim": 0.6668,
-          "Manual Review": 0.1694
+          "Valid Claim": 0.002,
+          "Invalid Claim": 0.0,
+          "Manual Review": 0.998
         },
-        "confidence_difference": 0.1343,
+        "confidence_difference": 0.1969,
         "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -3346,7 +3363,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0504 was initiated for Sony UltraView-55 regarding Battery Charging Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Valid Claim/CLM-2026-0504_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Valid Claim/CLM-2026-0504_v1.png"
   },
   {
     "record": {
@@ -3395,11 +3412,11 @@
     },
     "gtm": {
       "predicted_class": "Manual Review",
-      "top_confidence": 0.4512,
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1305,
-        "Invalid Claim": 0.4183,
-        "Manual Review": 0.4512
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
@@ -3415,13 +3432,13 @@
           "Valid Claim": 0.06949999928474426
         },
         "vision_predicted_class": "Manual Review",
-        "vision_top_confidence": 0.4512,
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1305,
-          "Invalid Claim": 0.4183,
-          "Manual Review": 0.4512
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.1477,
+        "confidence_difference": 0.4011,
         "consistency_status": "Uncertain Result",
         "status_description": "One or both models produced low-confidence predictions (< 0.6)."
       },
@@ -3498,7 +3515,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0834 was initiated for Kenwood AVH-Z5200BT-Infotainment regarding Starter Motor Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0834_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0834_v1.png"
   },
   {
     "record": {
@@ -3546,12 +3563,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.6654,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1544,
-        "Invalid Claim": 0.6654,
-        "Manual Review": 0.1802
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
@@ -3566,16 +3583,16 @@
           "Manual Review": 0.15080000460147858,
           "Valid Claim": 0.8277000188827515
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.6654,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1544,
-          "Invalid Claim": 0.6654,
-          "Manual Review": 0.1802
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.1623,
+        "confidence_difference": 0.1723,
         "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -3651,7 +3668,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0103 was initiated for Bose UltraView-55 regarding Battery Charging Failure. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0103_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0103_v1.png"
   },
   {
     "record": {
@@ -3700,11 +3717,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8128,
+      "top_confidence": 0.9998,
       "probabilities": {
-        "Valid Claim": 0.1192,
-        "Invalid Claim": 0.8128,
-        "Manual Review": 0.068
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0002
       }
     },
     "dossier": {
@@ -3720,15 +3737,15 @@
           "Valid Claim": 0.030799999833106995
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8128,
+        "vision_top_confidence": 0.9998,
         "vision_probabilities": {
-          "Valid Claim": 0.1192,
-          "Invalid Claim": 0.8128,
-          "Manual Review": 0.068
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.9998,
+          "Manual Review": 0.0002
         },
-        "confidence_difference": 0.0066,
-        "consistency_status": "Strong Match",
-        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
+        "confidence_difference": 0.1936,
+        "consistency_status": "Acceptable Match",
+        "status_description": "Both models agree on the class with acceptable confidence alignment (diff 0.1 - 0.25)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -3806,7 +3823,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0427 was initiated for Dell Pro-X100 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-0427_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-0427_v1.png"
   },
   {
     "record": {
@@ -3855,11 +3872,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8756,
+      "top_confidence": 0.9998,
       "probabilities": {
-        "Valid Claim": 0.1052,
-        "Invalid Claim": 0.8756,
-        "Manual Review": 0.0192
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0002
       }
     },
     "dossier": {
@@ -3875,13 +3892,13 @@
           "Valid Claim": 0.014499999582767487
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8756,
+        "vision_top_confidence": 0.9998,
         "vision_probabilities": {
-          "Valid Claim": 0.1052,
-          "Invalid Claim": 0.8756,
-          "Manual Review": 0.0192
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.9998,
+          "Manual Review": 0.0002
         },
-        "confidence_difference": 0.0332,
+        "confidence_difference": 0.091,
         "consistency_status": "Strong Match",
         "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
@@ -3957,7 +3974,7 @@
       },
       "narrative_summary": "Claim CLM-2026-1035 was initiated for Panasonic Inverter-AC-1.5T regarding Motor Burnout. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-1035_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-1035_v1.png"
   },
   {
     "record": {
@@ -4005,19 +4022,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.8026,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.114,
-        "Invalid Claim": 0.8026,
-        "Manual Review": 0.0835
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-1386",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.8709999918937683,
         "python_probabilities": {
@@ -4025,16 +4042,16 @@
           "Manual Review": 0.8709999918937683,
           "Valid Claim": 0.12319999933242798
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.8026,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.114,
-          "Invalid Claim": 0.8026,
-          "Manual Review": 0.0835
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.0684,
-        "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Manual Review', Vision: 'Invalid Claim')."
+        "confidence_difference": 0.129,
+        "consistency_status": "Acceptable Match",
+        "status_description": "Both models agree on the class with acceptable confidence alignment (diff 0.1 - 0.25)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -4114,7 +4131,7 @@
       },
       "narrative_summary": "Claim CLM-2026-1386 was initiated for Bose Pro-X100 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-1386_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-1386_v1.png"
   },
   {
     "record": {
@@ -4162,19 +4179,19 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.4598,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.2429,
-        "Invalid Claim": 0.4598,
-        "Manual Review": 0.2973
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
       "claim_id": "CLM-2026-0932",
       "final_decision": "Manual Review Required",
       "comparison": {
-        "classes_match": false,
+        "classes_match": true,
         "python_predicted_class": "Manual Review",
         "python_top_confidence": 0.9340999722480774,
         "python_probabilities": {
@@ -4182,16 +4199,16 @@
           "Manual Review": 0.9340999722480774,
           "Valid Claim": 0.023099999874830246
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.4598,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.2429,
-          "Invalid Claim": 0.4598,
-          "Manual Review": 0.2973
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.4743,
-        "consistency_status": "Uncertain Result",
-        "status_description": "One or both models produced low-confidence predictions (< 0.6)."
+        "confidence_difference": 0.0659,
+        "consistency_status": "Strong Match",
+        "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
       "rule_evaluation": {
         "category_policy": "Consumer Electronics",
@@ -4271,7 +4288,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0932 was initiated for Bose XPS-15 regarding Overheating Shutdown. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0932_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0932_v1.png"
   },
   {
     "record": {
@@ -4319,12 +4336,12 @@
       }
     },
     "gtm": {
-      "predicted_class": "Invalid Claim",
-      "top_confidence": 0.7863,
+      "predicted_class": "Manual Review",
+      "top_confidence": 1.0,
       "probabilities": {
-        "Valid Claim": 0.1513,
-        "Invalid Claim": 0.7863,
-        "Manual Review": 0.0624
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.0,
+        "Manual Review": 1.0
       }
     },
     "dossier": {
@@ -4339,16 +4356,16 @@
           "Manual Review": 0.17170000076293945,
           "Valid Claim": 0.8069000244140625
         },
-        "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.7863,
+        "vision_predicted_class": "Manual Review",
+        "vision_top_confidence": 1.0,
         "vision_probabilities": {
-          "Valid Claim": 0.1513,
-          "Invalid Claim": 0.7863,
-          "Manual Review": 0.0624
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.0,
+          "Manual Review": 1.0
         },
-        "confidence_difference": 0.0206,
+        "confidence_difference": 0.1931,
         "consistency_status": "Model Disagreement",
-        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Invalid Claim')."
+        "status_description": "Models predicted different classes (Python: 'Valid Claim', Vision: 'Manual Review')."
       },
       "rule_evaluation": {
         "category_policy": "Home Appliances",
@@ -4420,7 +4437,7 @@
       },
       "narrative_summary": "Claim CLM-2026-0298 was initiated for Panasonic Convection-Microwave-30L regarding Cooling Leakage. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Manual Review/CLM-2026-0298_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Manual Review/CLM-2026-0298_v1.png"
   },
   {
     "record": {
@@ -4469,11 +4486,11 @@
     },
     "gtm": {
       "predicted_class": "Invalid Claim",
-      "top_confidence": 0.9703,
+      "top_confidence": 0.9998,
       "probabilities": {
-        "Valid Claim": 0.0251,
-        "Invalid Claim": 0.9703,
-        "Manual Review": 0.0045
+        "Valid Claim": 0.0,
+        "Invalid Claim": 0.9998,
+        "Manual Review": 0.0002
       }
     },
     "dossier": {
@@ -4489,13 +4506,13 @@
           "Valid Claim": 0.013100000098347664
         },
         "vision_predicted_class": "Invalid Claim",
-        "vision_top_confidence": 0.9703,
+        "vision_top_confidence": 0.9998,
         "vision_probabilities": {
-          "Valid Claim": 0.0251,
-          "Invalid Claim": 0.9703,
-          "Manual Review": 0.0045
+          "Valid Claim": 0.0,
+          "Invalid Claim": 0.9998,
+          "Manual Review": 0.0002
         },
-        "confidence_difference": 0.0026,
+        "confidence_difference": 0.0269,
         "consistency_status": "Strong Match",
         "status_description": "Both models agree on the class with a very close confidence score (diff < 0.1)."
       },
@@ -4573,6 +4590,6 @@
       },
       "narrative_summary": "Claim CLM-2026-1362 was initiated for Asus UltraView-55 regarding Screen Flicker Defect. This claim is currently saved as a draft pending complete documentation upload and formal submission for dual-model AI adjudication."
     },
-    "card": "03 Common Dataset/summary_cards/test/Invalid Claim/CLM-2026-1362_v1.png"
+    "card": "03 Common Dataset/summary_cards_v4/test/Invalid Claim/CLM-2026-1362_v1.png"
   }
 ]

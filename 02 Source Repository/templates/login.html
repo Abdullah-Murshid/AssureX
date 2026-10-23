@@ -1,49 +1,54 @@
 {% extends "base.html" %}
 
-{% block title %}Sign In - AssureX Claim Engine{% endblock %}
+{% block title %}Sign In — AssureX Claim Engine{% endblock %}
 
 {% block content %}
 <div class="auth-card">
     <div class="panel">
-        <div class="panel-header" style="text-align: center; justify-content: center; padding: 1.25rem;">
-            <h1 class="panel-title" style="font-size: 1.15rem;">
-                <svg class="icon" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-shield-halved"></use></svg> AssureX Account Login
-            </h1>
+        <div class="panel-header" style="justify-content: center; padding: 22px 28px;">
+            <h2 class="panel-title" style="font-size: 15px;">
+                <svg class="icon" style="color: var(--primary);" aria-hidden="true"><use href="/static/icons.svg#fa-shield-halved"></use></svg>
+                Sign in to AssureX
+            </h2>
         </div>
-        <div class="panel-body" style="padding: 1.5rem;">
+        <div class="panel-body" style="padding: 28px;">
             {% if error %}
-            <div style="background-color: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1.25rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div class="flash flash-error" role="alert">
                 <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-triangle-exclamation"></use></svg>
                 <span>{{ error }}</span>
             </div>
             {% endif %}
 
             <form action="/login" method="POST">
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Email Address</label>
-                    <input type="email" name="email" class="form-input" style="width: 100%;" placeholder="e.g. admin@assurex.com" value="{{ email or '' }}" required autofocus>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label class="form-label" for="login-email">Email address</label>
+                    <input id="login-email" type="email" name="email" class="form-input"
+                           placeholder="e.g. admin@assurex.com"
+                           value="{{ email or '' }}" required autofocus>
                 </div>
 
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-sub); margin-bottom: 0.35rem;">Password</label>
-                    <input type="password" name="password" class="form-input" style="width: 100%;" placeholder="Enter password" required>
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <label class="form-label" for="login-password">Password</label>
+                    <input id="login-password" type="password" name="password" class="form-input"
+                           placeholder="Enter password" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.65rem; font-size: 0.9rem;">
-                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-right-to-bracket"></use></svg> Sign In
+                <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 42px; font-size: 13.5px;">
+                    <svg class="icon" aria-hidden="true"><use href="/static/icons.svg#fa-right-to-bracket"></use></svg>
+                    Sign in
                 </button>
             </form>
 
-            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.825rem; color: var(--text-sub); text-align: center;">
-                Don't have an account? <a href="/register" class="link">Register here</a>
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-sub); text-align: center;">
+                Don't have an account? <a href="/register" class="link">Create one</a>
             </div>
 
-            <div style="margin-top: 1.25rem; background-color: var(--bg-main); padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border); font-size: 0.75rem; color: var(--text-muted);">
-                <div style="font-weight: 600; color: var(--text-sub); margin-bottom: 0.25rem;">Demo Credentials:</div>
-                <div>Customer: <code>customer@assurex.com</code> / <code>customer123</code></div>
-                <div>Service Desk: <code>service@assurex.com</code> / <code>service123</code></div>
-                <div>Reviewer: <code>reviewer@assurex.com</code> / <code>reviewer123</code></div>
-                <div>Admin: <code>admin@assurex.com</code> / <code>admin123</code></div>
+            <div class="demo-creds">
+                <strong>Demo credentials</strong>
+                Customer: <code>customer@assurex.com</code> / <code>customer123</code><br>
+                Service desk: <code>service@assurex.com</code> / <code>service123</code><br>
+                Reviewer: <code>reviewer@assurex.com</code> / <code>reviewer123</code><br>
+                Admin: <code>admin@assurex.com</code> / <code>admin123</code>
             </div>
         </div>
     </div>

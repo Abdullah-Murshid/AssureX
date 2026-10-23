@@ -1,0 +1,192 @@
+{
+  "dataset_name": "AssureX Claim Engine Common Warranty Dataset",
+  "version": "1.1",
+  "description": "Structured claims and v5 status-tile cards with a prominent flags banner.",
+  "features": [
+    {
+      "name": "claim_id",
+      "type": "string",
+      "description": "Unique identifier assigned to each claim (e.g., CLM-2026-0001)."
+    },
+    {
+      "name": "user_id",
+      "type": "string",
+      "description": "Unique identifier of claimant customer or service station."
+    },
+    {
+      "name": "product_id",
+      "type": "string",
+      "description": "Unique identifier of registered product under warranty."
+    },
+    {
+      "name": "product_name",
+      "type": "string",
+      "description": "Name of product model and brand."
+    },
+    {
+      "name": "product_category",
+      "type": "string",
+      "allowed_values": [
+        "electronics",
+        "appliances",
+        "automotive"
+      ],
+      "description": "Product warranty category."
+    },
+    {
+      "name": "brand",
+      "type": "string",
+      "description": "Manufacturer brand name."
+    },
+    {
+      "name": "model_number",
+      "type": "string",
+      "description": "Product model designation."
+    },
+    {
+      "name": "user_serial_number",
+      "type": "string",
+      "description": "Serial number provided by user."
+    },
+    {
+      "name": "ocr_serial_number",
+      "type": "string",
+      "description": "Serial number extracted via document OCR."
+    },
+    {
+      "name": "serial_match_status",
+      "type": "string",
+      "allowed_values": [
+        "Exact",
+        "Mismatch",
+        "Partial"
+      ],
+      "description": "Serial verification match status."
+    },
+    {
+      "name": "purchase_date",
+      "type": "date",
+      "description": "Date product was purchased."
+    },
+    {
+      "name": "purchase_price",
+      "type": "float",
+      "description": "Retail purchase price in USD."
+    },
+    {
+      "name": "retailer",
+      "type": "string",
+      "description": "Authorized merchant or store name."
+    },
+    {
+      "name": "warranty_duration_months",
+      "type": "integer",
+      "description": "Total warranty coverage period in months."
+    },
+    {
+      "name": "warranty_start_date",
+      "type": "date",
+      "description": "Date warranty coverage starts. In this dataset it equals the purchase date."
+    },
+    {
+      "name": "warranty_expiry_date",
+      "type": "date",
+      "description": "Calculated end date of warranty coverage."
+    },
+    {
+      "name": "fault_occurrence_date",
+      "type": "date",
+      "description": "Date fault symptom was observed."
+    },
+    {
+      "name": "claim_submission_date",
+      "type": "date",
+      "description": "Date claim was submitted to engine."
+    },
+    {
+      "name": "fault_category",
+      "type": "string",
+      "description": "Reported fault defect category."
+    },
+    {
+      "name": "damage_type",
+      "type": "string",
+      "description": "Excluded physical damage type if any."
+    },
+    {
+      "name": "previous_repairs_count",
+      "type": "integer",
+      "description": "Number of previous repair logs for this product."
+    },
+    {
+      "name": "has_unauthorized_repairs",
+      "type": "boolean",
+      "description": "Flag indicating unauthorized service attempts."
+    },
+    {
+      "name": "has_receipt",
+      "type": "boolean",
+      "description": "True if receipt invoice document attached."
+    },
+    {
+      "name": "has_warranty_card",
+      "type": "boolean",
+      "description": "True if warranty card attached."
+    },
+    {
+      "name": "has_product_photo",
+      "type": "boolean",
+      "description": "True if product damage photo attached."
+    },
+    {
+      "name": "has_serial_photo",
+      "type": "boolean",
+      "description": "True if serial number photo attached."
+    },
+    {
+      "name": "missing_documents_count",
+      "type": "integer",
+      "description": "Total count of missing mandatory documents."
+    },
+    {
+      "name": "contradiction_flag",
+      "type": "boolean",
+      "description": "True if timeline contradiction detected."
+    },
+    {
+      "name": "duplicate_claim_flag",
+      "type": "boolean",
+      "description": "True if duplicate serial/hash detected."
+    },
+    {
+      "name": "product_age_days",
+      "type": "integer",
+      "description": "Derived days between purchase and submission."
+    },
+    {
+      "name": "remaining_warranty_days",
+      "type": "integer",
+      "description": "Derived days remaining in warranty coverage."
+    },
+    {
+      "name": "reporting_delay_days",
+      "type": "integer",
+      "description": "Derived days between fault occurrence and submission."
+    },
+    {
+      "name": "actual_class",
+      "type": "string",
+      "allowed_values": [
+        "Valid Claim",
+        "Invalid Claim",
+        "Manual Review"
+      ],
+      "description": "Ground truth adjudication label."
+    }
+  ],
+  "card_version": "v5",
+  "card_size_px": [
+    600,
+    600
+  ]
+}

@@ -53,10 +53,56 @@ flowchart TD
 
 ## 🛠️ Technology Stack & Dependencies
 
-- **Frontend & Web Framework:** FastAPI, Jinja2, HTML5, Vanilla CSS3 (Dark Glassmorphic UI), FontAwesome 6
-- **Backend & Database:** Python 3.14+, SQLAlchemy ORM, SQLite (`database/assurex.db`), Uvicorn
+- **Web Frameworks:** FastAPI + Jinja2 server-rendered UI (original) and Django 5.2 + django-ninja REST API (`backend/`)
+- **Backend & Database:** Python 3.11+, SQLAlchemy ORM, SQLite (`database/assurex.db`), Uvicorn
 - **Machine Learning & Vision:** Scikit-Learn, TensorFlow, Keras, Joblib, Pandas, NumPy, Pillow (PIL)
 - **Document Processing:** EasyOCR / Tesseract, Regex, SHA-256 Hash Engine
+
+---
+
+## 🔌 REST API (Django Ninja)
+
+A complete REST API now lives alongside the original web application. It is
+additive: both apps share the same SQLAlchemy models, SQLite database,
+`uploads/` directory, warranty policies and ML models, so switching between
+them never requires a data migration.
+
+```bash
+# Start the REST API (default: http://127.0.0.1:8011)
+uv run python backend/manage.py runserver 8011
+
+# or on Windows
+run_api.bat
+```
+
+- **Swagger UI:** `http://127.0.0.1:8011/api/docs`
+- **OpenAPI schema:** `http://127.0.0.1:8011/api/openapi.json`
+- **Health probe:** `http://127.0.0.1:8011/api/v1/health`
+- **Login:** `POST /api/v1/auth/login` → send the token as `Authorization: Bearer <token>`
+
+Full endpoint reference, environment variables and the FastAPI → REST route
+mapping are in [`documentation/REST_API.md`](documentation/REST_API.md).
+
+---
+
+## 🖥️ React Frontend (`frontend/`)
+
+A complete single-page frontend consumes the REST API and implements the full
+workflow — login/registration, dashboard, products & warranties, evidence
+vault, 4-step claim intake wizard, claim dossier with dual-model comparison,
+reviewer queue, warranty alerts, repairs and the admin console (analytics,
+policies, audit log, settings).
+
+```bash
+cd frontend
+npm install
+npm run dev        # http://127.0.0.1:5173 (proxies /api to :8011)
+```
+
+- **Stack:** React 19, Vite 8, Tailwind CSS v4, React Router 7, Zustand, Axios
+- **Design:** light iWarranty-inspired system — DM Serif Display + DM Sans, deep green `#035948` on warm white `#FAFAF8`
+- **Tests:** `npm test` (24 unit/contract tests) and `npm run e2e` (21 browser checks)
+- **Docs:** [`frontend/README.md`](frontend/README.md) and [`frontend/DESIGN_TOKENS.md`](frontend/DESIGN_TOKENS.md)
 
 ---
 
@@ -131,6 +177,11 @@ Open your browser and navigate to: **`http://127.0.0.1:8000`**
 Run the full pytest suite covering all **11 mandatory SRS scenarios**:
 ```bash
 pytest tests/
+```
+
+Run the REST API suite (isolated temporary database and uploads directory):
+```bash
+uv run pytest tests_api -q
 ```
 
 ### Mandatory Scenario Coverage Checklist

@@ -49,6 +49,8 @@ from assurex_claim_engine.models.image_classifier import ImageClassifierPipeline
 from assurex_claim_engine.decision.fusion import DecisionFusionEngine, generate_narrative_summary
 from assurex_claim_engine.decision.derived_features import compute_derived_claim_features
 from assurex_claim_engine.decision.contradiction import ContradictionAndDuplicateDetector
+from assurex_claim_engine.db.status_history import ensure_initial_status, record_status_transition, record_submission_stages
+from assurex_claim_engine import notifications as notification_service
 from assurex_claim_engine.rule_engine.evaluator import PolicyRuleEvaluator
 from assurex_claim_engine.ocr.parser import DocumentOCRParser
 from assurex_claim_engine.web.helpers import (
@@ -59,7 +61,7 @@ from assurex_claim_engine.web.helpers import (
     write_audit, find_hash_duplicates, policy_file_map, validate_policy_payload,
     can_access_product, FILE_TYPE_MAP, paginate,
 )
-from dataset_generator.generate_summary_cards import render_claim_card
+from dataset_generator.generate_summary_cards_v6 import render_claim_card_v6 as render_claim_card
 from config.settings_loader import get, save_setting
 from assurex_claim_engine.reporting.pdf_generator import generate_claim_pdf_report
 
@@ -1600,7 +1602,10 @@ async def submit_claim(
                 db_claim.fault_occurrence_date = fault_occurrence_date
                 db_claim.claim_submission_date = claim_submission_date
                 db_claim.description = description
-                db_claim.status = "Draft"
+                record_status_transition(
+                    db, db_claim, "Draft",
+                    actor_user_id=user_id, actor_role=current_user.role, note="Draft saved",
+                )
                 db_claim.final_decision = "Draft"
                 if extended_warranty_provider.strip():
                     db_claim.extended_warranty_provider = extended_warranty_provider.strip()
@@ -1608,6 +1613,9 @@ async def submit_claim(
                     db_claim.extended_warranty_contract_number = extended_warranty_contract_number.strip()
 
             db.flush()
+            ensure_initial_status(
+                db, db_claim, actor_user_id=user_id, actor_role=current_user.role, note="Draft saved"
+            )
             for pd_item in pending_docs:
                 doc = Document(
                     doc_id=next_doc_id(db),
@@ -1646,6 +1654,11 @@ async def submit_claim(
             mapped = FILE_TYPE_MAP.get(pd_item["file_type"], pd_item["file_type"])
             present_keys.add(mapped)
 
+        policy = load_policy(product.category)
+        missing_mandatory = [
+            doc for doc in policy.get("mandatory_documents", []) if doc not in present_keys
+        ]
+
         raw_payload = {}
         try:
             form_data = await request.form()
@@ -1668,6 +1681,7 @@ async def submit_claim(
             "has_warranty_card": "warranty_card" in present_keys,
             "has_product_photo": "product_image" in present_keys,
             "has_serial_photo": "serial_number_photo" in present_keys,
+            "missing_documents_count": len(missing_mandatory),
             "previous_repairs_count": previous_repairs_count,
             "has_unauthorized_repairs": has_unauthorized_repairs,
             "has_extended_warranty": has_extended_warranty or bool(extended_warranty_provider or extended_warranty_contract_number or extended_warranty_duration_months > 0) or getattr(product, "has_extended_warranty", False),
@@ -1680,12 +1694,14 @@ async def submit_claim(
 
         py_result = tabular_classifier.predict_single(claim_dict)
         card_img = render_claim_card(pd.Series(claim_dict), variation_id=1)
+        started_at = datetime.now(timezone.utc).replace(tzinfo=None)
         card_path = os.path.join("uploads", f"{claim_id}_summary_card.png")
         card_img.save(card_path)
         vis_result = vision_classifier.predict_image(card_img)
 
         existing_claims_db = [c.__dict__ for c in db.query(Claim).all()]
         dossier = fusion_engine.evaluate_full_claim(claim_dict, py_result, vis_result, existing_claims_db)
+        finished_at = datetime.now(timezone.utc).replace(tzinfo=None)
 
         comp = dossier["comparison"]
         final_dec = dossier["final_decision"]
@@ -1708,7 +1724,7 @@ async def submit_claim(
                 fault_occurrence_date=fault_occurrence_date,
                 claim_submission_date=claim_submission_date,
                 description=description,
-                status=claim_status,
+                status="Draft",
                 python_predicted_class=py_result["predicted_class"],
                 python_top_confidence=py_result["top_confidence"],
                 vision_predicted_class=vis_result["predicted_class"],
@@ -1730,7 +1746,6 @@ async def submit_claim(
             db_claim.fault_occurrence_date = fault_occurrence_date
             db_claim.claim_submission_date = claim_submission_date
             db_claim.description = description
-            db_claim.status = claim_status
             db_claim.python_predicted_class = py_result["predicted_class"]
             db_claim.python_top_confidence = py_result["top_confidence"]
             db_claim.vision_predicted_class = vis_result["predicted_class"]
@@ -1745,6 +1760,11 @@ async def submit_claim(
             db_claim.model_version = model_version
 
         db.flush()
+        record_submission_stages(
+            db, db_claim, claim_status,
+            started_at=started_at, finished_at=finished_at,
+            actor_user_id=user_id, actor_role=current_user.role,
+        )
         for pd_item in pending_docs:
             doc = Document(
                 doc_id=next_doc_id(db),
@@ -1963,7 +1983,7 @@ async def import_csv_file(
                 fault_occurrence_date=fault_occurrence_date,
                 claim_submission_date=claim_submission_date,
                 description=description,
-                status="Manual Review" if final_dec == "Manual Review Required" else ("Approved" if final_dec == "Likely Valid" else "Rejected"),
+                status="Draft",
                 python_predicted_class=py_result["predicted_class"],
                 python_top_confidence=py_result["top_confidence"],
                 vision_predicted_class=vis_result["predicted_class"],
@@ -1975,6 +1995,16 @@ async def import_csv_file(
                 model_version=str(get("model_version", "v2")),
             )
             db.add(db_claim)
+            db.flush()
+            record_submission_stages(
+                db,
+                db_claim,
+                "Manual Review" if final_dec == "Manual Review Required" else ("Approved" if final_dec == "Likely Valid" else "Rejected"),
+                started_at=datetime.now(timezone.utc).replace(tzinfo=None),
+                finished_at=datetime.now(timezone.utc).replace(tzinfo=None),
+                actor_user_id=user_id,
+                actor_role=current_user.role,
+            )
             db.commit()
             imported_count += 1
         except Exception as row_err:
@@ -2044,7 +2074,12 @@ def reviewer_override(
         raise HTTPException(status_code=400, detail="Invalid reviewer action")
     if not comments.strip():
         raise HTTPException(status_code=400, detail="Reviewer comments are required")
-    claim.status = override_action
+    record_status_transition(
+        db, claim, override_action,
+        actor_user_id=current_user.user_id,
+        actor_role=current_user.role,
+        note=comments,
+    )
     claim.reviewer_comments = comments
     claim.reviewed_by = f"{current_user.full_name} ({current_user.role.capitalize()})"
     claim.override_flag = True

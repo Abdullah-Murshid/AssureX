@@ -1,0 +1,2494 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AssureX Claim Engine API",
+    "version": "2.0.0",
+    "description": "REST API for the AssureX warranty claim engine. It exposes the same authentication, product, evidence, adjudication, reviewer and administration capabilities as the original server-rendered application, backed by the same SQLAlchemy database and ML models.\n\nAuthenticate with `POST /api/v1/auth/login` and send the returned token as `Authorization: Bearer <token>`."
+  },
+  "paths": {
+    "/api/": {
+      "get": {
+        "operationId": "restapi_api_api_root",
+        "summary": "Api Root",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/auth/register": {
+      "post": {
+        "operationId": "restapi_routers_auth_register",
+        "summary": "Register",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthOut"
+                }
+              }
+            }
+          }
+        },
+        "description": "Self-registration. Only customer / service_center roles are accepted.",
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterIn"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "restapi_routers_auth_login",
+        "summary": "Login",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthOut"
+                }
+              }
+            }
+          }
+        },
+        "description": "Exchange credentials for a signed bearer token (and a same-origin session).",
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginIn"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "restapi_routers_auth_logout",
+        "summary": "Logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Clear the same-origin session. Bearer tokens are stateless: discard them client-side.",
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "restapi_routers_auth_me",
+        "summary": "Me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "restapi_routers_auth_update_profile",
+        "summary": "Update Profile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/change-password": {
+      "post": {
+        "operationId": "restapi_routers_auth_change_password",
+        "summary": "Change Password",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/products": {
+      "get": {
+        "operationId": "restapi_routers_products_list_products",
+        "summary": "List Products",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "default": "",
+              "title": "Category",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "serial",
+            "schema": {
+              "default": "",
+              "title": "Serial",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "warranty_status",
+            "schema": {
+              "default": "",
+              "title": "Warranty Status",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Products"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "restapi_routers_products_create_product",
+        "summary": "Create Product",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/products/{product_id}": {
+      "get": {
+        "operationId": "restapi_routers_products_get_product",
+        "summary": "Get Product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "product_id",
+            "schema": {
+              "title": "Product Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Products"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/warranties": {
+      "get": {
+        "operationId": "restapi_routers_warranties_list_warranties",
+        "summary": "List Warranties",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Warranties & Alerts"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/warranties/{product_id}": {
+      "get": {
+        "operationId": "restapi_routers_warranties_warranty_detail",
+        "summary": "Warranty Detail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "product_id",
+            "schema": {
+              "title": "Product Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Warranties & Alerts"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/alerts": {
+      "get": {
+        "operationId": "restapi_routers_warranties_list_alerts",
+        "summary": "List Alerts",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tab",
+            "schema": {
+              "default": "expiring",
+              "title": "Tab",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Warranties & Alerts"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/alerts/{product_id}/dismiss": {
+      "post": {
+        "operationId": "restapi_routers_warranties_dismiss_alert",
+        "summary": "Dismiss Alert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "product_id",
+            "schema": {
+              "title": "Product Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Warranties & Alerts"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/documents": {
+      "get": {
+        "operationId": "restapi_routers_documents_list_documents",
+        "summary": "List Documents",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "file_type",
+            "schema": {
+              "default": "",
+              "title": "File Type",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "product_id",
+            "schema": {
+              "default": "",
+              "title": "Product Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "claim_id",
+            "schema": {
+              "default": "",
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Documents"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "restapi_routers_documents_upload_document",
+        "summary": "Upload Document",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "description": "Upload a standalone evidence file into the document vault.",
+        "tags": [
+          "Documents"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "upload": {
+                    "format": "binary",
+                    "title": "Upload",
+                    "type": "string"
+                  },
+                  "file_type": {
+                    "default": "purchase_receipt",
+                    "title": "File Type",
+                    "type": "string"
+                  },
+                  "product_id": {
+                    "default": "",
+                    "title": "Product Id",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "upload"
+                ],
+                "title": "MultiPartBodyParams",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/documents/{doc_id}": {
+      "get": {
+        "operationId": "restapi_routers_documents_get_document",
+        "summary": "Get Document",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Documents"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "restapi_routers_documents_delete_document",
+        "summary": "Delete Document",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Documents"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/documents/{doc_id}/download": {
+      "get": {
+        "operationId": "restapi_routers_documents_download_document",
+        "summary": "Download Document",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Documents"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/documents/{doc_id}/file": {
+      "get": {
+        "operationId": "restapi_routers_documents_download_document_alias",
+        "summary": "Download Document Alias",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Documents"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/documents/{doc_id}/verify": {
+      "post": {
+        "operationId": "restapi_routers_documents_verify_document",
+        "summary": "Verify Document",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Save human-corrected OCR fields for a document.",
+        "tags": [
+          "Documents"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentVerifyIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/documents/{doc_id}/replace": {
+      "post": {
+        "operationId": "restapi_routers_documents_replace_document",
+        "summary": "Replace Document",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Documents"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "upload": {
+                    "format": "binary",
+                    "title": "Upload",
+                    "type": "string"
+                  },
+                  "file_type": {
+                    "default": "",
+                    "title": "File Type",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "upload"
+                ],
+                "title": "MultiPartBodyParams",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/notifications": {
+      "get": {
+        "operationId": "restapi_routers_notifications_list_notifications",
+        "summary": "List Notifications",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "unread",
+            "schema": {
+              "default": false,
+              "title": "Unread",
+              "type": "boolean"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 20,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Notifications"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/notifications/unread-count": {
+      "get": {
+        "operationId": "restapi_routers_notifications_unread_count",
+        "summary": "Unread Count",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Notifications"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/notifications/read-all": {
+      "post": {
+        "operationId": "restapi_routers_notifications_read_all",
+        "summary": "Read All",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Notifications"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/notifications/{notification_id}/read": {
+      "post": {
+        "operationId": "restapi_routers_notifications_mark_read",
+        "summary": "Mark Read",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "notification_id",
+            "schema": {
+              "title": "Notification Id",
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Notifications"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/repairs": {
+      "get": {
+        "operationId": "restapi_routers_repairs_list_repairs",
+        "summary": "List Repairs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "product_id",
+            "schema": {
+              "default": "",
+              "title": "Product Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Repairs"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "restapi_routers_repairs_create_repair",
+        "summary": "Create Repair",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Repairs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepairIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims": {
+      "get": {
+        "operationId": "restapi_routers_claims_list_claims",
+        "summary": "List Claims",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "claim_id",
+            "schema": {
+              "default": "",
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "product_id",
+            "schema": {
+              "default": "",
+              "title": "Product Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "serial",
+            "schema": {
+              "default": "",
+              "title": "Serial",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "schema": {
+              "default": "",
+              "title": "Category",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "default": "",
+              "title": "Status",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "date_from",
+            "schema": {
+              "default": "",
+              "title": "Date From",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "date_to",
+            "schema": {
+              "default": "",
+              "title": "Date To",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "restapi_routers_claims_submit_claim",
+        "summary": "Submit Claim",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response",
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a claim.\n\n``action_type=draft`` stores a draft without running the ML pipeline.\nAny other value performs full dual-model adjudication and returns the\nresulting claim, including the dossier.",
+        "tags": [
+          "Claims"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "title": "MultiPartBodyParams",
+                "type": "object",
+                "properties": {
+                  "product_id": {
+                    "default": "",
+                    "title": "Product Id",
+                    "type": "string"
+                  },
+                  "product_name": {
+                    "default": "",
+                    "title": "Product Name",
+                    "type": "string"
+                  },
+                  "product_category": {
+                    "default": "electronics",
+                    "title": "Product Category",
+                    "type": "string"
+                  },
+                  "brand": {
+                    "default": "",
+                    "title": "Brand",
+                    "type": "string"
+                  },
+                  "model_number": {
+                    "default": "",
+                    "title": "Model Number",
+                    "type": "string"
+                  },
+                  "serial_number": {
+                    "default": "",
+                    "title": "Serial Number",
+                    "type": "string"
+                  },
+                  "purchase_date": {
+                    "default": "",
+                    "title": "Purchase Date",
+                    "type": "string"
+                  },
+                  "purchase_price": {
+                    "default": 0,
+                    "title": "Purchase Price",
+                    "type": "number"
+                  },
+                  "retailer": {
+                    "default": "",
+                    "title": "Retailer",
+                    "type": "string"
+                  },
+                  "warranty_months": {
+                    "default": 24,
+                    "title": "Warranty Months",
+                    "type": "integer"
+                  },
+                  "has_extended_warranty": {
+                    "default": false,
+                    "title": "Has Extended Warranty",
+                    "type": "boolean"
+                  },
+                  "extended_warranty_provider": {
+                    "default": "",
+                    "title": "Extended Warranty Provider",
+                    "type": "string"
+                  },
+                  "extended_warranty_contract_number": {
+                    "default": "",
+                    "title": "Extended Warranty Contract Number",
+                    "type": "string"
+                  },
+                  "extended_warranty_duration_months": {
+                    "default": 0,
+                    "title": "Extended Warranty Duration Months",
+                    "type": "integer"
+                  },
+                  "fault_category": {
+                    "default": "motherboard_failure",
+                    "title": "Fault Category",
+                    "type": "string"
+                  },
+                  "damage_type": {
+                    "default": "none",
+                    "title": "Damage Type",
+                    "type": "string"
+                  },
+                  "fault_occurrence_date": {
+                    "default": "",
+                    "title": "Fault Occurrence Date",
+                    "type": "string"
+                  },
+                  "claim_submission_date": {
+                    "default": "",
+                    "title": "Claim Submission Date",
+                    "type": "string"
+                  },
+                  "description": {
+                    "default": "",
+                    "title": "Description",
+                    "type": "string"
+                  },
+                  "previous_repairs_count": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Previous Repairs Count"
+                  },
+                  "has_unauthorized_repairs": {
+                    "default": false,
+                    "title": "Has Unauthorized Repairs",
+                    "type": "boolean"
+                  },
+                  "attach_doc_ids": {
+                    "default": "",
+                    "title": "Attach Doc Ids",
+                    "type": "string"
+                  },
+                  "action_type": {
+                    "default": "submit",
+                    "title": "Action Type",
+                    "type": "string"
+                  },
+                  "draft_id": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Draft Id"
+                  },
+                  "receipt_file": {
+                    "anyOf": [
+                      {
+                        "format": "binary",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Receipt File"
+                  },
+                  "warranty_card_file": {
+                    "anyOf": [
+                      {
+                        "format": "binary",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Warranty Card File"
+                  },
+                  "product_photo_file": {
+                    "anyOf": [
+                      {
+                        "format": "binary",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Product Photo File"
+                  },
+                  "serial_photo_file": {
+                    "anyOf": [
+                      {
+                        "format": "binary",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Serial Photo File"
+                  },
+                  "damage_photo_file": {
+                    "anyOf": [
+                      {
+                        "format": "binary",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "title": "Damage Photo File"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/precheck": {
+      "post": {
+        "operationId": "restapi_routers_claims_precheck",
+        "summary": "Precheck",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrecheckIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/import-csv": {
+      "post": {
+        "operationId": "restapi_routers_claims_import_csv",
+        "summary": "Import Csv",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "upload": {
+                    "format": "binary",
+                    "title": "Upload",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "upload"
+                ],
+                "title": "FileParams",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}": {
+      "get": {
+        "operationId": "restapi_routers_claims_get_claim",
+        "summary": "Get Claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}/history": {
+      "get": {
+        "operationId": "restapi_routers_claims_claim_history",
+        "summary": "Claim History",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}/dossier": {
+      "get": {
+        "operationId": "restapi_routers_claims_get_claim_dossier",
+        "summary": "Get Claim Dossier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}/summary-card": {
+      "get": {
+        "operationId": "restapi_routers_claims_get_summary_card",
+        "summary": "Get Summary Card",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}/documents/{doc_id}": {
+      "post": {
+        "operationId": "restapi_routers_claims_attach_document",
+        "summary": "Attach Document",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "doc_id",
+            "schema": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}/report.pdf": {
+      "get": {
+        "operationId": "restapi_routers_claims_claim_report_pdf",
+        "summary": "Claim Report Pdf",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/claims/{claim_id}/report.md": {
+      "get": {
+        "operationId": "restapi_routers_claims_claim_report_markdown",
+        "summary": "Claim Report Markdown",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Claims"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/review/queue": {
+      "get": {
+        "operationId": "restapi_routers_review_review_queue",
+        "summary": "Review Queue",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 15,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Reviewer Queue"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/review/stats": {
+      "get": {
+        "operationId": "restapi_routers_review_review_stats",
+        "summary": "Review Stats",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Reviewer Queue"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/review/{claim_id}/decision": {
+      "post": {
+        "operationId": "restapi_routers_review_review_decision",
+        "summary": "Review Decision",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "claim_id",
+            "schema": {
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Reviewer Queue"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewDecisionIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/policies": {
+      "get": {
+        "operationId": "restapi_routers_admin_list_policies",
+        "summary": "List Policies",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/policies/{category}": {
+      "get": {
+        "operationId": "restapi_routers_admin_get_policy",
+        "summary": "Get Policy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "category",
+            "schema": {
+              "title": "Category",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "restapi_routers_admin_update_policy",
+        "summary": "Update Policy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "category",
+            "schema": {
+              "title": "Category",
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PolicyUpdateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/analytics": {
+      "get": {
+        "operationId": "restapi_routers_admin_analytics",
+        "summary": "Analytics",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/monitoring": {
+      "get": {
+        "operationId": "restapi_routers_admin_monitoring",
+        "summary": "Monitoring",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/audit-logs": {
+      "get": {
+        "operationId": "restapi_routers_admin_audit_logs",
+        "summary": "Audit Logs",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "action",
+            "schema": {
+              "default": "",
+              "title": "Action",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "user_id",
+            "schema": {
+              "default": "",
+              "title": "User Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "claim_id",
+            "schema": {
+              "default": "",
+              "title": "Claim Id",
+              "type": "string"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "default": 1,
+              "title": "Page",
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "per_page",
+            "schema": {
+              "default": 20,
+              "title": "Per Page",
+              "type": "integer"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/export/claims.csv": {
+      "get": {
+        "operationId": "restapi_routers_admin_export_claims_csv",
+        "summary": "Export Claims Csv",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/settings": {
+      "get": {
+        "operationId": "restapi_routers_admin_get_runtime_settings",
+        "summary": "Get Runtime Settings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "restapi_routers_admin_update_runtime_settings",
+        "summary": "Update Runtime Settings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "Administration"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SettingsUpdateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "operationId": "restapi_routers_system_health",
+        "summary": "Health",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/api/v1/system/models": {
+      "get": {
+        "operationId": "restapi_routers_system_model_status",
+        "summary": "Model Status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "System"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/system/info": {
+      "get": {
+        "operationId": "restapi_routers_system_system_info",
+        "summary": "System Info",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "System"
+        ],
+        "security": [
+          {
+            "SessionOrBearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthOut": {
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "token_type": {
+            "default": "Bearer",
+            "title": "Token Type",
+            "type": "string"
+          },
+          "expires_in": {
+            "title": "Expires In",
+            "type": "integer"
+          },
+          "user": {
+            "additionalProperties": true,
+            "title": "User",
+            "type": "object"
+          }
+        },
+        "required": [
+          "access_token",
+          "expires_in",
+          "user"
+        ],
+        "title": "AuthOut",
+        "type": "object"
+      },
+      "RegisterIn": {
+        "properties": {
+          "full_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "title": "Full Name",
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 3,
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "maxLength": 128,
+            "minLength": 8,
+            "title": "Password",
+            "type": "string"
+          },
+          "role": {
+            "default": "customer",
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "full_name",
+          "email",
+          "password"
+        ],
+        "title": "RegisterIn",
+        "type": "object"
+      },
+      "LoginIn": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "LoginIn",
+        "type": "object"
+      },
+      "ProfileUpdateIn": {
+        "properties": {
+          "full_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "title": "Full Name",
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 3,
+            "title": "Email",
+            "type": "string"
+          },
+          "phone_number": {
+            "default": "",
+            "title": "Phone Number",
+            "type": "string"
+          },
+          "mailing_address": {
+            "default": "",
+            "title": "Mailing Address",
+            "type": "string"
+          }
+        },
+        "required": [
+          "full_name",
+          "email"
+        ],
+        "title": "ProfileUpdateIn",
+        "type": "object"
+      },
+      "ChangePasswordIn": {
+        "properties": {
+          "current_password": {
+            "title": "Current Password",
+            "type": "string"
+          },
+          "new_password": {
+            "maxLength": 128,
+            "minLength": 8,
+            "title": "New Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "current_password",
+          "new_password"
+        ],
+        "title": "ChangePasswordIn",
+        "type": "object"
+      },
+      "ProductIn": {
+        "properties": {
+          "product_name": {
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Product Name",
+            "type": "string"
+          },
+          "category": {
+            "default": "electronics",
+            "title": "Category",
+            "type": "string"
+          },
+          "brand": {
+            "default": "Generic",
+            "title": "Brand",
+            "type": "string"
+          },
+          "model_number": {
+            "default": "N/A",
+            "title": "Model Number",
+            "type": "string"
+          },
+          "serial_number": {
+            "maxLength": 50,
+            "minLength": 1,
+            "title": "Serial Number",
+            "type": "string"
+          },
+          "purchase_date": {
+            "title": "Purchase Date",
+            "type": "string"
+          },
+          "purchase_price": {
+            "default": 0,
+            "minimum": 0,
+            "title": "Purchase Price",
+            "type": "number"
+          },
+          "retailer": {
+            "default": "Unknown",
+            "title": "Retailer",
+            "type": "string"
+          },
+          "warranty_duration_months": {
+            "default": 24,
+            "minimum": 1,
+            "title": "Warranty Duration Months",
+            "type": "integer"
+          },
+          "has_extended_warranty": {
+            "default": false,
+            "title": "Has Extended Warranty",
+            "type": "boolean"
+          },
+          "extended_warranty_provider": {
+            "default": "",
+            "title": "Extended Warranty Provider",
+            "type": "string"
+          },
+          "extended_warranty_contract_number": {
+            "default": "",
+            "title": "Extended Warranty Contract Number",
+            "type": "string"
+          },
+          "extended_warranty_duration_months": {
+            "default": 0,
+            "minimum": 0,
+            "title": "Extended Warranty Duration Months",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "product_name",
+          "serial_number",
+          "purchase_date"
+        ],
+        "title": "ProductIn",
+        "type": "object"
+      },
+      "DocumentVerifyIn": {
+        "properties": {
+          "purchase_date": {
+            "default": "",
+            "title": "Purchase Date",
+            "type": "string"
+          },
+          "invoice_number": {
+            "default": "",
+            "title": "Invoice Number",
+            "type": "string"
+          },
+          "product_name": {
+            "default": "",
+            "title": "Product Name",
+            "type": "string"
+          },
+          "model_number": {
+            "default": "",
+            "title": "Model Number",
+            "type": "string"
+          },
+          "serial_number": {
+            "default": "",
+            "title": "Serial Number",
+            "type": "string"
+          },
+          "retailer_name": {
+            "default": "",
+            "title": "Retailer Name",
+            "type": "string"
+          },
+          "purchase_amount": {
+            "default": "",
+            "title": "Purchase Amount",
+            "type": "string"
+          },
+          "warranty_period": {
+            "default": "",
+            "title": "Warranty Period",
+            "type": "string"
+          }
+        },
+        "title": "DocumentVerifyIn",
+        "type": "object"
+      },
+      "RepairIn": {
+        "properties": {
+          "product_id": {
+            "title": "Product Id",
+            "type": "string"
+          },
+          "repair_date": {
+            "title": "Repair Date",
+            "type": "string"
+          },
+          "service_center_name": {
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Service Center Name",
+            "type": "string"
+          },
+          "replaced_parts": {
+            "default": "",
+            "title": "Replaced Parts",
+            "type": "string"
+          },
+          "repair_cost": {
+            "default": 0,
+            "minimum": 0,
+            "title": "Repair Cost",
+            "type": "number"
+          },
+          "outcome": {
+            "default": "",
+            "title": "Outcome",
+            "type": "string"
+          },
+          "authorized": {
+            "default": true,
+            "title": "Authorized",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "product_id",
+          "repair_date",
+          "service_center_name"
+        ],
+        "title": "RepairIn",
+        "type": "object"
+      },
+      "PrecheckIn": {
+        "properties": {
+          "product_id": {
+            "title": "Product Id",
+            "type": "string"
+          },
+          "fault_occurrence_date": {
+            "title": "Fault Occurrence Date",
+            "type": "string"
+          },
+          "claim_submission_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Claim Submission Date"
+          },
+          "fault_category": {
+            "default": "general_defect",
+            "title": "Fault Category",
+            "type": "string"
+          },
+          "damage_type": {
+            "default": "none",
+            "title": "Damage Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id",
+          "fault_occurrence_date"
+        ],
+        "title": "PrecheckIn",
+        "type": "object"
+      },
+      "ReviewDecisionIn": {
+        "properties": {
+          "action": {
+            "title": "Action",
+            "type": "string"
+          },
+          "comments": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Comments",
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "comments"
+        ],
+        "title": "ReviewDecisionIn",
+        "type": "object"
+      },
+      "PolicyUpdateIn": {
+        "properties": {
+          "data": {
+            "additionalProperties": true,
+            "title": "Data",
+            "type": "object"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "PolicyUpdateIn",
+        "type": "object"
+      },
+      "SettingsUpdateIn": {
+        "properties": {
+          "settings": {
+            "additionalProperties": true,
+            "title": "Settings",
+            "type": "object"
+          }
+        },
+        "required": [
+          "settings"
+        ],
+        "title": "SettingsUpdateIn",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "SessionOrBearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": []
+}

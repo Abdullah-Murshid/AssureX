@@ -1,0 +1,65 @@
+{
+  "dataset_version": "v3",
+  "renderer": "dataset_generator/generate_summary_cards.py",
+  "card_size_px": [
+    600,
+    600
+  ],
+  "created_utc": "2026-10-22T08:52:27+00:00",
+  "counts": {
+    "records": 1500,
+    "images": 2550,
+    "per_split_records": {
+      "train": 1050,
+      "val": 225,
+      "test": 225
+    },
+    "per_split_images": {
+      "train": 2100,
+      "val": 225,
+      "test": 225
+    },
+    "per_class_images": {
+      "Invalid Claim": 850,
+      "Valid Claim": 850,
+      "Manual Review": 850
+    }
+  },
+  "csv_sha256": {
+    "train": "7c6211d782f6450efcad07a0508efe095b031cb694cb3a9d60b4e45412741470",
+    "val": "1b03c1385b70f731d07623075555582a620d4441655419d6a3d26e9b2893d700",
+    "test": "b67be2830981d611863f0e19bd5a3334dfcdb23da9e980e40f53de76ea2a9db7"
+  },
+  "mapping_sha256": "bef65141f57dcdd4d29a011ce56f24b2573762c564123859525fa17ab002fcea",
+  "image_set_sha256": "0747c74c38757047809ff3f6e54ebec4a1f89a2af96a7eb50ae93cabbf5ef8fa",
+  "contract": {
+    "card_shows": [
+      "claim_id",
+      "product",
+      "category/brand",
+      "model/serial",
+      "purchase date",
+      "warranty duration and expiry",
+      "product age",
+      "remaining warranty days",
+      "fault category",
+      "damage type",
+      "repair history",
+      "evidence availability",
+      "serial match status",
+      "missing document count",
+      "contradiction flag"
+    ],
+    "card_does_not_show": [
+      "python prediction",
+      "python confidence",
+      "final decision",
+      "actual_class"
+    ],
+    "variations": {
+      "train": 2,
+      "val": 1,
+      "test": 1
+    }
+  }
+}

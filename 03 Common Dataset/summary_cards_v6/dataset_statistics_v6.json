@@ -1,0 +1,32 @@
+{
+  "dataset_version": "v6",
+  "renderer": "dataset_generator/generate_summary_cards_v6.py",
+  "card_size_px": [
+    600,
+    600
+  ],
+  "source_structured": "C:\\Users\\abdul\\Desktop\\AssureX_Final_Submission\\AssureX_Final_Submission\\03 Common Dataset\\structured_v4",
+  "splits": {
+    "train": {
+      "Invalid Claim": 350,
+      "Valid Claim": 350,
+      "Manual Review": 350
+    },
+    "val": {
+      "Valid Claim": 75,
+      "Manual Review": 75,
+      "Invalid Claim": 75
+    },
+    "test": {
+      "Valid Claim": 75,
+      "Manual Review": 75,
+      "Invalid Claim": 75
+    }
+  },
+  "total_images": 2550,
+  "classes": [
+    "Valid Claim",
+    "Invalid Claim",
+    "Manual Review"
+  ]
+}
